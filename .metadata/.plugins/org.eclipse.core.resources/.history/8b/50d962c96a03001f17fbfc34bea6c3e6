@@ -1,0 +1,19 @@
+package com.shopmmt.admin.services;
+
+import java.util.List;
+
+import com.shopmmt.admin.exception.UserNotFoundException;
+import com.shopmmt.common.dto.UserDTO;
+import com.shopmmt.common.entity.User;
+
+import jakarta.validation.Valid;
+
+public interface UserService {
+	List<User> listAll();
+
+	void save(@Valid UserDTO userDTO);
+
+	boolean findByEmail(String email);
+
+	User findById(Integer id) throws UserNotFoundException;
+}

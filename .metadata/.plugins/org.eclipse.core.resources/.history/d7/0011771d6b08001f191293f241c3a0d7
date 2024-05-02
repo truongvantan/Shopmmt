@@ -1,0 +1,5 @@
+package com.shopmmt.admin.exception;
+
+public class MaxUploadSizeExceededException {
+
+}

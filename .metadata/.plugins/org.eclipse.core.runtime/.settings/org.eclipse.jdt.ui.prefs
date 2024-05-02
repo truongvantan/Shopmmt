@@ -1,0 +1,16 @@
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="com.shopmmt.common.entity.Role"><rhs name\="com.shopmmt.common.entity.Role"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.HashSet"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.HashSet"/></lhs><lhs name\="java.util.Set"><rhs name\="java.util.HashSet"/></lhs><lhs name\="com.shopmmt.common.entity.User"><rhs name\="com.shopmmt.common.entity.User"/></lhs><lhs name\="java.lang.CharSequence"><rhs name\="java.lang.String"/></lhs><lhs name\="java.lang.constant.Constable"><rhs name\="java.lang.String"/><rhs name\="java.lang.Integer"/></lhs><lhs name\="java.lang.constant.ConstantDesc"><rhs name\="java.lang.String"/><rhs name\="java.lang.Integer"/></lhs><lhs name\="org.springframework.security.crypto.password.PasswordEncoder"><rhs name\="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/></lhs><lhs name\="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"><rhs name\="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/></lhs><lhs name\="org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider"><rhs name\="org.springframework.security.authentication.dao.DaoAuthenticationProvider"/></lhs><lhs name\="org.springframework.security.authentication.AuthenticationProvider"><rhs name\="org.springframework.security.authentication.dao.DaoAuthenticationProvider"/></lhs><lhs name\="org.springframework.beans.factory.InitializingBean"><rhs name\="org.springframework.security.authentication.dao.DaoAuthenticationProvider"/></lhs><lhs name\="org.springframework.context.MessageSourceAware"><rhs name\="org.springframework.security.authentication.dao.DaoAuthenticationProvider"/></lhs><lhs name\="org.springframework.beans.factory.Aware"><rhs name\="org.springframework.security.authentication.dao.DaoAuthenticationProvider"/></lhs><lhs name\="org.springframework.security.authentication.dao.DaoAuthenticationProvider"><rhs name\="org.springframework.security.authentication.dao.DaoAuthenticationProvider"/></lhs><lhs name\="com.shopmmt.common.dto.UserDTO"><rhs name\="com.shopmmt.common.dto.UserDTO"/></lhs><lhs name\="java.lang.Number"><rhs name\="java.lang.Integer"/></lhs></history>
+content_assist_number_of_computers=14
+content_assist_proposals_background=255,255,255
+content_assist_proposals_foreground=0,0,0
+eclipse.preferences.version=1
+org.eclipse.jdt.internal.ui.navigator.layout=2
+org.eclipse.jdt.internal.ui.navigator.librariesnode=true
+org.eclipse.jdt.ui.exception.name=e
+org.eclipse.jdt.ui.formatterprofiles.version=23
+org.eclipse.jdt.ui.gettersetter.use.is=true
+org.eclipse.jdt.ui.overrideannotation=true
+sourceHoverBackgroundColor=255,255,225
+spelling_locale_initialized=true
+typefilter_migrated_2=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

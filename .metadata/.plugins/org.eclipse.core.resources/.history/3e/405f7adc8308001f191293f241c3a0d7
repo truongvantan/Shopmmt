@@ -1,0 +1,5 @@
+package com.shopmmt.admin.config;
+
+public class MvcConfig {
+
+}

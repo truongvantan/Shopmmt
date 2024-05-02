@@ -1,0 +1,5 @@
+package com.shopmmt.admin.utils;
+
+public class FileUploadUtil {
+
+}

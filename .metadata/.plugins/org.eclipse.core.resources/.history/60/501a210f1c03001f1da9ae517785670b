@@ -1,0 +1,52 @@
+package com.shopmmt.admin.services.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.shopmmt.admin.repositories.UserRepository;
+import com.shopmmt.admin.services.UserService;
+import com.shopmmt.common.dto.UserDTO;
+import com.shopmmt.common.entity.User;
+
+import jakarta.validation.Valid;
+
+@Service("userService")
+public class UserServiceImpl implements UserService {
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@Override
+	public List<User> listAll() {
+		return userRepository.findAll();
+	}
+
+	@Override
+	public void save(@Valid UserDTO userDTO) {
+		encodePassword(userDTO);
+		User user = new User(userDTO);
+		userRepository.save(user);
+	}
+	
+	private void encodePassword(UserDTO userDTO) {
+		String encodedPassword = passwordEncoder.encode(userDTO.getPassword());
+		userDTO.setPassword(encodedPassword);
+	}
+
+	@Override
+	public boolean findByEmail(String email) {
+		User user = userRepository.findByEmail(email);
+		return user == null;
+	}
+
+	@Override
+	public User findById(Integer id) {
+		return userRepository.findById(id).get();
+	}
+}

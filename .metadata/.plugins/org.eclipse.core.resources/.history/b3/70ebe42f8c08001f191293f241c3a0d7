@@ -1,0 +1,19 @@
+server.port=8080
+server.servlet.context-path=/ShopmmtAdmin
+
+# JPA properties
+spring.datasource.url=jdbc:mysql://localhost:3306/shopmmtdb
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.show-sql=true
+
+# Hibernate properties
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+spring.jpa.properties.hibernate.connection.CharSet=utf8
+spring.jpa.properties.hibernate.connection.characterEncoding=utf8
+spring.jpa.properties.hibernate.connection.useUnicode=true
+
+# File size upload
+spring.servlet.multipart.max-file-size=1MB

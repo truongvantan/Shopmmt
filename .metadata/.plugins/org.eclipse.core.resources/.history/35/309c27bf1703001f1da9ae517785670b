@@ -1,0 +1,23 @@
+*.icon-white {
+	color: white
+}
+
+*.icon-dark {
+	color: dark
+}
+
+*.icon-green {
+	color: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));
+}
+
+*.icon-silver {
+	color: silver
+}
+
+*.icon-red {
+	color: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+}
+
+*.icon-blue {
+	color: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
+}

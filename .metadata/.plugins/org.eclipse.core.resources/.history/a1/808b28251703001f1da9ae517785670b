@@ -1,0 +1,5 @@
+*.icon-white{color: white}
+*.icon-dark {color: dark}
+*.icon-green {color: green}
+*.icon-silver {color: silver}
+*.icon-red {color: red}

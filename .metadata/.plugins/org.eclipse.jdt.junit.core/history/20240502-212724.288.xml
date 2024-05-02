@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun testListFirstPage()" project="ShopmmtBackEnd" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.shopmmt.admin.user.UserRepositoryTests" time="0.962" displayname="UserRepositoryTests" uniqueid="[engine:junit-jupiter]/[class:com.shopmmt.admin.user.UserRepositoryTests]">
+    <testcase name="testListFirstPage" classname="com.shopmmt.admin.user.UserRepositoryTests" time="0.962" displayname="testListFirstPage()" uniqueid="[engine:junit-jupiter]/[class:com.shopmmt.admin.user.UserRepositoryTests]/[method:testListFirstPage()]"/>
+  </testsuite>
+</testrun>
