@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 		if (userDTO.getId() != null) { // cập nhật
 			User existingUser = userRepository.findById(userDTO.getId()).get();
 			
-			if ("".equals(userDTO.getPassword()) || userDTO.getPassword() == null) {
+			if ("".equals(userDTO.getPassword()) || userDTO.getPassword() == null || userDTO.getPassword().equals(existingUser.getPassword())) {
 				userDTO.setPassword(existingUser.getPassword());
 			} else {
 				encodePassword(userDTO);

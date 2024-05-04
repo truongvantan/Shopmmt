@@ -101,6 +101,11 @@ public class UserController {
 
 				FileUploadUtil.cleanDir(uploadDir);
 				FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+			} else {
+				if ("".equals(userDTO.getPhotos()) || userDTO.getPhotos() == null) {
+					userDTO.setPhotos(null);
+				}
+				userService.save(userDTO);
 			}
 			
 			redirectAttributes.addFlashAttribute("message", "Thêm mới người dùng thành công");
@@ -154,7 +159,7 @@ public class UserController {
 				FileUploadUtil.cleanDir(uploadDir);
 				FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 			} else {
-				if ("".equals(userDTO.getPhotos())) {
+				if ("".equals(userDTO.getPhotos()) || userDTO.getPhotos() == null) {
 					userDTO.setPhotos(null);
 				}
 				userService.save(userDTO);
