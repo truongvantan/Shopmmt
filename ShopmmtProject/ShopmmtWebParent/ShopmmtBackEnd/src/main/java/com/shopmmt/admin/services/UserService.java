@@ -23,5 +23,5 @@ public interface UserService {
 
 	void updateUserEnabledStatus(String id, boolean enabled) throws UserNotFoundException;
 
-	Page<User> listByPage(int pageNum);
+	Page<User> listByPage(int pageNum, String sortField, String sortDir, String keyword);
 }

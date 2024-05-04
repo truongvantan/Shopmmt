@@ -21,6 +21,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shopmmt.admin.exception.UserNotFoundException;
+import com.shopmmt.admin.exporter.UserCsvExporter;
+import com.shopmmt.admin.exporter.UserExcelExporter;
+import com.shopmmt.admin.exporter.UserPdfExporter;
 import com.shopmmt.admin.services.RoleService;
 import com.shopmmt.admin.services.UserService;
 import com.shopmmt.admin.utils.FileUploadUtil;
@@ -28,6 +31,7 @@ import com.shopmmt.common.dto.UserDTO;
 import com.shopmmt.common.entity.Role;
 import com.shopmmt.common.entity.User;
 
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @Controller
@@ -41,23 +45,30 @@ public class UserController {
 	private RoleService roleService;
 
 	@GetMapping("/users")
-	public String listAll(Model model) {
-		List<User> listUsers = userService.listAll();
-		model.addAttribute("listUsers", listUsers);
-
-		return "users";
+	public String listFirstPage(Model model) {
+		return listByPage(model, 1, "id", "asc", null);
 	}
 
 	@GetMapping("/users/page/{pageNum}")
-	public String listByPage(Model model, @PathVariable(name = "pageNum", required = false) int pageNum) {
-		Page<User> page = userService.listByPage(pageNum);
-		List<User> listUsers = page.getContent();
-
-		System.out.println("Page num = " + pageNum);
-		System.out.println("Total elements = " + page.getTotalElements());
-		System.out.println("Total pages = " + page.getTotalPages());
+	public String listByPage(Model model, @PathVariable(name = "pageNum", required = false) int pageNum,
+			@RequestParam(name = "sortField", required = false, defaultValue = "id") String sortField,
+			@RequestParam(name = "sortDir", required = false, defaultValue = "asc") String sortDir,
+			@RequestParam(name = "keyword", required = false) String keyword) {
 		
+		Page<User> page = userService.listByPage(pageNum, sortField, sortDir, keyword);
+		List<User> listUsers = page.getContent();
+		
+		String reverseSortDir = "asc".equals(sortDir) ? "desc" : "asc";
+
+		model.addAttribute("totalPages", page.getTotalPages());
+		model.addAttribute("totalItems", page.getTotalElements());
+		model.addAttribute("currentPage", pageNum);
 		model.addAttribute("listUsers", listUsers);
+		model.addAttribute("sortField", sortField);
+		model.addAttribute("sortDir", sortDir);
+		model.addAttribute("reverseSortDir", reverseSortDir);
+		model.addAttribute("keyword", keyword);
+
 		return "users";
 	}
 
@@ -91,10 +102,16 @@ public class UserController {
 				FileUploadUtil.cleanDir(uploadDir);
 				FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 			}
+			
 			redirectAttributes.addFlashAttribute("message", "Thêm mới người dùng thành công");
 
-			return "redirect:/users";
+			return getRedirectURLtoAffectedUser(userDTO);
 		}
+	}
+
+	private String getRedirectURLtoAffectedUser(UserDTO userDTO) {
+		String firstPathOfEmail = userDTO.getEmail().split("@")[0];
+		return "redirect:/users/page/1?sortField=id&sortDir=asc&keyword=" + firstPathOfEmail;
 	}
 
 	@GetMapping("/users/showEdit/{id}")
@@ -142,9 +159,10 @@ public class UserController {
 				}
 				userService.save(userDTO);
 			}
+			
 			redirectAttributes.addFlashAttribute("message", "Cập nhật người dùng thành công");
-
-			return "redirect:/users";
+			
+			return getRedirectURLtoAffectedUser(userDTO);
 		}
 	}
 
@@ -171,14 +189,35 @@ public class UserController {
 			String status = enabled ? "mở khóa" : "khóa";
 			String message = "Đã " + status + " người dùng ID " + id;
 			redirectAttributes.addFlashAttribute("message", message);
-
-			return "redirect:/users";
+			
+			return "redirect:/users/page/1?sortField=id&sortDir=asc&keyword=" + id;
 		} catch (UserNotFoundException e) {
 			if (e.getMessage().contains("Could not find any user with ID")) {
 				redirectAttributes.addFlashAttribute("error", "Không tìm thấy người dùng có ID " + id);
 			}
 			return "redirect:/users";
 		}
+	}
+	
+	@GetMapping("/users/export/csv")
+	public void exportToCSV(HttpServletResponse response) throws IOException {
+		List<User> listUsers = userService.listAll();
+		UserCsvExporter exporter = new UserCsvExporter();
+		exporter.export(listUsers, response);
+	}
+	
+	@GetMapping("/users/export/excel")
+	public void exportToExcel(HttpServletResponse response) throws IOException {
+		List<User> listUsers = userService.listAll();
+		UserExcelExporter exporter = new UserExcelExporter();
+		exporter.export(listUsers, response);
+	}
+	
+	@GetMapping("/users/export/pdf")
+	public void exportToPDF(HttpServletResponse response) throws IOException {
+		List<User> listUsers = userService.listAll();
+		UserPdfExporter exporter = new UserPdfExporter();
+		exporter.export(listUsers, response);
 	}
 
 	@ExceptionHandler(MaxUploadSizeExceededException.class)

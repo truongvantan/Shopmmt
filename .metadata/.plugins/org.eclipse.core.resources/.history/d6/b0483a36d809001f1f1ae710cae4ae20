@@ -1,0 +1,18 @@
+package com.shopmmt.admin.exporter;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import com.shopmmt.common.entity.User;
+
+import jakarta.servlet.http.HttpServletResponse;
+
+public class UserExcelExporter extends AbstractExporter {
+
+	public void export(List<User> listUsers, HttpServletResponse response) {
+		super.setResponseHeader(response, ".xlsx", "application/octet-stream");
+	}
+
+}

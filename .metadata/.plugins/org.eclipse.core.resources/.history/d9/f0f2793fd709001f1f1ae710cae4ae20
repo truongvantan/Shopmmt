@@ -1,0 +1,5 @@
+package com.shopmmt.admin.dto;
+
+public class UserExcelExporter {
+
+}

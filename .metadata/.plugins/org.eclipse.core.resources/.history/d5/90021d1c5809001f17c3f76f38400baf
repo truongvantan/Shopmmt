@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta
+	http-equiv="X-UA-Compatible"
+	content="IE=edge"
+>
+<meta
+	name="viewport"
+	content="width=device-width, initial-scale=1.0"
+>
+<title>Shopmmt - Quản lý người dùng</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+>
+<link
+	rel="stylesheet"
+	type="text/css"
+	th:href="@{/fontawesome/all.css}"
+>
+<link
+	rel="stylesheet"
+	type="text/css"
+	th:href="@{/css/style.css}"
+>
+<script
+	type="text/javascript"
+	th:src="@{/webjars/jquery/jquery.min.js}"
+></script>
+<script
+	type="text/javascript"
+	th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"
+></script>
+</head>
+<body>
+	<div class="container-fluid mt-4">
+		<div class="sticky-top">
+			<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+				<a
+					class="navbar-brand"
+					th:href="@{/}"
+				>
+					<img
+						width="50"
+						height="50"
+						alt="logo"
+						th:src="@{/images/logo.png}"
+					>
+				</a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#topNavbar"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div
+					class="collapse navbar-collapse"
+					id="topNavbar"
+				>
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a
+								class="nav-link"
+								th:href="@{/users}"
+							>Người dùng</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link"
+								th:href="@{/categories}"
+							>Danh mục</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link"
+								th:href="@{/brands}"
+							>Thương hiệu</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link"
+								th:href="@{/products}"
+							>Sản phẩm</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link"
+								th:href="@{/customers}"
+							>Khách hàng</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link"
+								th:href="@{/shipping}"
+							>Vận chuyển</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link"
+								th:href="@{/orders}"
+							>Đơn hàng</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link"
+								th:href="@{/report}"
+							>Báo cáo</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link"
+								th:href="@{/articles}"
+							>Bài viết</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link"
+								th:href="@{/menus}"
+							>Tùy chọn</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link"
+								th:href="@{/settings}"
+							>Cài đặt</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+
+		<h2>Quản lý người dùng</h2>
+
+		<div class="row">
+			<form class="col-sm-6 form-inline my-2 my-lg-0">
+				<div class="form-inline">
+					<input
+						name="searchText"
+						id="searchText"
+						class="form-control mr-1 w-50 d-inline-block"
+						type="search"
+						placeholder="Từ khóa..."
+						aria-label="Search"
+					/>
+					<i class="fa-solid fa-magnifying-glass"></i>
+					<input
+						class="btn btn-outline-success d-inline-block mb-1"
+						type="submit"
+						id="btnSearch"
+						value="Tìm kiếm"
+					/>
+					<button
+						type="reset"
+						class="btn btn-outline-secondary d-inline-block mb-1"
+					>Xóa</button>
+				</div>
+			</form>
+			<div class="mb-1">
+				<a
+					th:href="@{/users/new}"
+					class="btn btn-primary"
+				>
+					<i class="fa-solid fa-plus"></i>
+					Thêm mới
+				</a>
+			</div>
+		</div>
+
+		<div
+			th:if="${message != null}"
+			class="alert alert-success text-center"
+		>[[${message}]]</div>
+		<div
+			th:if="${error != null}"
+			class="alert alert-danger text-center"
+		>[[${error}]]</div>
+
+		<div>
+			<table
+				class="table table-responsive-xl table-bordered table-striped table-hover"
+			>
+				<thead class="table-dark">
+					<tr class="text-center">
+						<th>
+							<a
+								class="text-white text-decoration-none"
+								th:if="${sortField != 'id'}"
+								th:href="@{'/users/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${sortDir}}"
+							>ID</a>
+							<a
+								class="text-white text-decoration-none"
+								th:if="${sortField == 'id'}"
+								th:href="@{'/users/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}"
+							>ID</a>
+							<span
+								th:if="${sortField == 'id'}"
+								th:class="${sortDir == 'asc' ? 'fa-solid fa-sort-up' : 'fa-solid fa-sort-down'}"
+							></span>
+						</th>
+						<th>Hình ảnh</th>
+						<th>
+							<a
+								class="text-white text-decoration-none"
+								th:if="${sortField != 'email'}"
+								th:href="@{'/users/page/' + ${currentPage} + '?sortField=email&sortDir=' + ${sortDir}}"
+							>E-mail</a>
+							<a
+								class="text-white text-decoration-none"
+								th:if="${sortField == 'email'}"
+								th:href="@{'/users/page/' + ${currentPage} + '?sortField=email&sortDir=' + ${reverseSortDir}}"
+							>E-mail</a>
+							<span
+								th:if="${sortField == 'email'}"
+								th:class="${sortDir == 'asc' ? 'fa-solid fa-sort-up' : 'fa-solid fa-sort-down'}"
+							></span>
+						</th>
+						<th>
+							<a
+								class="text-white text-decoration-none"
+								th:if="${sortField != 'lastName'}"
+								th:href="@{'/users/page/' + ${currentPage} + '?sortField=lastName&sortDir=' + ${sortDir}}"
+							>Họ đệm</a>
+							<a
+								class="text-white text-decoration-none"
+								th:if="${sortField == 'lastName'}"
+								th:href="@{'/users/page/' + ${currentPage} + '?sortField=lastName&sortDir=' + ${reverseSortDir}}"
+							>Họ đệm</a>
+							<span
+								th:if="${sortField == 'lastName'}"
+								th:class="${sortDir == 'asc' ? 'fa-solid fa-sort-up' : 'fa-solid fa-sort-down'}"
+							></span>
+						</th>
+						<th>
+							<a
+								class="text-white text-decoration-none"
+								th:if="${sortField != 'firstName'}"
+								th:href="@{'/users/page/' + ${currentPage} + '?sortField=firstName&sortDir=' + ${sortDir}}"
+							>Tên</a>
+							<a
+								class="text-white text-decoration-none"
+								th:if="${sortField == 'firstName'}"
+								th:href="@{'/users/page/' + ${currentPage} + '?sortField=firstName&sortDir=' + ${reverseSortDir}}"
+							>Tên</a>
+							<span
+								th:if="${sortField == 'firstName'}"
+								th:class="${sortDir == 'asc' ? 'fa-solid fa-sort-up' : 'fa-solid fa-sort-down'}"
+							></span>
+						</th>
+						<th>Vai trò</th>
+						<th>
+							<a
+								class="text-white text-decoration-none"
+								th:if="${sortField != 'enabled'}"
+								th:href="@{'/users/page/' + ${currentPage} + '?sortField=enabled&sortDir=' + ${sortDir}}"
+							>Khả dụng</a>
+							<a
+								class="text-white text-decoration-none"
+								th:if="${sortField == 'enabled'}"
+								th:href="@{'/users/page/' + ${currentPage} + '?sortField=enabled&sortDir=' + ${reverseSortDir}}"
+							>Khả dụng</a>
+							<span
+								th:if="${sortField == 'enabled'}"
+								th:class="${sortDir == 'asc' ? 'fa-solid fa-sort-up' : 'fa-solid fa-sort-down'}"
+							></span>
+						</th>
+						<th>Hành động</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user : ${listUsers}">
+						<td class="text-center">[[${user.id}]]</td>
+						<td class="d-flex justify-content-center align-items-center">
+							<span
+								th:if="${user.photos == null}"
+								class="fa-solid fa-user"
+							></span>
+							<img
+								width="80px"
+								th:if="${user.photos != null}"
+								th:src="@{${user.photosImagePath}}"
+							/>
+						</td>
+						<td>[[${user.email}]]</td>
+						<td>[[${user.lastName}]]</td>
+						<td>[[${user.firstName}]]</td>
+						<td>[[${user.roles}]]</td>
+						<td class="text-center">
+							<div>
+								<a
+									th:if="${user.enabled == true}"
+									data-bs-toggle="tooltip"
+									data-bs-placement="top"
+									title="Khóa"
+									class="fa-solid fa-toggle-on fa-xl icon-blue"
+									th:href="@{'/users/' + ${user.id} + '/enabled/false'}"
+								></a>
+								<a
+									th:if="${user.enabled == false}"
+									data-bs-toggle="tooltip"
+									data-bs-placement="top"
+									title="Mở khóa"
+									class="fa-solid fa-toggle-off fa-xl icon-silver"
+									th:href="@{'/users/' + ${user.id} + '/enabled/true'}"
+								></a>
+							</div>
+
+						</td>
+						<td class="text-center">
+							<div>
+								<a
+									th:href="@{'/users/showEdit/' + ${user.id}}"
+									class="fa-solid fa-pen-to-square fa-xl icon-green"
+									data-bs-toggle="tooltip"
+									data-bs-placement="top"
+									title="Chỉnh sửa"
+								> </a>
+								&nbsp;
+								<a
+									th:href="@{'/users/delete/' + ${user.id}}"
+									th:userId="${user.id}"
+									class="fa-solid fa-trash fa-xl link-delete icon-red"
+									data-bs-toggle="tooltip"
+									data-bs-placement="top"
+									title="Xóa"
+								> </a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div th:if="${currentPage <= totalPages}">
+			<span>
+				Trang
+				<b>[[${currentPage}]]</b>
+				của [[${totalPages}]]
+			</span>
+		</div>
+		<div th:unless="${currentPage <= totalPages}">
+			<span>
+				<b>Danh sách rỗng</b>
+			</span>
+		</div>
+
+		<!-- Pagination -->
+		<div>
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-center">
+					<li
+						th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}"
+					>
+						<a
+							class="page-link"
+							th:href="@{'/users/page/1?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"
+						>Đầu</a>
+					</li>
+					<li
+						th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}"
+					>
+						<a
+							class="page-link"
+							th:href="@{'/users/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"
+						>Trước</a>
+					</li>
+					<li
+						th:class="${currentPage != i ? 'page-item' : 'page-item active'}"
+						th:each="i : ${#numbers.sequence(1, totalPages)}"
+					>
+						<a
+							class="page-link"
+							th:href="@{'/users/page/' + ${i}} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}"
+						>[[${i}]]</a>
+					</li>
+					<li
+						th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}"
+					>
+						<a
+							class="page-link"
+							th:href="@{'/users/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"
+						>Tiếp</a>
+					</li>
+					<li
+						th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}"
+					>
+						<a
+							class="page-link"
+							th:href="@{'/users/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"
+						>Cuối</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<!-- END Pagination  -->
+
+		<!-- Modal  -->
+		<div
+			class="modal fade text-center"
+			id="confirmModal"
+		>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Xác nhận xóa</h4>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<span id="confirmText"></span>
+					</div>
+					<div class="modal-footer">
+						<a
+							href=""
+							class="btn btn-success"
+							id="confirmButton"
+						>Xác nhận</a>
+						<button
+							type="button"
+							class="btn btn-danger"
+							data-bs-dismiss="modal"
+						>Hủy</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END Modal  -->
+
+		<div class="text-center">
+			<p>Shopmmt Admin - Copyright &copy; Shopmmt</p>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+		$(document).ready(
+				function() {
+					$(".link-delete").on(
+							"click",
+							function(e) {
+								e.preventDefault();
+								link = $(this);
+								userId = link.attr("userId");
+								$("#confirmButton").attr("href",
+										link.attr("href"));
+								$("#confirmText").text(
+										"Bạn chắc chắn muốn xóa người dùng ID "
+												+ userId + "?");
+								$("#confirmModal").modal("show");
+							});
+				});
+	</script>
+
+</body>
+</html>

@@ -1,5 +1,0 @@
-package com.shopmmt.admin.exception;
-
-public class UserNotFoundException extends Exception {
-
-}
