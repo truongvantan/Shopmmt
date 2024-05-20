@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div
+		th:fragment="enabled_status(enabled, entityName, entityURL)"
+		th:remove="tag"
+	>
+		<a
+			th:if="${enabled == true}"
+			class="fa-solid fa-toggle-on fa-xl icon-blue"
+			data-bs-toggle="tooltip"
+			data-bs-placement="top"
+			th:title="'Khóa ' + ${entityName} + ' này'"
+			th:href="@{${entityURL} + '/enabled/false'}"
+		></a>
+		<a
+			th:if="${enabled == false}"
+			class="fa-solid fa-toggle-off fa-xl icon-silver"
+			data-bs-toggle="tooltip"
+			data-bs-placement="top"
+			th:title="'Mở khóa ' + ${entityName} + ' này'"
+			th:href="@{${entityURL} + '/enabled/true'}"
+		></a>
+	</div>
+</body>
+</html>

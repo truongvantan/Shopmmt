@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,20 +14,13 @@ import org.springframework.security.web.SecurityFilterChain;
 import com.shopmmt.admin.services.impl.ShopmmtUserDetailsService;
 
 @Configuration
+@EnableWebSecurity
 public class WebSecurityConfig {
 
 	@Bean
 	UserDetailsService userDetailsService() {
 		return new ShopmmtUserDetailsService();
 	}
-
-//	@Bean
-//	SecurityFilterChain configureHttpSecurity(HttpSecurity http) throws Exception {
-//		http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
-//				.formLogin(login -> login.loginPage("/login").usernameParameter("email").defaultSuccessUrl("/users").permitAll())
-//				.logout(logout -> logout.logoutSuccessUrl("/").permitAll());
-//		return http.build();
-//	}
 
 	@Bean
 	PasswordEncoder passwordEncoder() {
@@ -45,15 +39,23 @@ public class WebSecurityConfig {
 	@Bean
 	SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		http.authenticationProvider(authenticationProvider());
-		http.authorizeHttpRequests(auth -> auth.requestMatchers("/users").authenticated().anyRequest().permitAll())
-				.formLogin(login -> login.loginPage("/login").usernameParameter("email").defaultSuccessUrl("/users").permitAll())
-				.logout(logout -> logout.logoutSuccessUrl("/").permitAll());
+		http.authorizeHttpRequests(
+				auth -> auth.requestMatchers("/users/**").hasAnyAuthority("Admin")
+				.requestMatchers("/categories/**", "/brands/**").hasAnyAuthority("Admin", "Nhân viên kho hàng")
+				.requestMatchers("/products/**").hasAnyAuthority("Admin", "Nhân viên bán hàng", "Nhân viên kho hàng", "Nhân viên giao hàng")
+				.anyRequest().authenticated())
+				.formLogin(login -> login.loginPage("/login").usernameParameter("email").defaultSuccessUrl("/")
+						.permitAll())
+				.logout(logout -> logout.permitAll())
+				.rememberMe(rem -> rem.key("AbcDefgHijKlmnOpqrs_1234567890").tokenValiditySeconds(7 * 24 * 60 * 60));
 
 		return http.build();
 	}
-	
+
 	@Bean
 	WebSecurityCustomizer webSecurityCustomizer() {
-	    return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**", "/fontawesome/**", "/fonts/**", "/webfonts/**");
+		return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**",
+				"/fontawesome/**", "/fonts/**", "/webfonts/**");
 	}
+
 }

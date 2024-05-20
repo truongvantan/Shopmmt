@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div
+		th:fragment="edit(entityName, editURL)"
+		th:remove="tag"
+	>
+		<a
+			th:href="@{${editURL}}"
+			class="fa-solid fa-pen-to-square fa-xl icon-green"
+			data-bs-toggle="tooltip"
+			data-bs-placement="top"
+			th:title="'Chỉnh sửa ' + ${entityName} + ' này'"
+		> </a>
+	</div>
+
+	<div
+		th:fragment="delete(entityName, entityId, deleteURL, visible)"
+		th:remove="tag"
+	>
+		<th:block th:if="${visible}">
+			<a
+				th:href="@{${deleteURL}}"
+				th:entityId="${entityId}"
+				class="fa-solid fa-trash fa-xl link-delete icon-red"
+				data-bs-toggle="tooltip"
+				data-bs-placement="top"
+				th:title="'Xóa ' + ${entityName} + ' này'"
+			> </a>
+		</th:block>
+	</div>
+</body>
+</html>

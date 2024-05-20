@@ -25,10 +25,10 @@ import jakarta.validation.Valid;
 @Service("userService")
 @Transactional
 public class UserServiceImpl implements UserService {
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -41,20 +41,21 @@ public class UserServiceImpl implements UserService {
 	public User save(@Valid UserDTO userDTO) {
 		if (userDTO.getId() != null) { // cập nhật
 			User existingUser = userRepository.findById(userDTO.getId()).get();
-			if ("".equals(userDTO.getPassword()) || userDTO.getPassword() == null || userDTO.getPassword().equals(existingUser.getPassword())) {
+			if ("".equals(userDTO.getPassword()) || userDTO.getPassword() == null
+					|| userDTO.getPassword().equals(existingUser.getPassword())) {
 				userDTO.setPassword(existingUser.getPassword());
 			} else {
 				encodePassword(userDTO);
 			}
-			
+
 		} else { // thêm mới
 			encodePassword(userDTO);
 		}
-		
+
 		User user = new User(userDTO);
 		return userRepository.save(user);
 	}
-	
+
 	private void encodePassword(UserDTO userDTO) {
 		String encodedPassword = passwordEncoder.encode(userDTO.getPassword());
 		userDTO.setPassword(encodedPassword);
@@ -62,6 +63,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean isEmailUnique(String id, String email) {
+		if (email != null) {
+			email = email.trim();
+		}
 		User user = userRepository.findByEmail(email);
 		if (user == null) {
 			return true;
@@ -79,60 +83,72 @@ public class UserServiceImpl implements UserService {
 				}
 			}
 		}
-		
+
 		return true;
 	}
 
 	@Override
-	public User findById(String id) throws UserNotFoundException {
+	public User findById(Integer id) throws UserNotFoundException {
 		try {
-			if (!ValidateCommon.isValidStringIntegerNumber(id)) {
-				throw new UserNotFoundException("Could not find any user with ID " + id);
-			} else {
-				return userRepository.findById(Integer.valueOf(id)).get();
-			}
+			return userRepository.findById(id).get();
 		} catch (NoSuchElementException e) {
 			throw new UserNotFoundException("Could not find any user with ID " + id);
 		}
 	}
 
 	@Override
-	public void delete(String id) throws UserNotFoundException {
-		if (!ValidateCommon.isValidStringIntegerNumber(id)) {
+	public void delete(Integer id) throws UserNotFoundException {
+		Long countById = userRepository.countById(id);
+		
+		if (countById == null || countById == 0) {
 			throw new UserNotFoundException("Could not find any user with ID " + id);
-		} else {
-			Long countById = userRepository.countById(Integer.valueOf(id));
-			if (countById == null || countById == 0) {
-				throw new UserNotFoundException("Could not find any user with ID " + id);
-			}
-			userRepository.deleteById(Integer.valueOf(id));
 		}
+		
+		userRepository.deleteById(Integer.valueOf(id));
 	}
 
 	@Override
-	public void updateUserEnabledStatus(String id, boolean enabled) throws UserNotFoundException {
-		if (!ValidateCommon.isValidStringIntegerNumber(id)) {
+	public void updateUserEnabledStatus(Integer id, boolean enabled) throws UserNotFoundException {
+		Long countById = userRepository.countById(id);
+		
+		if (countById == null || countById == 0) {
 			throw new UserNotFoundException("Could not find any user with ID " + id);
-		} else {
-			Long countById = userRepository.countById(Integer.valueOf(id));
-			if (countById == null || countById == 0) {
-				throw new UserNotFoundException("Could not find any user with ID " + id);
-			}
-			userRepository.updateEnabledStatus(Integer.valueOf(id), enabled);
 		}
+		
+		userRepository.updateEnabledStatus(id, enabled);
 	}
 
 	@Override
 	public Page<User> listByPage(int pageNum, String sortField, String sortDir, String keyword) {
 		Sort sort = Sort.by(sortField);
 		sort = "asc".equals(sortDir) ? sort.ascending() : sort.descending();
-		
+
 		Pageable pageable = PageRequest.of(pageNum - 1, ConstantsUtil.USER_PAGE_SIZE, sort);
-		
+
 		if (keyword != null) {
 			return userRepository.findAll(keyword, pageable);
 		}
-		
+
 		return userRepository.findAll(pageable);
 	}
+
+	@Override
+	public User findByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+
+	@Override
+	public String validatePassword(String newPassword, String confirmPassword, String password) {
+		if (("".equals(newPassword) || newPassword == null)
+				&& ("".equals(confirmPassword) || confirmPassword == null)) {
+			return "Valid new password";
+		} else if (!newPassword.matches(ConstantsUtil.REGEX_PASSWORD)) {
+			return "Invalid new password";
+		} else if (!newPassword.equals(confirmPassword)) {
+			return "Confirm password does not match";
+		} else {
+			return "Valid new password";
+		}
+	}
+
 }

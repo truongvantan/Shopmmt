@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div th:fragment="search_form(moduleURL, title)" class="row mt-1">
+		<form
+			class="col-sm-8 d-flex"
+			th:action="@{${moduleURL} + '/page/1'}"
+		>
+			<input
+				type="hidden"
+				name="sortField"
+				th:value="${sortField}"
+			/>
+			<input
+				type="hidden"
+				name="sortDir"
+				th:value="${sortDir}"
+			/>
+			<input
+				name="keyword"
+				th:value="${keyword}"
+				class="form-control mr-2 w-75"
+				type="search"
+				placeholder="Từ khóa..."
+				aria-label="Search"
+			/>
+			&nbsp;
+			<button
+				class="btn btn-outline-success d-block ml-2 mr-2"
+				type="submit"
+				id="btnSearch"
+				title="Tìm kiếm"
+			>
+				<i class="fa-solid fa-magnifying-glass"></i>
+			</button>
+			&nbsp;
+			<button
+				type="button"
+				class="btn btn-outline-secondary"
+				title="Xóa"
+				onclick="clearFilter()"
+			>
+				<i class="fa-solid fa-broom"></i>
+			</button>
+		</form>
+		<div class="col-sm-4 d-flex justify-content-end mt-2">
+			<a
+				th:href="@{${moduleURL} + '/new'}"
+				class="fa-solid fa-plus fa-2x"
+				th:title="'Thêm mới ' + ${title}"
+			></a>
+			&nbsp; &nbsp;
+			<a
+				th:href="@{${moduleURL} + '/export/csv'}"
+				class="fa-solid fa-file-csv fa-2x icon-silver"
+				title="Xuất file CSV"
+			> </a>
+			&nbsp; &nbsp;
+			<a
+				th:href="@{${moduleURL} + '/export/excel'}"
+				class="fa-solid fa-file-excel fa-2x icon-green"
+				title="Xuất file Excel"
+			> </a>
+			&nbsp; &nbsp;
+			<a
+				th:href="@{${moduleURL} + '/export/pdf'}"
+				class="fa-solid fa-file-pdf fa-2x d-inline-block icon-yellow"
+				title="Xuất file PDF"
+			> </a>
+		</div>
+	</div>
+</body>
+</html>

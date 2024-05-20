@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div
+		th:fragment="category_actions"
+		th:remove="tag"
+	>
+		<a
+			th:href="@{'/categories/showEdit/' + ${category.id}}"
+			class="fa-solid fa-pen-to-square fa-xl icon-green"
+			data-bs-toggle="tooltip"
+			data-bs-placement="top"
+			title="Chỉnh sửa"
+		> </a>
+		&nbsp;
+
+		<th:block th:if="${category.hasChildren == false}">
+			 <a
+			th:href="@{'/categories/' + ${category.id} + '/enabled/false'}"
+			th:categoryId="${category.id}"
+			class="fa-solid fa-trash fa-xl link-delete icon-red"
+			data-bs-toggle="tooltip"
+			data-bs-placement="top"
+			title="Xóa"
+		> </a>
+			<!-- <a
+				th:href="@{'/categories/delete/' + ${category.id}}"
+				th:entityId="${category.id}"
+				class="fa-solid fa-trash fa-xl link-delete icon-red"
+				data-bs-toggle="tooltip"
+				data-bs-placement="top"
+				title="Xóa"
+			> </a> -->
+		</th:block>
+	</div>
+</body>
+</html>

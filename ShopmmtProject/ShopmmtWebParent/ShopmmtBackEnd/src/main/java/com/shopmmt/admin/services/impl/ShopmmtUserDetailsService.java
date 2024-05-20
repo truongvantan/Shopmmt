@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.shopmmt.admin.dto.ShopmmtUserDetails;
+import com.shopmmt.admin.config.ShopmmtUserDetails;
 import com.shopmmt.admin.repositories.UserRepository;
 import com.shopmmt.common.entity.User;
 

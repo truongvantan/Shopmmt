@@ -165,4 +165,13 @@ public class UserRepositoryTests {
 		
 		assertThat(listUsers.size()).isGreaterThan(0);
 	}
+	
+	@Test
+	public void listAllPhotoName() {
+		List<Object[]> listAllPhotoName = userRepository.listAllPhotoName();
+		System.out.println("size: " + listAllPhotoName.size());
+		for (Object[] o : listAllPhotoName) {
+			System.out.printf("photo = %s\n", o[0]);
+		}
+	}
 }

@@ -1,59 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<meta
-	http-equiv="X-UA-Compatible"
-	content="IE=edge"
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
 >
-<meta
-	name="viewport"
-	content="width=device-width, initial-scale=1.0"
->
-<title>Home - Shopmmt Admin</title>
-<link
-	rel="stylesheet"
-	type="text/css"
-	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
->
-<link
-	rel="preconnect"
-	href="https://fonts.googleapis.com"
->
-<link
-	rel="preconnect"
-	href="https://fonts.gstatic.com"
-	crossorigin
->
-<link
-	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-	rel="stylesheet"
->
-<link
-	rel="stylesheet"
-	type="text/css"
-	th:href="@{/css/style.css}"
->
-<script
-	type="text/javascript"
-	th:src="@{/webjars/jquery/jquery.min.js}"
-></script>
-<script
-	type="text/javascript"
-	th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"
-></script>
-
-</head>
+<head
+	th:replace="~{fragments/page_head :: page_head('Trang chủ - Shopmmt Admin')}"
+></head>
 <body>
 	<div class="container-fluid mt-4">
-		<div th:insert="~{fragments/header :: header}"></div>
+		<div th:replace="~{fragments/header :: header}"></div>
+		<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
+		
 		<div>
 			<h1>Shopmmt Admin Trang chủ</h1>
+			<span>
+				Xin chào
+				<a
+					sec:authentication="principal.fullname"
+					th:href="@{/account}"
+				></a>
+				<span sec:authentication="principal.authorities"></span>
+			</span>
 		</div>
-		<div>
-			<p>Shopmmt Admin - Copyright &copy; Shopmmt</p>
-		</div>
+		
+		<div th:replace="~{fragments/footer :: footer}"></div>
 	</div>
-
 </body>
 </html>

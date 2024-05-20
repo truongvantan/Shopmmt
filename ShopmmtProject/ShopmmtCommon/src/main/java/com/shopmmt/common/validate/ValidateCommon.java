@@ -14,4 +14,5 @@ public class ValidateCommon {
 		}
 		return s.matches("^[0-9]+$");
 	}
+	
 }

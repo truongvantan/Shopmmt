@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head
+	th:replace="~{fragments/page_head :: page_head('Shopmmt - Quản lí người dùng')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+
+		<h2 class="mt-2">Quản lý người dùng</h2>
+
+		<div
+			th:replace="~{fragments/search_form :: search_form('/users', 'người dùng')}"
+		></div>
+
+		<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
+
+		<div class="mt-2 full-details">
+			<table
+				class="table table-responsive-xl table-bordered table-striped table-hover"
+			>
+				<thead class="table-dark">
+					<tr class="text-center">
+						<th
+							th:replace="~{fragments/column_link :: column_link('/users', 'id', 'ID')}"
+						/>
+						<th>Hình ảnh</th>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/users', 'email', 'E-mail')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/users', 'lastName', 'Họ đệm')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/users', 'firstName', 'Tên')}"
+						/>
+						<th>Vai trò</th>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/users', 'enabled', 'Khả dụng')}"
+						/>
+						<th>Hành động</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user : ${listUsers}">
+						<td class="text-center">[[${user.id}]]</td>
+						<td class="d-flex justify-content-center align-items-center">
+							<span
+								th:if="${user.photos == null}"
+								class="fa-solid fa-user"
+							></span>
+							<img
+								width="80px"
+								th:if="${user.photos != null}"
+								th:src="@{${user.photosImagePath}}"
+							/>
+						</td>
+						<td>[[${user.email}]]</td>
+						<td>[[${user.lastName}]]</td>
+						<td>[[${user.firstName}]]</td>
+						<td>[[${user.roles}]]</td>
+						<td class="text-center">
+							<div th:replace="~{fragments/enabled_status :: enabled_status(${user.enabled}, 'người dùng', '/users/' + ${user.id})}"></div>
+						</td>
+						<td class="text-center">
+							<div th:replace="~{fragments/edit_delete :: edit('người dùng', '/users/showEdit/' + ${user.id})}"></div>
+							<!-- <div th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/delete/' + ${user.id}, true)}"></div> -->
+							<div th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/' + ${user.id} + '/enabled/false', true)}"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="mt-2 less-details">
+			<div
+				th:each="user : ${listUsers}"
+				class="row mt-4"
+			>
+				<div class="col-3">
+					<span
+						th:if="${user.photos == null}"
+						class="fa-solid fa-user"
+					></span>
+					<img
+						width="80px"
+						th:if="${user.photos != null}"
+						th:src="@{${user.photosImagePath}}"
+					/>
+				</div>
+				<div class="col-9">
+					<div>[[${user.fullName}]]</div>
+					<div>[[${user.roles}]]</div>
+					<div class="mt-1">
+						<div th:replace="~{fragments/enabled_status :: enabled_status(${user.enabled}, 'người dùng', '/users/' + ${user.id})}"></div>
+						&nbsp;
+						<div th:replace="~{fragments/edit_delete :: edit('người dùng', '/users/showEdit/' + ${user.id})}"></div>
+						&nbsp;
+						<!-- <div th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/delete/' + ${user.id}, true)}"></div> -->
+						<div th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/' + ${user.id} + '/enabled/false', true)}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div
+			th:replace="~{fragments/pagination :: pagination('/users', 'users')}"
+		></div>
+
+		<div th:replace="~{fragments/confirm_modal :: confirm_modal}"></div>
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+
+	<script th:src="@{/js/common_list.js}"></script>
+	<script type="text/javascript">
+		const moduleURL = "[[@{/users}]]";
+
+		$(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+
+		$(document).ready(function() {
+			$(".link-delete").on("click", function(e) {
+				e.preventDefault();
+				showDeleteConfirmModal($(this), 'người dùng');
+			});
+		});
+	</script>
+
+</body>
+</html>

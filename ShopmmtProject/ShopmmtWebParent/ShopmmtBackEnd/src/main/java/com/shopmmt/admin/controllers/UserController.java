@@ -9,14 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -35,7 +32,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @Controller
-@ControllerAdvice
 public class UserController {
 
 	@Autowired
@@ -54,10 +50,10 @@ public class UserController {
 			@RequestParam(name = "sortField", required = false, defaultValue = "id") String sortField,
 			@RequestParam(name = "sortDir", required = false, defaultValue = "asc") String sortDir,
 			@RequestParam(name = "keyword", required = false) String keyword) {
-		
+
 		Page<User> page = userService.listByPage(pageNum, sortField, sortDir, keyword);
 		List<User> listUsers = page.getContent();
-		
+
 		String reverseSortDir = "asc".equals(sortDir) ? "desc" : "asc";
 
 		model.addAttribute("totalPages", page.getTotalPages());
@@ -69,7 +65,7 @@ public class UserController {
 		model.addAttribute("reverseSortDir", reverseSortDir);
 		model.addAttribute("keyword", keyword);
 
-		return "users";
+		return "users/users";
 	}
 
 	@GetMapping("/users/new")
@@ -81,7 +77,7 @@ public class UserController {
 		model.addAttribute("userDTO", userDTO);
 		model.addAttribute("listRoles", listRoles);
 
-		return "user_form";
+		return "users/user_form";
 	}
 
 	@PostMapping("/users/save")
@@ -91,26 +87,35 @@ public class UserController {
 		if (bindingResult.hasErrors()) {
 			List<Role> listRoles = roleService.listRoles();
 			model.addAttribute("listRoles", listRoles);
-			return "user_form";
+			return "users/user_form";
 		} else {
-			if (!multipartFile.isEmpty()) {
-				String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-				userDTO.setPhotos(fileName);
-				User savedUser = userService.save(userDTO);
-				String uploadDir = "user-photos/" + savedUser.getId();
-
-				FileUploadUtil.cleanDir(uploadDir);
-				FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+			if (!FileUploadUtil.isValidFileSize(multipartFile)) {
+				model.addAttribute("error", "Vui lòng chọn tệp có kích thước không vượt quá 1MB");
+				List<Role> listRoles = roleService.listRoles();
+				model.addAttribute("listRoles", listRoles);
+				
+				return "users/user_form";
 			} else {
-				if ("".equals(userDTO.getPhotos()) || userDTO.getPhotos() == null) {
-					userDTO.setPhotos(null);
-				}
-				userService.save(userDTO);
-			}
-			
-			redirectAttributes.addFlashAttribute("message", "Thêm mới người dùng thành công");
+				if (!multipartFile.isEmpty()) {
+					String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+					userDTO.setPhotos(fileName);
+					User savedUser = userService.save(userDTO);
+					String uploadDir = "user-photos/" + savedUser.getId();
 
-			return getRedirectURLtoAffectedUser(userDTO);
+					FileUploadUtil.cleanDir(uploadDir);
+					FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+				} else {
+					if ("".equals(userDTO.getPhotos()) || userDTO.getPhotos() == null) {
+						userDTO.setPhotos(null);
+					}
+					userService.save(userDTO);
+				}
+
+				redirectAttributes.addFlashAttribute("message", "Thêm mới người dùng thành công");
+
+				return getRedirectURLtoAffectedUser(userDTO);
+			}
+
 		}
 	}
 
@@ -120,7 +125,7 @@ public class UserController {
 	}
 
 	@GetMapping("/users/showEdit/{id}")
-	public String showEditUser(@PathVariable(name = "id", required = false) String id, Model model,
+	public String showEditUser(@PathVariable(name = "id", required = false) Integer id, Model model,
 			RedirectAttributes redirectAttributes) {
 		try {
 			User user = userService.findById(id);
@@ -129,7 +134,7 @@ public class UserController {
 			model.addAttribute("listRoles", listRoles);
 			model.addAttribute("userDTO", userDTO);
 
-			return "user_edit_form";
+			return "users/user_edit_form";
 		} catch (UserNotFoundException e) {
 			if (e.getMessage().contains("Could not find any user with ID")) {
 				redirectAttributes.addFlashAttribute("error", "Không tìm thấy người dùng có ID " + id);
@@ -148,53 +153,65 @@ public class UserController {
 			model.addAttribute("listRoles", listRoles);
 			model.addAttribute("id", userDTO.getId());
 
-			return "user_edit_form";
+			return "users/user_edit_form";
 		} else {
-			if (!multipartFile.isEmpty()) {
-				String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-				userDTO.setPhotos(fileName);
-				User savedUser = userService.save(userDTO);
-				String uploadDir = "user-photos/" + savedUser.getId();
-
-				FileUploadUtil.cleanDir(uploadDir);
-				FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+			if (!FileUploadUtil.isValidFileSize(multipartFile)) {
+				model.addAttribute("error", "Vui lòng chọn tệp có kích thước không vượt quá 1MB");
+				List<Role> listRoles = roleService.listRoles();
+				model.addAttribute("listRoles", listRoles);
+				model.addAttribute("id", userDTO.getId());
+				
+				return "users/user_edit_form";
 			} else {
-				if ("".equals(userDTO.getPhotos()) || userDTO.getPhotos() == null) {
-					userDTO.setPhotos(null);
+				if (!multipartFile.isEmpty()) {
+					String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+					userDTO.setPhotos(fileName);
+					User savedUser = userService.save(userDTO);
+					String uploadDir = "user-photos/" + savedUser.getId();
+
+					FileUploadUtil.cleanDir(uploadDir);
+					FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+				} else {
+					if ("".equals(userDTO.getPhotos()) || userDTO.getPhotos() == null) {
+						userDTO.setPhotos(null);
+					}
+					userService.save(userDTO);
 				}
-				userService.save(userDTO);
+
+				redirectAttributes.addFlashAttribute("message", "Cập nhật người dùng thành công");
+
+				return getRedirectURLtoAffectedUser(userDTO);
 			}
-			
-			redirectAttributes.addFlashAttribute("message", "Cập nhật người dùng thành công");
-			
-			return getRedirectURLtoAffectedUser(userDTO);
+
 		}
 	}
 
 	@GetMapping("/users/delete/{id}")
-	public String deleteUser(@PathVariable(name = "id", required = false) String id, Model model,
+	public String deleteUser(@PathVariable(name = "id", required = false) Integer id, Model model,
 			RedirectAttributes redirectAttributes) {
 		try {
 			userService.delete(id);
 			redirectAttributes.addFlashAttribute("message", "Xóa người dùng ID " + id + " thành công");
+			
 			return "redirect:/users";
 		} catch (UserNotFoundException e) {
 			if (e.getMessage().contains("Could not find any user with ID")) {
 				redirectAttributes.addFlashAttribute("error", "Không tìm thấy người dùng có ID " + id);
 			}
+			
 			return "redirect:/users";
 		}
 	}
 
 	@GetMapping("/users/{id}/enabled/{status}")
-	public String updateUserEnabledStatus(@PathVariable(name = "id", required = false) String id,
+	public String updateUserEnabledStatus(@PathVariable(name = "id", required = false) Integer id,
 			@PathVariable(name = "status", required = false) boolean enabled, RedirectAttributes redirectAttributes) {
 		try {
 			userService.updateUserEnabledStatus(id, enabled);
 			String status = enabled ? "mở khóa" : "khóa";
 			String message = "Đã " + status + " người dùng ID " + id;
 			redirectAttributes.addFlashAttribute("message", message);
-			
+
 			return "redirect:/users/page/1?sortField=id&sortDir=asc&keyword=" + id;
 		} catch (UserNotFoundException e) {
 			if (e.getMessage().contains("Could not find any user with ID")) {
@@ -203,32 +220,26 @@ public class UserController {
 			return "redirect:/users";
 		}
 	}
-	
+
 	@GetMapping("/users/export/csv")
 	public void exportToCSV(HttpServletResponse response) throws IOException {
 		List<User> listUsers = userService.listAll();
 		UserCsvExporter exporter = new UserCsvExporter();
 		exporter.export(listUsers, response);
 	}
-	
+
 	@GetMapping("/users/export/excel")
 	public void exportToExcel(HttpServletResponse response) throws IOException {
 		List<User> listUsers = userService.listAll();
 		UserExcelExporter exporter = new UserExcelExporter();
 		exporter.export(listUsers, response);
 	}
-	
+
 	@GetMapping("/users/export/pdf")
 	public void exportToPDF(HttpServletResponse response) throws IOException {
 		List<User> listUsers = userService.listAll();
 		UserPdfExporter exporter = new UserPdfExporter();
 		exporter.export(listUsers, response);
-	}
-
-	@ExceptionHandler(MaxUploadSizeExceededException.class)
-	public String handleFileUploadError(RedirectAttributes redirectAttributes) {
-		redirectAttributes.addFlashAttribute("error", "Lỗi kích thước tệp vượt quá 1MB!");
-		return "redirect:/users";
 	}
 
 }

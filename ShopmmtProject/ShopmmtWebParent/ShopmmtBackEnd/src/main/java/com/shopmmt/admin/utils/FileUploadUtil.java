@@ -20,6 +20,7 @@ public class FileUploadUtil {
 		try {
 			InputStream inputStream = multipartFile.getInputStream();
 			Path filePath = uploadPath.resolve(fileName);
+			System.err.println("filePath: " + filePath);
 			Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
 			throw new IOException("Could not save file: " + fileName, e);
@@ -41,6 +42,19 @@ public class FileUploadUtil {
 			});
 		} catch (IOException e) {
 			System.err.println("Could not list directory: " + dirPath);
+		}
+	}
+	
+	public static boolean isValidFileSize(MultipartFile multipartFile) {
+		return multipartFile.getSize() < 1_048_576L;
+	}
+
+	public static void removeDir(String dir) {
+		cleanDir(dir);
+		try {
+			Files.delete(Paths.get(dir));
+		} catch (IOException e) {
+			System.err.println("Could not remove directory: " + dir);
 		}
 	}
 }

@@ -17,11 +17,16 @@ public interface UserService {
 
 	boolean isEmailUnique(String id, String email);
 
-	User findById(String id) throws UserNotFoundException;
+	User findById(Integer id) throws UserNotFoundException;
 
-	void delete(String id) throws UserNotFoundException;
+	void delete(Integer id) throws UserNotFoundException;
 
-	void updateUserEnabledStatus(String id, boolean enabled) throws UserNotFoundException;
+	void updateUserEnabledStatus(Integer id, boolean enabled) throws UserNotFoundException;
 
 	Page<User> listByPage(int pageNum, String sortField, String sortDir, String keyword);
+
+	User findByEmail(String email);
+
+	String validatePassword(String newPassword, String confirmPassword, String password);
+
 }

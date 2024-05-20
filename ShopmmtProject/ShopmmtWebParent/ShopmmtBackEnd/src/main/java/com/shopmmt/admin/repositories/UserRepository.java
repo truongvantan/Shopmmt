@@ -1,5 +1,7 @@
 package com.shopmmt.admin.repositories;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,5 +24,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	@Query("SELECT u FROM User u WHERE CONCAT(u.id, ' ', u.email, ' ', u.firstName, ' ', u.lastName) LIKE %?1%")
 	Page<User> findAll(String keyword, Pageable pageable);
+	
+	@Query("SELECT u.photos FROM User u GROUP BY u.photos")
+	List<Object[]> listAllPhotoName();
 	
 }

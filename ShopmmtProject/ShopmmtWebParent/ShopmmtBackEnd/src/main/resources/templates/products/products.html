@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head
+	th:replace="~{fragments/page_head :: page_head('Shopmmt - Quản lí sản phẩm')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+
+		<h2 class="mt-2">Quản lý sản phẩm</h2>
+
+		<div
+			th:replace="~{fragments/search_form :: search_form('/products', 'sản phẩm')}"
+		></div>
+
+		<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
+
+		<!-- Chỉnh lại CSS -->
+		<div class="mt-2">
+			<table
+				class="table table-responsive-xl table-bordered table-striped table-hover"
+			>
+				<thead class="table-dark">
+					<tr class="text-center">
+						<th
+							th:replace="~{fragments/column_link :: column_link('/products', 'id', 'ID')}"
+						/>
+						<th>Hình ảnh</th>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/products', 'name', 'Tên sản phẩm')}"
+						/>
+						<th>Thương hiệu</th>
+						<th>Danh mục</th>
+						<th>Khả dụng</th>
+						<th>Hành động</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="product : ${listProducts}">
+						<td class="text-center">[[${product.id}]]</td>
+						<td class="d-flex justify-content-center align-items-center">
+						</td>
+						<td>[[${product.name}]]</td>
+						<td>[[${product.brand.name}]]</td>
+						<td>[[${product.category.name}]]</td>
+						<td class="text-center">
+							<div
+								th:replace="~{fragments/enabled_status :: enabled_status(${product.enabled}, 'sản phẩm', '/products/' + ${product.id})}"
+							></div>
+						</td>
+						<td class="text-center">
+							<a
+								th:href="@{'/products/detail/' + ${product.id}}"
+								class="fa-solid fa-circle-info fa-xl icon-blue"
+								data-bs-toggle="tooltip"
+								data-bs-placement="top"
+								title="Xem chi tiết sản phẩm này"
+							> </a>
+							&nbsp;
+							<div
+								th:replace="~{fragments/edit_delete :: edit('sản phẩm', '/products/showEdit/' + ${product.id})}"
+							></div>
+							&nbsp;
+							<div
+								th:replace="~{fragments/edit_delete :: delete('sản phẩm', ${product.id}, '/products/delete/' + ${product.id}, true)}"
+							></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+		<div th:replace="~{fragments/confirm_modal :: confirm_modal}"></div>
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+
+
+	<script th:src="@{/js/common_list.js}"></script>
+	<script type="text/javascript">
+		const moduleURL = "[[@{/products}]]";
+
+		$(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+
+		$(document).ready(function() {
+			$(".link-delete").on("click", function(e) {
+				e.preventDefault();
+				showDeleteConfirmModal($(this), 'sản phẩm');
+			});
+		});
+	</script>
+
+</body>
+</html>

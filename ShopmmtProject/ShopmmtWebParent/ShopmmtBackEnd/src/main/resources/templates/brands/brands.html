@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head
+	th:replace="~{fragments/page_head :: page_head('Shopmmt - Quản lí thương hiệu')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+
+		<h2 class="mt-2">Quản lý thương hiệu</h2>
+
+		<div
+			th:replace="~{fragments/search_form :: search_form('/brands', 'thương hiệu')}"
+		></div>
+
+		<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
+
+		<!-- Chỉnh lại CSS -->
+		<div class="mt-2">
+			<table
+				class="table table-responsive-xl table-bordered table-striped table-hover"
+			>
+				<thead class="table-dark">
+					<tr class="text-center">
+						<th
+							th:replace="~{fragments/column_link :: column_link('/brands', 'id', 'ID')}"
+						/>
+						<th>Logo</th>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/brands', 'name', 'Tên thương hiệu')}"
+						/>
+						<th>Danh mục sản phẩm</th>
+						<th>Hành động</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="brand : ${listBrands}">
+						<td class="text-center">[[${brand.id}]]</td>
+						<td class="d-flex justify-content-center align-items-center">
+							<span
+								th:if="${brand.logo == null}"
+								class="fa-solid fa-cloud"
+							></span>
+							<img
+								width="80px"
+								th:if="${brand.logo != null}"
+								th:src="@{${brand.logoPath}}"
+							/>
+						</td>
+						<td>[[${brand.name}]]</td>
+						<td>
+							<th:block th:each="category : ${brand.categories}">
+								<span
+									class="badge bg-secondary"
+									th:text="${category.name}"
+								></span>
+							</th:block>
+						</td>
+						<td class="text-center">
+							<div
+								th:replace="~{fragments/edit_delete :: edit('thương hiệu', '/brands/showEdit/' + ${brand.id})}"
+							></div>
+							<div th:replace="~{fragments/edit_delete :: delete('thương hiệu', ${brand.id}, '/brands/delete/' + ${brand.id}, true)}"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div
+			th:replace="~{fragments/pagination :: pagination('/brands', 'brands')}"
+		></div>
+
+		<div th:replace="~{fragments/confirm_modal :: confirm_modal}"></div>
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+
+
+	<script th:src="@{/js/common_list.js}"></script>
+	<script type="text/javascript">
+		const moduleURL = "[[@{/brands}]]";
+
+		$(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+
+		$(document).ready(function() {
+			$(".link-delete").on("click", function(e) {
+				e.preventDefault();
+				showDeleteConfirmModal($(this), 'thương hiệu');
+			});
+		});
+	</script>
+
+</body>
+</html>

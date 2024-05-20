@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div
+		th:fragment="confirm_modal"
+		class="modal fade text-center"
+		id="confirmModal"
+	>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Xác nhận xóa</h4>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="modal"
+						aria-label="Close"
+					></button>
+				</div>
+				<div class="modal-body">
+					<span id="confirmText"></span>
+				</div>
+				<div class="modal-footer">
+					<a
+						href=""
+						class="btn btn-success"
+						id="confirmButton"
+					>Xác nhận</a>
+					<button
+						type="button"
+						class="btn btn-danger"
+						data-bs-dismiss="modal"
+					>Hủy</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div
+		th:fragment="content"
+		remove="tag"
+	>
+		<div class="form-group row mb-3">
+			<label
+				class="col-sm-2 col-form-label"
+				for="name"
+			>
+				Tên sản phẩm:
+				<span class="text-danger">(*)</span>
+			</label>
+			<div class="col-sm-10">
+				<input
+					type="text"
+					class="form-control"
+					id="name"
+					th:field="*{name}"
+				>
+				<span
+					th:if="${#fields.hasErrors('name')}"
+					th:errors="${productDTO.name}"
+					class="text-danger"
+				>Name Error</span>
+			</div>
+		</div>
+
+		<div class="form-group row mb-3">
+			<label
+				class="col-sm-2 col-form-label"
+				for="brand"
+			>
+				Thương hiệu:
+				<span class="text-danger">(*)</span>
+			</label>
+			<div class="col-sm-10">
+				<select
+					th:field="*{brand}"
+					class="form-select"
+					required
+				>
+					<th:block th:each="brand : ${listBrands}">
+						<option th:value="${brand.id}">[[${brand.name}]]</option>
+					</th:block>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group row mb-3">
+			<label
+				class="col-sm-2 col-form-label"
+				for="category"
+			>
+				Danh mục:
+				<span class="text-danger">(*)</span>
+			</label>
+			<div class="col-sm-10">
+				<select
+					th:field="*{category}"
+					class="form-select"
+				>
+
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group row mb-3">
+			<label
+				class="col-sm-2 col-form-label"
+				for="enabled"
+			>Khả dụng:</label>
+			<div class="col-sm-10">
+				<div class="form-check form-switch mt-2">
+					<input
+						class="form-check-input"
+						type="checkbox"
+						id="enabled"
+						th:field="*{enabled}"
+					/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group row mb-3">
+			<label
+				class="col-sm-2 col-form-label"
+				for="inStock"
+			>Còn hàng:</label>
+			<div class="col-sm-10">
+				<div class="form-check form-switch mt-2">
+					<input
+						class="form-check-input"
+						type="checkbox"
+						id="inStock"
+						th:field="*{inStock}"
+					/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group row mb-3">
+			<label
+				class="col-sm-2 col-form-label"
+				for="cost"
+			>
+				Đơn giá nhập:
+			</label>
+			<div class="col-sm-10">
+				<input
+					type="number"
+					step="0.01"
+					class="form-control"
+					id="cost"
+					th:field="*{cost}"
+				>
+				<span
+					th:if="${#fields.hasErrors('cost')}"
+					th:errors="${productDTO.cost}"
+					class="text-danger"
+				>Cost Error</span>
+			</div>
+		</div>
+		
+		<div class="form-group row mb-3">
+			<label
+				class="col-sm-2 col-form-label"
+				for="price"
+			>
+				Đơn giá bán:
+			</label>
+			<div class="col-sm-10">
+				<input
+					type="number"
+					step="0.01"
+					class="form-control"
+					id="price"
+					th:field="*{price}"
+				>
+				<span
+					th:if="${#fields.hasErrors('price')}"
+					th:errors="${productDTO.price}"
+					class="text-danger"
+				>Price Error</span>
+			</div>
+		</div>
+		
+		<div class="form-group row mb-3">
+			<label
+				class="col-sm-2 col-form-label"
+				for="discount"
+			>
+				Giảm giá:
+			</label>
+			<div class="col-sm-10">
+				<input
+					type="number"
+					step="0.01"
+					class="form-control"
+					id="discount"
+					th:field="*{discountPercent}"
+				>
+				<span
+					th:if="${#fields.hasErrors('discountPercent')}"
+					th:errors="${productDTO.discountPercent}"
+					class="text-danger"
+				>Discount Error</span>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

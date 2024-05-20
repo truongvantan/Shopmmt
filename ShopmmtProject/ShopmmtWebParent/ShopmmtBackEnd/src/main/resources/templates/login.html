@@ -72,7 +72,11 @@
 								>
 								<h3 class="mb-3">Đăng nhập</h3>
 								<div th:if="${param.error}">
-								<p class="text-danger">Thông tin đăng nhập không chính xác</p>
+									<p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+								</div>
+								<div th:if="${param.logout}">
+									<p class="text-warning">Bạn đã đăng xuất. Vui lòng đăng
+										nhập để sử dụng hệ thống</p>
 								</div>
 								<form
 									th:action="@{/login}"
@@ -100,19 +104,19 @@
 									<div
 										class="d-flex justify-content-between align-items-center mb-2"
 									>
-										<!-- <div class="form-check mb-0">
+										<div class="form-check mb-0">
 											<input
 												class="form-check-input me-2"
 												type="checkbox"
-												value=""
-												id="form2Example3"
+												name="remember-me"
+												id="rememberMe"
 											/>
 											<label
 												class="form-check-label"
-												for="form2Example3"
-											> Ghi nhớ mật khẩu </label>
+												for="rememberMe"
+											> Ghi nhớ đăng nhập </label>
 										</div>
-										<a href="#">Quên mật khẩu?</a> -->
+										<a href="#">Quên mật khẩu?</a>
 									</div>
 									<button
 										class="btn btn-primary btn-lg btn-block rounded-pill w-100 mt-4"
@@ -151,9 +155,7 @@
 				</div>
 			</div>
 		</section>
-		<div>
-			<p class="text-center">Shopmmt Admin - Copyright &copy; Shopmmt</p>
-		</div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
 	</div>
 
 </body>
