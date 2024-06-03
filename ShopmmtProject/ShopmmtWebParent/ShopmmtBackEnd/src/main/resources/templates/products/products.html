@@ -4,7 +4,7 @@
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
 >
 <head
-	th:replace="~{fragments/page_head :: page_head('Shopmmt - Quản lí sản phẩm')}"
+	th:replace="~{fragments/page_head :: page_head('Shopmmt - Quản lí sản phẩm', 'none')}"
 ></head>
 <body>
 	<div class="container-fluid mt-4">
@@ -12,9 +12,66 @@
 
 		<h2 class="mt-2">Quản lý sản phẩm</h2>
 
-		<div
-			th:replace="~{fragments/search_form :: search_form('/products', 'sản phẩm')}"
-		></div>
+		<div class="row mt-1">
+			<form
+				id="searchForm"
+				class="col-sm-12 d-flex align-items-center"
+				th:action="@{/products/page/1}"
+			>
+				<input
+					type="hidden"
+					name="sortField"
+					th:value="${sortField}"
+				/>
+				<input
+					type="hidden"
+					name="sortDir"
+					th:value="${sortDir}"
+				/>
+				Danh mục:&nbsp;
+				<select
+					class="form-select w-25"
+					name="categoryId"
+					id="dropdownCategory"
+				>
+					<option value="0">Tất cả</option>
+
+					<th:block th:each="category : ${listCategories}">
+						<option
+							th:value="${category.id}"
+							th:selected="(${categoryId} == ${category.id})"
+						>[[${category.name}]]</option>
+					</th:block>
+				</select>
+				&nbsp;Tìm kiếm:&nbsp;
+				<input
+					name="keyword"
+					th:value="${keyword}"
+					class="form-control mr-2 w-25"
+					type="search"
+					placeholder="Từ khóa..."
+					aria-label="Search"
+				/>
+				&nbsp;
+				<button
+					class="btn btn-outline-success d-block ml-2 mr-2"
+					type="submit"
+					id="btnSearch"
+					title="Tìm kiếm"
+				>
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</button>
+				&nbsp;
+				<button
+					type="button"
+					class="btn btn-outline-secondary"
+					title="Xóa"
+					onclick="clearFilter()"
+				>
+					<i class="fa-solid fa-broom"></i>
+				</button>
+			</form>
+		</div>
 
 		<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
 
@@ -32,8 +89,12 @@
 						<th
 							th:replace="~{fragments/column_link :: column_link('/products', 'name', 'Tên sản phẩm')}"
 						/>
-						<th>Thương hiệu</th>
-						<th>Danh mục</th>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/products', 'brand', 'Thương hiệu')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/products', 'category', 'Danh mục')}"
+						/>
 						<th>Khả dụng</th>
 						<th>Hành động</th>
 					</tr>
@@ -42,8 +103,19 @@
 					<tr th:each="product : ${listProducts}">
 						<td class="text-center">[[${product.id}]]</td>
 						<td class="d-flex justify-content-center align-items-center">
+							<img
+								th:src="@{${product.mainImagePath}}"
+								style="width: 120px"
+								class="img-fluid"
+							/>
 						</td>
-						<td>[[${product.name}]]</td>
+						<td>
+							<a
+								class="link-detail text-decoration-none"
+								th:href="@{'/products/detail/' + ${product.id}}"
+								title="Xem chi tiết"
+							>[[${product.name}]]</a>
+						</td>
 						<td>[[${product.brand.name}]]</td>
 						<td>[[${product.category.name}]]</td>
 						<td class="text-center">
@@ -54,7 +126,7 @@
 						<td class="text-center">
 							<a
 								th:href="@{'/products/detail/' + ${product.id}}"
-								class="fa-solid fa-circle-info fa-xl icon-blue"
+								class="fa-solid fa-circle-info fa-xl icon-blue link-detail"
 								data-bs-toggle="tooltip"
 								data-bs-placement="top"
 								title="Xem chi tiết sản phẩm này"
@@ -73,8 +145,22 @@
 			</table>
 		</div>
 
+		<div
+			th:replace="~{fragments/pagination :: pagination('/products', 'products')}"
+		></div>
 
 		<div th:replace="~{fragments/confirm_modal :: confirm_modal}"></div>
+
+		<!-- Modal detail  -->
+		<div
+			class="modal fade"
+			id="detailModal"
+		>
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content"></div>
+			</div>
+		</div>
+		<!-- END Modal detail  -->
 
 		<div th:replace="~{fragments/footer :: footer}"></div>
 	</div>
@@ -88,12 +174,25 @@
 			$('[data-toggle="tooltip"]').tooltip();
 		});
 
-		$(document).ready(function() {
-			$(".link-delete").on("click", function(e) {
-				e.preventDefault();
-				showDeleteConfirmModal($(this), 'sản phẩm');
-			});
-		});
+		$(document).ready(
+				function() {
+					$(".link-delete").on("click", function(e) {
+						e.preventDefault();
+						showDeleteConfirmModal($(this), 'sản phẩm');
+					});
+
+					$(".link-detail").on(
+							"click",
+							function(e) {
+								e.preventDefault();
+								linkDetailURL = $(this).attr("href");
+								$("#detailModal").modal("show").find(
+										".modal-content").load(linkDetailURL);
+							});
+					$("#dropdownCategory").on("change", function() {
+						$("#searchForm").submit();
+					});
+				});
 	</script>
 
 </body>

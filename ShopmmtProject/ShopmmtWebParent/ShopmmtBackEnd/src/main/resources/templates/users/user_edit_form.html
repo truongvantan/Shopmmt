@@ -1,6 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-<head th:replace="~{fragments/page_head :: page_head('Shopmmt - Cập nhật người dùng')}"></head>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head
+	th:replace="~{fragments/page_head :: page_head('Shopmmt - Cập nhật người dùng', 'none')}"
+></head>
 <body>
 	<div class="container-fluid mt-4">
 		<div th:replace="~{fragments/header :: header}"></div>
@@ -205,43 +210,11 @@
 			</div>
 		</form>
 
-		<!-- Modal  -->
-		<div
-			class="modal fade text-center"
-			id="modalDialog"
-		>
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4
-							class="modal-title"
-							id="modalTitle"
-						>Cảnh báo</h4>
-						<button
-							type="button"
-							class="btn-close"
-							data-bs-dismiss="modal"
-							aria-label="Close"
-						></button>
-					</div>
-					<div class="modal-body">
-						<span id="modalBody"></span>
-					</div>
-					<div class="modal-footer">
-						<button
-							type="button"
-							class="btn btn-danger"
-							data-bs-dismiss="modal"
-						>Đóng</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- END Modal  -->
+		<div th:replace="~{fragments/modal_dialog :: modal_dialog}"></div>
 
 		<div th:replace="~{fragments/footer :: footer}"></div>
 	</div>
-	
+
 	<script type="text/javascript">
 		const moduleURL = "[[@{/users}]]"
 		function checkEmailUnique(form) {

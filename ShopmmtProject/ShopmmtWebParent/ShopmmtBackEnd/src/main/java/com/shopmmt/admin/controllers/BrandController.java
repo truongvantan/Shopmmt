@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -200,6 +201,12 @@ public class BrandController {
 				redirectAttributes.addFlashAttribute("error", "Không tìm thấy thương hiệu có ID " + id);
 			}
 
+			return "redirect:/brands";
+		} catch (DataIntegrityViolationException ex) {
+			if (ex.getMessage().contains("a foreign key constraint fails")) {
+				redirectAttributes.addFlashAttribute("error", "Không thể xóa thương hiệu ID " + id + " vì thương hiệu này có liên kết dữ liệu đến danh mục hoặc sản phẩm khác!");
+			}
+			
 			return "redirect:/brands";
 		}
 	}

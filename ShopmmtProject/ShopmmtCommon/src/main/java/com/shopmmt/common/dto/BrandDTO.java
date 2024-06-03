@@ -75,7 +75,7 @@ public class BrandDTO {
 
 	@Override
 	public String toString() {
-		return "BrandDTO [id=" + id + ", name=" + name + ", categories=" + categories + "]";
+		return "BrandDTO [id=" + id + ", name=" + name + "]";
 	}
 	
 	public String getLogoPath() {

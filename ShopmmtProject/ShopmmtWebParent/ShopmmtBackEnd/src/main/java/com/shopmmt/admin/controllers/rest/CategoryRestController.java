@@ -1,8 +1,8 @@
 package com.shopmmt.admin.controllers.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopmmt.admin.services.CategoryService;
@@ -14,7 +14,7 @@ public class CategoryRestController {
 	private CategoryService categoryService;
 	
 	@PostMapping("/categories/check_category_name")
-	public String checkDuplicateCategoryName(@Param("id") String id, @Param("name") String name) {
+	public String checkDuplicateCategoryName(@RequestParam(name = "id", required = false) String id, @RequestParam(name = "name", required = false) String name) {
 		return categoryService.isCategoryNameUnique(id, name) ? "OK" : "Duplicated";
 	}
 }

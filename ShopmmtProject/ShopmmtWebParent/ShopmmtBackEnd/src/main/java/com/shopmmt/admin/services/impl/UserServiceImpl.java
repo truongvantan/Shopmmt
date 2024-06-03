@@ -18,12 +18,11 @@ import com.shopmmt.admin.services.UserService;
 import com.shopmmt.common.constants.ConstantsUtil;
 import com.shopmmt.common.dto.UserDTO;
 import com.shopmmt.common.entity.User;
-import com.shopmmt.common.validate.ValidateCommon;
 
 import jakarta.validation.Valid;
 
 @Service("userService")
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -66,21 +65,21 @@ public class UserServiceImpl implements UserService {
 		if (email != null) {
 			email = email.trim();
 		}
-		User user = userRepository.findByEmail(email);
-		if (user == null) {
+		
+		User userByEmail = userRepository.findByEmail(email);
+
+		if (userByEmail == null) {
 			return true;
 		}
-		if (id == null) {
-			if (user != null) {
+
+		boolean isCreatingNew = (id == null || "".equals(email));
+
+		if (isCreatingNew) {
+			if (userByEmail != null)
 				return false;
-			}
 		} else {
-			if (!ValidateCommon.isValidStringIntegerNumber(id)) {
+			if (userByEmail.getId() != Integer.valueOf(id)) {
 				return false;
-			} else {
-				if (user.getId() != Integer.valueOf(id)) {
-					return false;
-				}
 			}
 		}
 
@@ -99,22 +98,22 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void delete(Integer id) throws UserNotFoundException {
 		Long countById = userRepository.countById(id);
-		
+
 		if (countById == null || countById == 0) {
 			throw new UserNotFoundException("Could not find any user with ID " + id);
 		}
-		
+
 		userRepository.deleteById(Integer.valueOf(id));
 	}
 
 	@Override
 	public void updateUserEnabledStatus(Integer id, boolean enabled) throws UserNotFoundException {
 		Long countById = userRepository.countById(id);
-		
+
 		if (countById == null || countById == 0) {
 			throw new UserNotFoundException("Could not find any user with ID " + id);
 		}
-		
+
 		userRepository.updateEnabledStatus(id, enabled);
 	}
 

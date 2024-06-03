@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -178,7 +179,7 @@ public class CategoryController {
 	}
 
 	@GetMapping("/categories/{id}/enabled/{status}")
-	public String updateUserEnabledStatus(@PathVariable(name = "id", required = false) Integer id,
+	public String updateCategoryEnabledStatus(@PathVariable(name = "id", required = false) Integer id,
 			@PathVariable(name = "status", required = false) boolean enabled, RedirectAttributes redirectAttributes) {
 		try {
 			categoryService.updateCategoryEnabledStatus(id, enabled);
@@ -196,7 +197,7 @@ public class CategoryController {
 	}
 
 	@GetMapping("/categories/delete/{id}")
-	public String deleteUser(@PathVariable(name = "id", required = false) Integer id, Model model,
+	public String deleteCategory(@PathVariable(name = "id", required = false) Integer id, Model model,
 			RedirectAttributes redirectAttributes) {
 		try {
 			categoryService.delete(id);
@@ -209,6 +210,12 @@ public class CategoryController {
 		} catch (CategoryNotFoundException e) {
 			if (e.getMessage().contains("Could not find any category with ID")) {
 				redirectAttributes.addFlashAttribute("error", "Không tìm thấy danh mục có ID " + id);
+			}
+
+			return "redirect:/categories";
+		} catch (DataIntegrityViolationException ex) {
+			if (ex.getMessage().contains("a foreign key constraint fails")) {
+				redirectAttributes.addFlashAttribute("error", "Không thể xóa danh mục ID " + id + " vì danh mục này có liên kết dữ liệu đến sản phẩm hoặc thương hiệu khác!");
 			}
 
 			return "redirect:/categories";

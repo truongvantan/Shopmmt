@@ -9,6 +9,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -23,22 +24,22 @@ import com.shopmmt.common.constants.ConstantsUtil;
 import com.shopmmt.common.dto.CategoryDTO;
 import com.shopmmt.common.dto.CategoryPageInfoDTO;
 import com.shopmmt.common.entity.Category;
-import com.shopmmt.common.validate.ValidateCommon;
 
 import jakarta.validation.Valid;
 
 @Service("categoryService")
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired
 	private CategoryRepository categoryRepository;
 
 	@Override
-	public List<Category> listByPage(CategoryPageInfoDTO categoryPageInfoDTO, int pageNum, String sortDir, String keyword) {
+	public List<Category> listByPage(CategoryPageInfoDTO categoryPageInfoDTO, int pageNum, String sortDir,
+			String keyword) {
 		Sort sort = Sort.by("name");
 		sort = "asc".equals(sortDir) ? sort.ascending() : sort.descending();
-		
+
 		Pageable pageable = PageRequest.of(pageNum - 1, ConstantsUtil.CATEGORY_PAGE_SIZE, sort);
 		Page<Category> pageRootCategories = null;
 		if (keyword != null) {
@@ -46,19 +47,19 @@ public class CategoryServiceImpl implements CategoryService {
 		} else {
 			pageRootCategories = categoryRepository.findRootCategories(pageable);
 		}
-		
+
 		List<Category> rootCategories = pageRootCategories.getContent();
-		
+
 		categoryPageInfoDTO.setTotalPages(pageRootCategories.getTotalPages());
 		categoryPageInfoDTO.setTotalItems(pageRootCategories.getTotalElements());
-		
+
 		if (keyword != null) {
 			List<Category> searchCategories = pageRootCategories.getContent();
-			
+
 			for (Category category : searchCategories) {
 				category.setHasChildren(category.getChildren().size() > 0);
 			}
-			
+
 			return searchCategories;
 		} else {
 			return listCategoriesTree(rootCategories, sortDir);
@@ -146,21 +147,18 @@ public class CategoryServiceImpl implements CategoryService {
 		if (name != null) {
 			name = name.trim();
 		}
-		Category category = categoryRepository.findByName(name);
-		if (category == null) {
-			return true;
-		}
-		if (id == null) {
-			if (category != null) {
+
+		boolean isCreatingNew = (id == null || "".equals(id));
+
+		Category categoryByName = categoryRepository.findByName(name);
+
+		if (isCreatingNew) {
+			if (categoryByName != null) {
 				return false;
 			}
 		} else {
-			if (!ValidateCommon.isValidStringIntegerNumber(id)) {
+			if (categoryByName != null && categoryByName.getId() != Integer.valueOf(id)) {
 				return false;
-			} else {
-				if (category.getId() != Integer.valueOf(id)) {
-					return false;
-				}
 			}
 		}
 
@@ -170,6 +168,13 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public Category save(@Valid CategoryDTO categoryDTO) {
 		Category category = new Category(categoryDTO);
+		Category parent = category.getParent();
+		if (parent != null) {
+			String allParentIds = parent.getAllParentIDs() == null ? "-" : parent.getAllParentIDs();
+			allParentIds += String.valueOf(parent.getId()) + "-";
+			category.setAllParentIDs(allParentIds);
+		}
+		
 		return categoryRepository.save(category);
 	}
 
@@ -186,6 +191,13 @@ public class CategoryServiceImpl implements CategoryService {
 	public Category edit(@Valid CategoryDTO categoryDTO) {
 		Category category = categoryRepository.findById(categoryDTO.getId()).get();
 		category.convertFromDTO(categoryDTO);
+		
+		Category parent = category.getParent();
+		if (parent != null) {
+			String allParentIds = parent.getAllParentIDs() == null ? "-" : parent.getAllParentIDs();
+			allParentIds += String.valueOf(parent.getId()) + "-";
+			category.setAllParentIDs(allParentIds);
+		}
 
 		return categoryRepository.save(category);
 	}
@@ -223,14 +235,18 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public void delete(Integer id) throws CategoryNotFoundException {
+	public void delete(Integer id) throws CategoryNotFoundException, DataIntegrityViolationException {
 		Long countById = categoryRepository.countById(id);
 
 		if (countById == null || countById == 0) {
 			throw new CategoryNotFoundException("Could not find any category with ID " + id);
 		}
 
-		categoryRepository.deleteById(id);
+		try {
+			categoryRepository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw e;
+		}
 	}
 
 }

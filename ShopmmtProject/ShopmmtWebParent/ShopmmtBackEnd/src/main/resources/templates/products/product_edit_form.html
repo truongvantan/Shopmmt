@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head>
+<head
+	th:replace="~{fragments/page_head :: page_head('Shopmmt - Chỉnh sửa sản phẩm', 'tag')}"
+></head>
+<link
+	rel="stylesheet"
+	th:href="@{/richtext/richtext.min.css}"
+/>
+<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+</head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+
+		<div>
+			<h2>Quản lý sản phẩm | Chỉnh sửa sản phẩm ID ([[${id}]])</h2>
+		</div>
+
+		<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
+
+		<form
+			th:action="@{/products/edit}"
+			th:object="${productDTO}"
+			method="post"
+			enctype="multipart/form-data"
+			onsubmit="return checkProductNameUnique(this)"
+		>
+			<input
+				type="hidden"
+				th:field="*{id}"
+			/>
+			
+			<input
+				th:if="${productDTO.category != null}"
+				type="hidden"
+				id="categoryId"
+				th:value="${productDTO.category.id}"
+			/>
+			<div class="border border-secondary rounded p-3">
+				<!-- Nav tabs -->
+				<ul
+					class="nav nav-tabs"
+					id="myTab"
+					role="tablist"
+				>
+					<li
+						class="nav-item"
+						role="presentation"
+					>
+						<button
+							class="nav-link active"
+							data-bs-toggle="tab"
+							data-bs-target="#overview"
+							type="button"
+							role="tab"
+						>Thông tin tổng quan</button>
+					</li>
+					<li
+						class="nav-item"
+						role="presentation"
+					>
+						<button
+							class="nav-link"
+							data-bs-toggle="tab"
+							data-bs-target="#description"
+							type="button"
+							role="tab"
+						>Mô tả</button>
+					</li>
+					<li
+						class="nav-item"
+						role="presentation"
+					>
+						<button
+							class="nav-link"
+							data-bs-toggle="tab"
+							data-bs-target="#images"
+							type="button"
+							role="tab"
+						>Hình ảnh</button>
+					</li>
+					<li
+						class="nav-item"
+						role="presentation"
+					>
+						<button
+							class="nav-link"
+							data-bs-toggle="tab"
+							data-bs-target="#details"
+							type="button"
+							role="tab"
+						>Thuộc tính</button>
+					</li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div
+						class="tab-pane p-3 active"
+						id="overview"
+						role="tabpanel"
+					>
+						<div th:replace="~{products/product_overview :: content}"></div>
+					</div>
+					<div
+						class="tab-pane"
+						id="description"
+						role="tabpanel"
+					>
+						<div th:replace="~{products/product_description :: content}"></div>
+					</div>
+					<div
+						class="tab-pane"
+						id="images"
+						role="tabpanel"
+					>
+						<div th:replace="~{products/product_images :: content}"></div>
+					</div>
+					<div
+						class="tab-pane p-3"
+						id="details"
+						role="tabpanel"
+					>
+						<div th:replace="~{products/product_details :: content}"></div>
+						<div class="text-center">
+							<button
+								type="button"
+								class="btn btn-success"
+								onclick="addNextDetailSection()"
+							>
+								<i class="fa-solid fa-plus icon-white"></i>
+								Thêm thuộc tính
+							</button>
+						</div>
+					</div>
+				</div>
+				<!-- END Tab panes -->
+
+				<div class="text-center">
+					<input
+						type="submit"
+						value="Lưu"
+						class="btn btn-primary m-3"
+					/>
+					<input
+						type="button"
+						value="Hủy"
+						class="btn btn-secondary"
+						id="buttonCancel"
+					/>
+				</div>
+			</div>
+		</form>
+
+		<div th:replace="~{fragments/modal_dialog :: modal_dialog}"></div>
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+
+	<script type="text/javascript">
+		const moduleURL = "[[@{/products}]]";
+		const brandModuleURL = "[[@{/brands}]]";
+		const defaultImageThumbnailSrc = "[[@{/images/image-thumbnail.png}]]";
+		const checkProductNameUniqueUrl = "[[@{/products/check_product_name}]]";
+
+		const checkProductDetailsUniqueUrl = "[[@{/products/check_product_details}]]";
+	</script>
+
+	<script th:src="@{/js/common_form.js}"></script>
+	<script th:src="@{/js/product_form_overview.js}"></script>
+	<script th:src="@{/js/product_form_images.js}"></script>
+	<script th:src="@{/js/product_form_details.js}"></script>
+</body>
+</html>

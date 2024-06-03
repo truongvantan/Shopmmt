@@ -3,9 +3,16 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
 >
+<head>
 <head
-	th:replace="~{fragments/page_head :: page_head('Shopmmt - Thêm mới sản phẩm')}"
+	th:replace="~{fragments/page_head :: page_head('Shopmmt - Thêm mới sản phẩm', 'tag')}"
 ></head>
+<link
+	rel="stylesheet"
+	th:href="@{/richtext/richtext.min.css}"
+/>
+<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+</head>
 <body>
 	<div class="container-fluid mt-4">
 		<div th:replace="~{fragments/header :: header}"></div>
@@ -14,10 +21,14 @@
 			<h2>Quản lý sản phẩm | Thêm mới sản phẩm</h2>
 		</div>
 
+		<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
+
 		<form
 			th:action="@{/products/save}"
 			th:object="${productDTO}"
 			method="post"
+			enctype="multipart/form-data"
+			onsubmit="return checkProductNameUnique(this)"
 		>
 			<div class="border border-secondary rounded p-3">
 				<!-- Nav tabs -->
@@ -72,7 +83,7 @@
 							data-bs-target="#details"
 							type="button"
 							role="tab"
-						>Chi tiết</button>
+						>Thuộc tính</button>
 					</li>
 				</ul>
 
@@ -89,18 +100,35 @@
 						class="tab-pane"
 						id="description"
 						role="tabpanel"
-					>Mô tả</div>
+					>
+						<div th:replace="~{products/product_description :: content}"></div>
+					</div>
 					<div
 						class="tab-pane"
 						id="images"
 						role="tabpanel"
-					>Hình ảnh</div>
+					>
+						<div th:replace="~{products/product_images :: content}"></div>
+					</div>
 					<div
-						class="tab-pane"
+						class="tab-pane p-3"
 						id="details"
 						role="tabpanel"
-					>Chi tiết</div>
+					>
+						<div th:replace="~{products/product_details :: content}"></div>
+						<div class="text-center">
+							<button
+								type="button"
+								class="btn btn-success"
+								onclick="addNextDetailSection()"
+							>
+								<i class="fa-solid fa-plus icon-white"></i>
+								Thêm thuộc tính
+							</button>
+						</div>
+					</div>
 				</div>
+				<!-- END Tab panes -->
 
 				<div class="text-center">
 					<input
@@ -118,39 +146,7 @@
 			</div>
 		</form>
 
-		<!-- Modal  -->
-		<div
-			class="modal fade text-center"
-			id="modalDialog"
-		>
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4
-							class="modal-title"
-							id="modalTitle"
-						>Cảnh báo</h4>
-						<button
-							type="button"
-							class="btn-close"
-							data-bs-dismiss="modal"
-							aria-label="Close"
-						></button>
-					</div>
-					<div class="modal-body">
-						<span id="modalBody"></span>
-					</div>
-					<div class="modal-footer">
-						<button
-							type="button"
-							class="btn btn-danger"
-							data-bs-dismiss="modal"
-						>Đóng</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- END Modal  -->
+		<div th:replace="~{fragments/modal_dialog :: modal_dialog}"></div>
 
 		<div th:replace="~{fragments/footer :: footer}"></div>
 	</div>
@@ -158,30 +154,15 @@
 	<script type="text/javascript">
 		const moduleURL = "[[@{/products}]]";
 		const brandModuleURL = "[[@{/brands}]]";
-		const dropdownBrands = $("#brand");
-		const dropdownCategories = $("#category");
+		const defaultImageThumbnailSrc = "[[@{/images/image-thumbnail.png}]]";
+		const checkProductNameUniqueUrl = "[[@{/products/check_product_name}]]";
 		
-		$(document).ready(function() {
-			dropdownBrands.change(function() {
-				dropdownCategories.empty();
-				getCategories();
-			});	
-			
-			getCategories();
-		});
-		
-		
-		function getCategories() {
-			brandId = dropdownBrands.val(); 
-			url = brandModuleURL + "/" + brandId + "/categories";
-			
-			$.get(url, function(responseJson) {
-				$.each(responseJson, function(index, category) {
-					$("<option>").val(category.id).text(category.name).appendTo(dropdownCategories);
-				});			
-			});
-		}
+		const checkProductDetailsUniqueUrl = "[[@{/products/check_product_details}]]";
 	</script>
+
 	<script th:src="@{/js/common_form.js}"></script>
+	<script th:src="@{/js/product_form_overview.js}"></script>
+	<script th:src="@{/js/product_form_images.js}"></script>
+	<script th:src="@{/js/product_form_details.js}"></script>
 </body>
 </html>

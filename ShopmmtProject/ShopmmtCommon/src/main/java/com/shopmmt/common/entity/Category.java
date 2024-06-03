@@ -30,6 +30,9 @@ public class Category {
 
 	private boolean enabled = Boolean.TRUE;
 
+	@Column(name = "all_parent_ids", nullable = true)
+	private String allParentIDs;
+
 	@ManyToOne
 	@JoinColumn(name = "parent_id")
 	private Category parent;
@@ -40,19 +43,21 @@ public class Category {
 	public Category() {
 		super();
 	}
-	
+
 	public Category(Category category) {
 		this.setId(category.getId());
 		this.setName(category.getName());
-		this.setPhotos(category.getPhotos());;
+		this.setPhotos(category.getPhotos());
+		;
 		this.setEnabled(category.isEnabled());
 		this.setHasChildren(category.getChildren().size() > 0);
 	}
-	
+
 	public Category(Category category, String name) {
 		this.setName(name);
 		this.setId(category.getId());
-		this.setPhotos(category.getPhotos());;
+		this.setPhotos(category.getPhotos());
+		;
 		this.setEnabled(category.isEnabled());
 		this.setHasChildren(category.getChildren().size() > 0);
 	}
@@ -66,7 +71,6 @@ public class Category {
 		super();
 		this.name = name;
 	}
-	
 
 	public Category(Integer id, String name) {
 		super();
@@ -97,6 +101,15 @@ public class Category {
 		this.enabled = categoryDTO.isEnabled();
 		this.parent = categoryDTO.getParent();
 		this.children = categoryDTO.getChildren();
+		this.allParentIDs = categoryDTO.getAllParentIDs();
+	}
+
+	public String getAllParentIDs() {
+		return allParentIDs;
+	}
+
+	public void setAllParentIDs(String allParentIDs) {
+		this.allParentIDs = allParentIDs;
 	}
 
 	public Integer getId() {
@@ -146,21 +159,22 @@ public class Category {
 	public void setChildren(Set<Category> children) {
 		this.children = children;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Category [id=" + id + ", name=" + name + ", enabled=" + enabled + "]";
 	}
-	
+
 	@Transient
 	public void convertFromDTO(CategoryDTO categoryDTO) {
 		this.setName(categoryDTO.getName());
-		this.setPhotos(categoryDTO.getPhotos());;
+		this.setPhotos(categoryDTO.getPhotos());
+		;
 		this.setEnabled(categoryDTO.isEnabled());
 		this.setParent(categoryDTO.getParent());
 		this.setChildren(categoryDTO.getChildren());
 	}
-	
+
 	@Transient
 	public String getPhotosImagePath() {
 		if (this.id == null || this.photos == null) {
@@ -168,7 +182,7 @@ public class Category {
 		}
 		return "/category-images/" + this.id + "/" + this.photos;
 	}
-	
+
 	@Transient
 	private boolean hasChildren;
 
@@ -179,6 +193,5 @@ public class Category {
 	public void setHasChildren(boolean hasChildren) {
 		this.hasChildren = hasChildren;
 	}
-	
 
 }

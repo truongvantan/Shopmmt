@@ -12,20 +12,26 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.Rollback;
 
+import com.shopmmt.admin.repositories.ProductDetailRepository;
 import com.shopmmt.admin.repositories.ProductRepository;
 import com.shopmmt.common.entity.Brand;
 import com.shopmmt.common.entity.Category;
 import com.shopmmt.common.entity.Product;
+import com.shopmmt.common.entity.ProductDetail;
 
-@DataJpaTest(showSql = true)
+@DataJpaTest(showSql = false)
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
 public class ProductRepositoryTests {
 	
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private ProductDetailRepository productDetailRepository;
 	
 	@Autowired
 	private TestEntityManager testEntityManager;
@@ -78,7 +84,7 @@ public class ProductRepositoryTests {
 		
 		Product product = new Product();
 		product.setName("Áo Sweatshirt Jordan ‘Flight Heritage Crew Neck’ DO2308-256");
-		product.setSortDescription("Sort description Áo Sweatshirt Jordan ‘Flight Heritage Crew Neck’ DO2308-256");
+		product.setShortDescription("Sort description Áo Sweatshirt Jordan ‘Flight Heritage Crew Neck’ DO2308-256");
 		product.setFullDescription("Full description Áo Sweatshirt Jordan ‘Flight Heritage Crew Neck’ DO2308-256");
 		product.setBrand(jordanBrand);
 		product.setCategory(jacket);
@@ -86,6 +92,7 @@ public class ProductRepositoryTests {
 		product.setPrice(2_190_000);
 		product.setCreatedTime(new Date());
 		product.setUpdatedTime(new Date());
+		
 		
 		Product savedProduct = productRepository.save(product);
 		
@@ -132,5 +139,76 @@ public class ProductRepositoryTests {
 		Optional<Product> result = productRepository.findById(id);
 		
 		assertThat(!result.isPresent());
+	}
+	
+	@Test
+	public void testSaveProductWithImages() {
+		Integer id = 1;
+		
+		Product product = productRepository.findById(id).get();
+		
+		product.setMainImage("main_image.jpg");
+		product.addExtraImage("extra_image_1.jpg");
+		product.addExtraImage("extra_image_2.jpg");
+		product.addExtraImage("extra_image_3.jpg");
+		
+		Product savedProduct = productRepository.save(product);
+		
+		assertThat(savedProduct.getImages().size()).isEqualTo(3);
+	}
+	
+	@Test
+	public void testSaveProductWithDetails() {
+//		Integer productId = 1;
+//		Product product = productRepository.findById(productId).get();
+//		
+//		product.addDetail("Màu sắc", "Trắng");
+//		product.addDetail("Màu sắc", "Đen");
+//		product.addDetail("Size", "M");
+//		product.addDetail("Size", "XL");
+//		
+//		Product savedProduct = productRepository.save(product);
+//		assertThat(savedProduct.getDetails()).isNotEmpty();
+		
+		try {
+			Integer productId = 16;
+			Product product = productRepository.findById(productId).get();
+			
+			product.addDetail("MÀu SắC", "Trắng");
+			
+			Product savedProduct = productRepository.save(product);
+		} catch (DataIntegrityViolationException e) {
+			if (e.getMessage().contains("Duplicate entry")) {
+				System.err.println(e.getMessage());
+			}
+		}
+	}
+	
+	@Test
+	public void testGetProductDetailByProductIdAndNameAndValue() {
+		Integer productId = 1;
+		String name = "Màu sắc";
+		String value = "Trắng";
+		
+		ProductDetail productDetail = productDetailRepository.findByProductIdAndNameAndValue(productId, name, value);
+		
+		System.err.println(productDetail.getId());
+		System.err.println(productDetail.getProduct().getId());
+		System.err.println(productDetail.getName());
+		System.err.println(productDetail.getValue());
+		
+		assertThat(productDetail).isNotNull();
+	}
+	
+	@Test
+	public void testGetFirstProductDetailByProductId() {
+		Integer productId = 1;
+		ProductDetail firstByProductId = productDetailRepository.findFirstByProductId(productId);
+		
+		System.err.println(firstByProductId.getProduct().getId());
+		System.err.println(firstByProductId.getName());
+		System.err.println(firstByProductId.getValue());
+		
+		assertThat(firstByProductId).isNotNull();
 	}
 }

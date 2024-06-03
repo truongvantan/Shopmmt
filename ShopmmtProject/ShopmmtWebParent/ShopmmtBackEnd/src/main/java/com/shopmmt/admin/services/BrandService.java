@@ -2,6 +2,7 @@ package com.shopmmt.admin.services;
 
 import java.util.List;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 
 import com.shopmmt.admin.exception.BrandNotFoundException;
@@ -18,7 +19,7 @@ public interface BrandService {
 
 	Brand findById(Integer id) throws BrandNotFoundException;
 
-	void delete(Integer id) throws BrandNotFoundException;
+	void delete(Integer id) throws BrandNotFoundException, DataIntegrityViolationException;
 
 	boolean isBrandNameUnique(String id, String name);
 

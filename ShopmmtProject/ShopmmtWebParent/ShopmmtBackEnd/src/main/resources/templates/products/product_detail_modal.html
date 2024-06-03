@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<div class="modal-header">
+	<h4 class="modal-title">Thông tin chi tiết sản phẩm</h4>
+	<button
+		type="button"
+		class="btn-close"
+		data-bs-dismiss="modal"
+		aria-label="Close"
+	></button>
+</div>
+
+<div>
+	<ul
+		class="nav nav-tabs"
+		id="myTab"
+		role="tablist"
+	>
+		<li class="nav-item">
+			<a
+				class="nav-link active"
+				data-bs-toggle="tab"
+				href="#overview"
+				role="tab"
+			>Thông tin tổng quan</a>
+		</li>
+		<li class="nav-item">
+			<a
+				class="nav-link"
+				data-bs-toggle="tab"
+				href="#description"
+				role="tab"
+			>Mô tả</a>
+		</li>
+		<li class="nav-item">
+			<a
+				class="nav-link"
+				data-bs-toggle="tab"
+				href="#images"
+				role="tab"
+			>Hình ảnh</a>
+		</li>
+		<li class="nav-item">
+			<a
+				class="nav-link"
+				data-bs-toggle="tab"
+				href="#details"
+				role="tab"
+			>Thuộc tính</a>
+		</li>
+	</ul>
+
+	<div class="tab-content">
+		<!-- Tab pane Overview  -->
+		<div
+			class="tab-pane active p-3"
+			id="overview"
+			role="tabpanel"
+		>
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Tên sản phẩm:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${product.name}"
+						readonly
+					/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Thương hiệu:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${product.brand.name}"
+						readonly
+					/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Danh mục:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${product.category.name}"
+						readonly
+					/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Khả dụng:</label>
+				<div class="col-sm-10 mt-2">
+					<input
+						type="checkbox"
+						th:checked="${product.enabled}"
+						onclick="return false;"
+					/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Còn hàng:</label>
+				<div class="col-sm-10 mt-2">
+					<input
+						type="checkbox"
+						th:checked="${product.inStock}"
+						onclick="return false;"
+					/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Giá nhập:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${#numbers.formatDecimal(product.cost, 1, 'POINT', 2, 'COMMA')}"
+						readonly
+					/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Giá bán:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${#numbers.formatDecimal(product.price, 1, 'POINT', 2, 'COMMA')}"
+						readonly
+					/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Giảm giá:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${product.discountPercent}"
+						readonly
+					/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Thời gian cập nhật:</label>
+				<div class="col-sm-10 mt-2">
+					<span
+						th:text="${#dates.format(product.updatedTime, 'dd-MM-yyyy HH:mm:ss')}"
+					></span>
+				</div>
+			</div>
+		</div>
+		<!-- END Tab pane Overview  -->
+
+		<!-- Tab pane Description  -->
+		<div
+			class="tab-pane"
+			id="description"
+			role="tabpanel"
+		>
+			<div class="m-2">
+				<label>Mô tả tổng quát:</label>
+				<div
+					th:utext="${product.shortDescription}"
+					class="border p-2 m-2"
+				></div>
+			</div>
+
+			<div class="m-2">
+				<label>Mô tả chi tiết:</label>
+				<div
+					th:utext="${product.fullDescription}"
+					class="border p-2 m-2"
+				></div>
+			</div>
+		</div>
+		<!-- END Tab pane Description  -->
+
+		<!-- Tab pane Images  -->
+		<div
+			class="tab-pane"
+			id="images"
+			role="tabpanel"
+		>
+			<div class="row">
+				<div class="col border m-3 p-2">
+					<div class="text-truncate">
+						<label>Hình ảnh chính: [[${product.mainImage}]]</label>
+					</div>
+					<div class="m-2">
+						<img
+							alt="Hình ảnh chính"
+							th:src="@{${product.mainImagePath}}"
+							width="200px"
+							height="200px"
+						/>
+					</div>
+				</div>
+
+				<th:block th:each="productImage, status : ${product.images}">
+					<div class="col border m-3 p-2">
+						<div class="text-truncate">
+							<label>Hình ảnh phụ #[[${status.index + 1}]]:
+								[[${productImage.name}]]</label>
+						</div>
+						<div class="m-2">
+							<img
+								th:alt="'Hình ảnh phụ #' + ${status.index + 1} + ' preview'"
+								class="img-fluid"
+								th:src="@{${productImage.imagePath}}"
+								width="200px"
+								height="200px"
+							/>
+						</div>
+					</div>
+				</th:block>
+			</div>
+		</div>
+		<!-- END Tab pane Images  -->
+
+		<!-- Tab pane Detail  -->
+		<div
+			class="tab-pane p-3"
+			id="details"
+			role="tabpanel"
+		>
+			<div>
+				<table class="table table-striped table-bordered table-hover">
+					<thead class="table-dark">
+						<tr>
+							<th width="40%">Tên thuộc tính</th>
+							<th>Giá trị</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="detail: ${product.details}">
+							<td>[[${detail.name}]]</td>
+							<td>[[${detail.value}]]</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- END Tab pane Detail  -->
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button
+		type="button"
+		class="btn btn-danger"
+		data-bs-dismiss="modal"
+	>Đóng</button>
+</div>
+</html>

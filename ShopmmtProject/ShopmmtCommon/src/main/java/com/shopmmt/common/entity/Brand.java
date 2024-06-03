@@ -7,6 +7,7 @@ import com.shopmmt.common.dto.BrandDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,7 +30,7 @@ public class Brand {
 
 	private String logo;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "brands_categories", joinColumns = @JoinColumn(name = "brand_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Category> categories = new HashSet<Category>();
 
@@ -102,7 +103,7 @@ public class Brand {
 
 	@Override
 	public String toString() {
-		return "Brand [id=" + id + ", name=" + name + ", categories=" + categories + "]";
+		return "Brand [id=" + id + ", name=" + name + "]";
 	}
 	
 	@Transient

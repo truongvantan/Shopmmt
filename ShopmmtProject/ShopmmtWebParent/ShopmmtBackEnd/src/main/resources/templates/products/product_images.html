@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div
+		th:fragment="content"
+		th:remove="tag"
+	>
+		<div
+			class="row"
+			id="divProductImages"
+		>
+			<div class="col border m-3 p-2">
+				<div class="text-truncate">
+					<label>Hình ảnh chính: [[${productDTO.mainImage}]]</label>
+				</div>
+				<div class="m-2">
+					<img
+						id="thumbnail"
+						alt="Hình ảnh chính"
+						th:src="@{${productDTO.mainImagePath}}"
+						width="200px"
+						height="200px"
+					/>
+				</div>
+				<div>
+					<input
+						type="file"
+						id="fileImage"
+						name="fileImage"
+						accept="image/png, image/jpeg"
+					/>
+					<input
+						type="hidden"
+						th:field="*{mainImage}"
+					/>
+					<span
+						th:if="${errorImage != null}"
+						class="text-danger"
+					>[[${errorImage}]]</span>
+				</div>
+			</div>
+
+			<th:block th:each="productImage, status : ${productDTO.images}">
+				<div
+					class="col border m-3 p-2"
+					th:id="'divExtraImage' + ${status.index}"
+				>
+					<div class="text-truncate">
+						<label>Hình ảnh phụ #[[${status.index + 1}]]:
+							[[${productImage.name}]]:</label>
+						<a
+							name="linkRemoveExtraImage"
+							class="btn fas fa-times-circle fa-xl icon-dark float-right icon-red"
+							title="Remove this image"
+						></a>
+					</div>
+					<div class="m-2">
+						<img
+							th:id="'extraThumbnail' + ${status.index}"
+							th:alt="'Hình ảnh phụ #' + ${status.index + 1}"
+							class="img-fluid"
+							th:src="@{${productImage.imagePath}}"
+							width="200px"
+							height="200px"
+						/>
+					</div>
+					<div>
+						<input
+							type="file"
+							name="extraImage"
+							accept="image/png, image/jpeg"
+						/>
+						<span
+							th:if="${errorImage != null}"
+							class="text-danger"
+						>[[${errorExtraImage}]]</span>
+					</div>
+					<input
+						type="hidden"
+						name="imageIDs"
+						th:id="'imageId' + ${status.index}"
+						th:value="${productImage.id}"
+					/>
+					<input
+						type="hidden"
+						name="imageNames"
+						th:id="'imageName' + ${status.index}"
+						th:value="${productImage.name}"
+					/>
+				</div>
+			</th:block>
+
+			<div
+				class="col border m-3 p-2"
+				th:id="'divExtraImage' + ${numberOfExistingExtraImages}"
+			>
+				<div
+					class="text-truncate"
+					th:id="'extraImageHeader' + ${numberOfExistingExtraImages}"
+				>
+					<label>Hình ảnh phụ #[[${numberOfExistingExtraImages + 1}]]:</label>
+				</div>
+				<div class="m-2">
+					<img
+						th:id="'extraThumbnail' + ${numberOfExistingExtraImages}"
+						th:alt="'Hình ảnh phụ' + ${numberOfExistingExtraImages}"
+						class="img-fluid"
+						th:src="@{/images/image-thumbnail.png}"
+						width="200px"
+						height="200px"
+					/>
+				</div>
+				<div>
+					<input
+						type="file"
+						name="extraImage"
+						accept="image/png, image/jpeg"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

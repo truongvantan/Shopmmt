@@ -3,7 +3,7 @@
 <body>
 	<div
 		th:fragment="content"
-		remove="tag"
+		th:remove="tag"
 	>
 		<div class="form-group row mb-3">
 			<label
@@ -27,7 +27,7 @@
 				>Name Error</span>
 			</div>
 		</div>
-
+		
 		<div class="form-group row mb-3">
 			<label
 				class="col-sm-2 col-form-label"
@@ -40,7 +40,6 @@
 				<select
 					th:field="*{brand}"
 					class="form-select"
-					required
 				>
 					<th:block th:each="brand : ${listBrands}">
 						<option th:value="${brand.id}">[[${brand.name}]]</option>
@@ -58,12 +57,23 @@
 				<span class="text-danger">(*)</span>
 			</label>
 			<div class="col-sm-10">
-				<select
-					th:field="*{category}"
-					class="form-select"
-				>
-
-				</select>
+				<th:block th:if="${productDTO.category != null}">
+					<select
+						th:field="*{category}"
+						class="form-select"
+					>
+						<th:block th:each="category : ${productDTO.brand.categories}">
+							<option th:value="${category.id}">[[${category.name}]]</option>
+						</th:block>
+					</select>
+				</th:block>
+				<th:block th:if="${productDTO.category == null}">
+					<select
+						th:field="*{category}"
+						class="form-select"
+					>
+					</select>
+				</th:block>
 			</div>
 		</div>
 
@@ -83,7 +93,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="form-group row mb-3">
 			<label
 				class="col-sm-2 col-form-label"
@@ -100,14 +110,12 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="form-group row mb-3">
 			<label
 				class="col-sm-2 col-form-label"
 				for="cost"
-			>
-				Đơn giá nhập:
-			</label>
+			> Đơn giá nhập: </label>
 			<div class="col-sm-10">
 				<input
 					type="number"
@@ -123,14 +131,12 @@
 				>Cost Error</span>
 			</div>
 		</div>
-		
+
 		<div class="form-group row mb-3">
 			<label
 				class="col-sm-2 col-form-label"
 				for="price"
-			>
-				Đơn giá bán:
-			</label>
+			> Đơn giá bán: </label>
 			<div class="col-sm-10">
 				<input
 					type="number"
@@ -146,14 +152,12 @@
 				>Price Error</span>
 			</div>
 		</div>
-		
+
 		<div class="form-group row mb-3">
 			<label
 				class="col-sm-2 col-form-label"
 				for="discount"
-			>
-				Giảm giá:
-			</label>
+			> Giảm giá: </label>
 			<div class="col-sm-10">
 				<input
 					type="number"

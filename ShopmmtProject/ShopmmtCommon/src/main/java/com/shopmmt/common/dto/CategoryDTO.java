@@ -19,6 +19,8 @@ public class CategoryDTO {
 
 	private boolean enabled = Boolean.TRUE;
 
+	private String allParentIDs;
+
 	private Category parent;
 	private Set<Category> children = new HashSet<Category>();
 
@@ -45,6 +47,7 @@ public class CategoryDTO {
 		this.enabled = category.isEnabled();
 		this.parent = category.getParent();
 		this.children = category.getChildren();
+		this.allParentIDs = category.getAllParentIDs();
 	}
 
 	public CategoryDTO(Integer id,
@@ -52,6 +55,14 @@ public class CategoryDTO {
 		super();
 		this.id = id;
 		this.name = name;
+	}
+
+	public String getAllParentIDs() {
+		return allParentIDs;
+	}
+
+	public void setAllParentIDs(String allParentIDs) {
+		this.allParentIDs = allParentIDs;
 	}
 
 	public Integer getId() {
@@ -106,14 +117,14 @@ public class CategoryDTO {
 	public String toString() {
 		return "CategoryDTO [id=" + id + ", name=" + name + ", photos=" + photos + ", enabled=" + enabled + "]";
 	}
-	
+
 	public String getPhotosImagePath() {
 		if (this.id == null || this.photos == null) {
 			return "/images/image-thumbnail.png";
 		}
 		return "/category-images/" + this.id + "/" + this.photos;
 	}
-	
+
 	private boolean hasChildren;
 
 	public boolean isHasChildren() {

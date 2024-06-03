@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Rollback;
 
@@ -104,6 +105,16 @@ public class CategoryRepositoryTests {
 		List<Category> listRootCategories = categoryRepository.findRootCategories(Sort.by("name").ascending());
 		for (Category c : listRootCategories) {
 			System.out.println(c.getName());
+		}
+	}
+	
+	@Test
+	public void testDeleteCategory() {
+		Integer categoryId = 4;
+		try {
+			categoryRepository.deleteById(categoryId);
+		} catch (DataIntegrityViolationException e) {
+			System.err.println(e.getMessage());
 		}
 	}
 }

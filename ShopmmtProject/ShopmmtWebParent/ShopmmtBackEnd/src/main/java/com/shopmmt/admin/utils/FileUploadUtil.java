@@ -7,9 +7,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.shopmmt.common.constants.ConstantsUtil;
+
 public class FileUploadUtil {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(FileUploadUtil.class);
 	
 	public static void saveFile(String uploadDir, String fileName, MultipartFile multipartFile) throws IOException {
 		Path uploadPath = Paths.get(uploadDir);
@@ -20,9 +26,9 @@ public class FileUploadUtil {
 		try {
 			InputStream inputStream = multipartFile.getInputStream();
 			Path filePath = uploadPath.resolve(fileName);
-			System.err.println("filePath: " + filePath);
 			Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
+			LOGGER.error("Could not save file: " + fileName);
 			throw new IOException("Could not save file: " + fileName, e);
 		}
 	}
@@ -36,25 +42,37 @@ public class FileUploadUtil {
 					try {
 						Files.delete(file);
 					} catch (IOException e) {
+						LOGGER.error("Could not delete file: " + file);
 						System.err.println("Could not delete file: " + file);
 					}
 				}
 			});
 		} catch (IOException e) {
-			System.err.println("Could not list directory: " + dirPath);
+			LOGGER.error("Could not list directory: " + dirPath);
 		}
 	}
 	
 	public static boolean isValidFileSize(MultipartFile multipartFile) {
-		return multipartFile.getSize() < 1_048_576L;
+		return multipartFile.getSize() < ConstantsUtil.MAX_FILE_SIZE;
+	}
+	
+	public static boolean isValidExtraFileSize(MultipartFile[] extraImageMultiparts) {
+		for (MultipartFile multipartFile : extraImageMultiparts) {
+			if (multipartFile.getSize() > ConstantsUtil.MAX_FILE_SIZE) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 
 	public static void removeDir(String dir) {
 		cleanDir(dir);
+		
 		try {
 			Files.delete(Paths.get(dir));
 		} catch (IOException e) {
-			System.err.println("Could not remove directory: " + dir);
+			LOGGER.error("Could not remove directory: " + dir);
 		}
 	}
 }

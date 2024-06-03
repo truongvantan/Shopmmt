@@ -5,6 +5,7 @@
 	font-family: "Roboto", sans-serif;
 }
 
+
 *.icon-white{color: white;}
 *.icon-dark {color: dark;}
 *.icon-green {color: #65B741;}
@@ -12,6 +13,7 @@
 *.icon-red {color: red;}
 *.icon-blue {color: #4942E4;}
 *.icon-yellow {color: #FFA700;}
+
 
 /* small screen  */
 @media screen and (max-width: 768px) {

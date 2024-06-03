@@ -2,6 +2,8 @@ package com.shopmmt.admin.services;
 
 import java.util.List;
 
+import org.springframework.dao.DataIntegrityViolationException;
+
 import com.shopmmt.admin.exception.CategoryNotFoundException;
 import com.shopmmt.common.dto.CategoryDTO;
 import com.shopmmt.common.dto.CategoryPageInfoDTO;
@@ -25,6 +27,6 @@ public interface CategoryService {
 
 	void updateCategoryEnabledStatus(Integer id, boolean enabled) throws CategoryNotFoundException;
 
-	void delete(Integer id) throws CategoryNotFoundException;
+	void delete(Integer id) throws CategoryNotFoundException, DataIntegrityViolationException;
 	
 }

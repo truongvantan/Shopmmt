@@ -4,10 +4,18 @@
     <typeInfo handle="=ShopmmtCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.common.entity{User.java[User" modifiers="1" timestamp="1715312450888"/>
     <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.repositories{UserRepository.java[UserRepository" modifiers="513" timestamp="1715323918663"/>
     <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.repositories{CategoryRepository.java[CategoryRepository" modifiers="513" timestamp="1715741648587"/>
-    <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.services.impl{UserServiceImpl.java[UserServiceImpl" modifiers="1" timestamp="1715697721346"/>
+    <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.services.impl{UserServiceImpl.java[UserServiceImpl" modifiers="1" timestamp="1716514660221"/>
+    <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.controllers{CategoryController.java[CategoryController" modifiers="1" timestamp="1716514991584"/>
+    <typeInfo handle="=ShopmmtCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.common.dto{UserDTO.java[UserDTO" modifiers="1" timestamp="1715093422662"/>
+    <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.controllers{BrandController.java[BrandController" modifiers="1" timestamp="1716514980173"/>
     <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.controllers{UserController.java[UserController" modifiers="1" timestamp="1715677429923"/>
-    <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.controllers{CategoryController.java[CategoryController" modifiers="1" timestamp="1716097562270"/>
-    <typeInfo handle="=ShopmmtCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.common.dto{BrandDTO.java[BrandDTO" modifiers="1" timestamp="1716095152018"/>
-    <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.services.impl{CategoryServiceImpl.java[CategoryServiceImpl" modifiers="1" timestamp="1715744239505"/>
-    <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.services.impl{BrandServiceImpl.java[BrandServiceImpl" modifiers="1" timestamp="1716104229515"/>
+    <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.services{UserService.java[UserService" modifiers="513" timestamp="1716300047475"/>
+    <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.services.impl{CategoryServiceImpl.java[CategoryServiceImpl" modifiers="1" timestamp="1716478848934"/>
+    <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.services.impl{BrandServiceImpl.java[BrandServiceImpl" modifiers="1" timestamp="1716514786324"/>
+    <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.controllers.rest{ProductRestController.java[ProductRestController" modifiers="1" timestamp="1716374447030"/>
+    <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.controllers{ProductController.java[ProductController" modifiers="1" timestamp="1716719545746"/>
+    <typeInfo handle="=ShopmmtCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.common.constants{ConstantsUtil.java[ConstantsUtil" modifiers="1" timestamp="1716349857517"/>
+    <typeInfo handle="=ShopmmtCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.common.entity{Product.java[Product" modifiers="1" timestamp="1716715907049"/>
+    <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.services.impl{ProductServiceImpl.java[ProductServiceImpl" modifiers="1" timestamp="1716515463385"/>
+    <typeInfo handle="=ShopmmtCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.common.dto{BrandDTO.java[BrandDTO" modifiers="1" timestamp="1716458385594"/>
 </typeInfoHistroy>

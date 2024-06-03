@@ -11,7 +11,7 @@ import com.shopmmt.admin.services.RoleService;
 import com.shopmmt.common.entity.Role;
 
 @Service("roleService")
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class RoleServiceImpl implements RoleService {
 	
 	@Autowired

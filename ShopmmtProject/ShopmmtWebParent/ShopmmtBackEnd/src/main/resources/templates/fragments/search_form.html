@@ -6,7 +6,7 @@
 <body>
 	<div th:fragment="search_form(moduleURL, title)" class="row mt-1">
 		<form
-			class="col-sm-8 d-flex"
+			class="col-sm-8 d-flex align-items-center"
 			th:action="@{${moduleURL} + '/page/1'}"
 		>
 			<input
@@ -19,6 +19,7 @@
 				name="sortDir"
 				th:value="${sortDir}"
 			/>
+			Tìm kiếm:&nbsp;
 			<input
 				name="keyword"
 				th:value="${keyword}"
