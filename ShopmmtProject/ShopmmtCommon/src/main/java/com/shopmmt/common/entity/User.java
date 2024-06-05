@@ -1,6 +1,7 @@
 package com.shopmmt.common.entity;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import com.shopmmt.common.dto.UserDTO;
@@ -160,6 +161,19 @@ public class User {
 	@Transient
 	public String getFullName() {
 		return this.firstName + " " + this.lastName;
+	}
+	
+	public boolean hasRole(String roleName) {
+		Iterator<Role> iterator = roles.iterator();
+		
+		while (iterator.hasNext()) {
+			Role role = iterator.next();
+			if (role.getName().equals(roleName)) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 }

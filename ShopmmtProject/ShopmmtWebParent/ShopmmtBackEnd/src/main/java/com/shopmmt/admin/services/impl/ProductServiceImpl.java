@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shopmmt.admin.exception.ProductDetailDuplicateException;
-import com.shopmmt.admin.exception.ProductNotFoundException;
 import com.shopmmt.admin.repositories.ProductDetailRepository;
 import com.shopmmt.admin.repositories.ProductRepository;
 import com.shopmmt.admin.services.ProductService;
@@ -26,6 +25,7 @@ import com.shopmmt.common.constants.ConstantsUtil;
 import com.shopmmt.common.dto.ProductDTO;
 import com.shopmmt.common.entity.Product;
 import com.shopmmt.common.entity.ProductDetail;
+import com.shopmmt.common.exception.ProductNotFoundException;
 
 @Service("productService")
 @Transactional(rollbackFor = Exception.class)
@@ -218,5 +218,15 @@ public class ProductServiceImpl implements ProductService {
 		}
 
 		return productRepository.findAll(pageable);
+	}
+
+	@Override
+	public void saveProductPrice(Product productForm) {
+		Product productInDB = productRepository.findById(productForm.getId()).get();
+		productInDB.setCost(productForm.getCost());
+		productInDB.setPrice(productForm.getPrice());
+		productInDB.setDiscountPercent(productForm.getDiscountPercent());
+		
+		productRepository.save(productInDB);
 	}
 }

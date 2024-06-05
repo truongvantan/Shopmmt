@@ -284,5 +284,22 @@ public class Product {
 	public void addDetail(Integer id, String name, String value) {
 		this.details.add(new ProductDetail(id, name, value, this));
 	}
+	
+	@Transient
+	public double getDiscountPrice() {
+		if (discountPercent > 0) {
+			return price * ((100 - discountPercent) / 100);
+		}
+		
+		return this.price;
+	}
+	
+	@Transient
+	public String getShortName() {
+		if (name.length() > 50) {
+			return name.substring(0, 50).concat("...");
+		}
+		return name;
+	}
 
 }

@@ -39,11 +39,16 @@ public class WebSecurityConfig {
 	@Bean
 	SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		http.authenticationProvider(authenticationProvider());
-		http.authorizeHttpRequests(
-				auth -> auth.requestMatchers("/users/**").hasAnyAuthority("Admin")
+		http.authorizeHttpRequests(auth -> auth.requestMatchers("/users/**").hasAnyAuthority("Admin")
 				.requestMatchers("/categories/**", "/brands/**").hasAnyAuthority("Admin", "Nhân viên kho hàng")
-				.requestMatchers("/products/**").hasAnyAuthority("Admin", "Nhân viên bán hàng", "Nhân viên kho hàng", "Nhân viên giao hàng")
-				.anyRequest().authenticated())
+				.requestMatchers("/products/new", "/products/delete/**").hasAnyAuthority("Admin", "Nhân viên kho hàng")
+				.requestMatchers("/products/showEdit/**", "/products/edit/**", "/products/save", "/products/check_product_name",
+						"/products/check_product_details")
+				.hasAnyAuthority("Admin", "Nhân viên kho hàng", "Nhân viên bán hàng")
+				.requestMatchers("/products", "/products/", "/products/detail/**", "/products/page/**")
+				.hasAnyAuthority("Admin", "Nhân viên kho hàng", "Nhân viên bán hàng", "Nhân viên giao hàng")
+				.requestMatchers("/products/**").hasAnyAuthority("Admin", "Nhân viên kho hàng").anyRequest()
+				.authenticated())
 				.formLogin(login -> login.loginPage("/login").usernameParameter("email").defaultSuccessUrl("/")
 						.permitAll())
 				.logout(logout -> logout.permitAll())

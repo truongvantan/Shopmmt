@@ -34,7 +34,7 @@
 				type="hidden"
 				th:field="*{id}"
 			/>
-			
+
 			<input
 				th:if="${productDTO.category != null}"
 				type="hidden"
@@ -112,31 +112,57 @@
 						id="description"
 						role="tabpanel"
 					>
-						<div th:replace="~{products/product_description :: content}"></div>
+						<th:block sec:authorize="hasAuthority('Nhân viên bán hàng')">
+							<div
+								th:replace="~{products/product_description_readonly :: content}"
+							></div>
+						</th:block>
+
+						<th:block
+							sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng')"
+						>
+							<div th:replace="~{products/product_description :: content}"></div>
+						</th:block>
 					</div>
 					<div
 						class="tab-pane"
 						id="images"
 						role="tabpanel"
 					>
-						<div th:replace="~{products/product_images :: content}"></div>
+						<th:block sec:authorize="hasAuthority('Nhân viên bán hàng')">
+							<div th:replace="~{products/product_images_readonly :: content}"></div>
+						</th:block>
+
+						<th:block
+							sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng')"
+						>
+							<div th:replace="~{products/product_images :: content}"></div>
+						</th:block>
 					</div>
 					<div
 						class="tab-pane p-3"
 						id="details"
 						role="tabpanel"
 					>
-						<div th:replace="~{products/product_details :: content}"></div>
-						<div class="text-center">
-							<button
-								type="button"
-								class="btn btn-success"
-								onclick="addNextDetailSection()"
-							>
-								<i class="fa-solid fa-plus icon-white"></i>
-								Thêm thuộc tính
-							</button>
-						</div>
+						<th:block sec:authorize="hasAuthority('Nhân viên bán hàng')">
+							<div th:replace="~{products/product_details_readonly :: content}"></div>
+						</th:block>
+
+						<th:block
+							sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng')"
+						>
+							<div th:replace="~{products/product_details :: content}"></div>
+							<div class="text-center">
+								<button
+									type="button"
+									class="btn btn-success"
+									onclick="addNextDetailSection()"
+								>
+									<i class="fa-solid fa-plus icon-white"></i>
+									Thêm thuộc tính
+								</button>
+							</div>
+						</th:block>
 					</div>
 				</div>
 				<!-- END Tab panes -->

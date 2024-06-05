@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div
+		th:fragment="pagination(moduleURL, entityName)"
+		th:remove="tag"
+	>
+		<div
+			th:if="${currentPage <= totalPages}"
+			class="mt-4"
+		>
+			<span>
+				Trang
+				<b>[[${currentPage}]]</b>
+				của [[${totalPages}]]
+			</span>
+		</div>
+		<div
+			th:unless="${currentPage <= totalPages}"
+			class="mt-4"
+		>
+			<span>
+				<b>Danh sách rỗng</b>
+			</span>
+		</div>
+		<div
+			th:if="${totalItems > 0}"
+			class="mt-4"
+		>
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-center flex-wrap">
+					<li
+						th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}"
+					>
+						<a
+							th:replace="~{fragments/page_link :: page_link(${moduleURL}, 1, 'Đầu')}"
+						></a>
+					</li>
+					<li
+						th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}"
+					>
+						<a
+							th:replace="~{fragments/page_link :: page_link(${moduleURL}, ${currentPage - 1}, 'Trước')}"
+						></a>
+					</li>
+					<li
+						th:class="${currentPage != i ? 'page-item' : 'page-item active'}"
+						th:each="i : ${#numbers.sequence(1, totalPages)}"
+					>
+						<a
+							th:replace="~{fragments/page_link :: page_link(${moduleURL}, ${i}, ${i})}"
+						></a>
+					</li>
+					<li
+						th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}"
+					>
+						<a
+							th:replace="~{fragments/page_link :: page_link(${moduleURL}, ${currentPage + 1}, 'Tiếp')}"
+						></a>
+					</li>
+					<li
+						th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}"
+					>
+						<a
+							th:replace="~{fragments/page_link :: page_link(${moduleURL}, ${totalPages}, 'Cuối')}"
+						></a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</body>
+</html>

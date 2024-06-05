@@ -17,13 +17,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.shopmmt.admin.exception.CategoryNotFoundException;
 import com.shopmmt.admin.repositories.CategoryRepository;
 import com.shopmmt.admin.services.CategoryService;
 import com.shopmmt.common.constants.ConstantsUtil;
 import com.shopmmt.common.dto.CategoryDTO;
 import com.shopmmt.common.dto.CategoryPageInfoDTO;
 import com.shopmmt.common.entity.Category;
+import com.shopmmt.common.exception.CategoryNotFoundException;
 
 import jakarta.validation.Valid;
 

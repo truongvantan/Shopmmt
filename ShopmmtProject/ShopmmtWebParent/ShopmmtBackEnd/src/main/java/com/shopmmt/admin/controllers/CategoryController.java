@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.shopmmt.admin.exception.CategoryNotFoundException;
 import com.shopmmt.admin.services.CategoryService;
 import com.shopmmt.admin.utils.FileUploadUtil;
 import com.shopmmt.common.dto.CategoryDTO;
 import com.shopmmt.common.dto.CategoryPageInfoDTO;
 import com.shopmmt.common.entity.Category;
+import com.shopmmt.common.exception.CategoryNotFoundException;
 
 import jakarta.validation.Valid;
 

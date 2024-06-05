@@ -245,5 +245,20 @@ public class ProductDTO {
 		
 		return false;
 	}
+	
+	public double getDiscountPrice() {
+		if (discountPercent > 0) {
+			return price * ((100 - discountPercent) / 100);
+		}
+		
+		return this.price;
+	}
+	
+	public String getShortName() {
+		if (name.length() > 50) {
+			return name.substring(0, 50).concat("...");
+		}
+		return name;
+	}
 
 }

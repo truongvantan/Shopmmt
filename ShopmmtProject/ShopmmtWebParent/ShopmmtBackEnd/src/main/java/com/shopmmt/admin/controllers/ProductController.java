@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -24,8 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.shopmmt.admin.config.ShopmmtUserDetails;
 import com.shopmmt.admin.exception.ProductDetailDuplicateException;
-import com.shopmmt.admin.exception.ProductNotFoundException;
 import com.shopmmt.admin.services.BrandService;
 import com.shopmmt.admin.services.CategoryService;
 import com.shopmmt.admin.services.ProductService;
@@ -35,6 +36,7 @@ import com.shopmmt.common.dto.ProductDTO;
 import com.shopmmt.common.entity.Brand;
 import com.shopmmt.common.entity.Product;
 import com.shopmmt.common.entity.ProductImage;
+import com.shopmmt.common.exception.ProductNotFoundException;
 import com.shopmmt.common.validate.ValidateCommon;
 
 import jakarta.validation.Valid;
@@ -65,8 +67,6 @@ public class ProductController {
 			@RequestParam(name = "keyword", required = false) String keyword,
 			@RequestParam(name = "categoryId", required = false, defaultValue = "0") Integer categoryId) {
 
-		System.err.println("selected categoryId: " + categoryId);
-		
 		String reverseSortDir = "asc".equals(sortDir) ? "desc" : "asc";
 
 		Page<Product> pageProduct = productService.listByPage(pageNum, sortField, sortDir, keyword, categoryId);
@@ -96,11 +96,10 @@ public class ProductController {
 	public String newProduct(Model model) {
 		List<Brand> listBrands = brandService.findAll();
 		ProductDTO productDTO = new ProductDTO();
-		Integer numberOfExistingExtraImages = productDTO.getImages().size();
 
 		model.addAttribute("listBrands", listBrands);
 		model.addAttribute("productDTO", productDTO);
-		model.addAttribute("numberOfExistingExtraImages", numberOfExistingExtraImages);
+		model.addAttribute("numberOfExistingExtraImages", 0);
 
 		return "products/product_form";
 	}
@@ -115,7 +114,9 @@ public class ProductController {
 			@RequestParam(name = "imageIDs", required = false) String[] imageIDs,
 			@RequestParam(name = "imageNames", required = false) String[] imageNames,
 			@Valid @ModelAttribute(name = "productDTO") ProductDTO productDTO, BindingResult bindingResult,
+			@AuthenticationPrincipal ShopmmtUserDetails loggedUser,
 			RedirectAttributes redirectAttributes) throws IOException {
+		
 		if (bindingResult.hasErrors()) {
 			System.err.println("Lỗi binding result productDTO");
 			List<Brand> listBrands = brandService.findAll();
@@ -298,7 +299,18 @@ public class ProductController {
 			@RequestParam(name = "imageIDs", required = false) String[] imageIDs,
 			@RequestParam(name = "imageNames", required = false) String[] imageNames,
 			@Valid @ModelAttribute(name = "productDTO") ProductDTO productDTO, BindingResult bindingResult,
+			@AuthenticationPrincipal ShopmmtUserDetails loggedUser,
 			RedirectAttributes redirectAttributes) throws IOException {
+		
+		if (loggedUser.hasRole("Nhân viên bán hàng")) {
+			Product product = new Product(productDTO);
+			productService.saveProductPrice(product);
+			
+			redirectAttributes.addFlashAttribute("message", "Chỉnh sửa sản phẩm ID " + id + " thành công");
+			
+			return "redirect:/products";			
+		}
+		
 		if (bindingResult.hasErrors()) {
 			System.err.println("Lỗi binding result productDTO");
 			List<Brand> listBrands = brandService.findAll();

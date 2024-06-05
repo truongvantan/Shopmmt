@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div
+		th:fragment="content"
+		th:remove="tag"
+	>
+		<div
+			th:if="${listCategoryParents != null && !listCategoryParents.empty}"
+		>
+			<div class="row">
+				<div class="col">
+					<nav
+						class="bg-breadcrumb mt-2 p-2"
+						style="--bs-breadcrumb-divider: '>';"
+					>
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a
+									th:href="@{/}"
+									class="text-decoration-none"
+								>Trang chủ</a>
+							</li>
+
+							<th:block th:each="parent : ${listCategoryParents}">
+								<li class="breadcrumb-item">
+									<a
+										th:href="@{'/c/' + ${parent.name}}"
+										class="text-decoration-none"
+									>[[${parent.name}]]</a>
+								</li>
+							</th:block>
+							<li
+								class="breadcrumb-item"
+								th:if="${product != null}"
+							>
+								<span>[[${product.shortName}]]</span>
+							</li>
+
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

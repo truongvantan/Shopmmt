@@ -8,4 +8,5 @@ public class ConstantsUtil {
 	public static final int CATEGORY_PAGE_SIZE = 2;
 	public static final int BRAND_PAGE_SIZE = 5;
 	public static final int PRODUCT_PAGE_SIZE = 5;
+	public static final int PRODUCT_PAGE_SIZE_CUSTOMER = 5;
 }

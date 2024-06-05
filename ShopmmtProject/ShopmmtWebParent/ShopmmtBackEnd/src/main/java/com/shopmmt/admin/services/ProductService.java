@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 
 import com.shopmmt.admin.exception.ProductDetailDuplicateException;
-import com.shopmmt.admin.exception.ProductNotFoundException;
 import com.shopmmt.common.dto.ProductDTO;
 import com.shopmmt.common.entity.Product;
+import com.shopmmt.common.exception.ProductNotFoundException;
 
 public interface ProductService {
 
@@ -22,6 +22,8 @@ public interface ProductService {
 	void delete(Integer id) throws ProductNotFoundException;
 
 	Product save(Product product) throws ProductDetailDuplicateException;
+	
+	void saveProductPrice(Product productForm);
 
 	boolean isProductDetailsUnique(String productId, String jsonDetailNames, String jsonDetailValues);
 

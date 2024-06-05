@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div
+		th:fragment="content"
+		th:remove="tag"
+	>
+		<div class="row">
+			<div class="col border m-3 p-2">
+				<div class="text-truncate">
+					<label>Hình ảnh chính: [[${productDTO.mainImage}]]</label>
+				</div>
+				<div class="m-2">
+					<img
+						alt="Hình ảnh chính"
+						th:src="@{${productDTO.mainImagePath}}"
+						width="200px"
+						height="200px"
+					/>
+				</div>
+			</div>
+
+			<th:block th:each="productImage, status : ${productDTO.images}">
+				<div class="col border m-3 p-2">
+					<div class="text-truncate">
+						<label>Hình ảnh phụ #[[${status.index + 1}]]:
+							[[${productImage.name}]]</label>
+					</div>
+					<div class="m-2">
+						<img
+							th:alt="'Hình ảnh phụ #' + ${status.index + 1} + ' preview'"
+							class="img-fluid"
+							th:src="@{${productImage.imagePath}}"
+							width="200px"
+							height="200px"
+						/>
+					</div>
+				</div>
+			</th:block>
+		</div>
+	</div>
+</body>
+</html>

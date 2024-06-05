@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="~{fragments/page_head :: page_head('Shopmmt', 'none')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+		
+		<div th:replace="~{fragments/breadcrumb :: content}"></div>
+
+		<div class="row mb-4 text-center">
+			<th:block th:each="cat : ${category.children}">
+				<div
+					class="col mt-2"
+					th:if="${cat.enabled == true}"
+				>
+					<a
+						th:href="@{'/c/' + ${cat.name}}"
+						class="text-decoration-none"
+					>
+						<img
+							th:src="@{${cat.photosImagePath}}"
+							alt="category image"
+							width="100px"
+							height="100px"
+						/>
+						<br />
+						<b>[[${cat.name}]]</b>
+					</a>
+				</div>
+			</th:block>
+		</div>
+
+		<div class="row mt-4">
+			<th:block th:each="product : ${listProducts}">
+				<div class="col mt-2">
+					<div>
+						<a class="text-decoration-none" th:href="@{'/p/' + ${product.name}}">
+							<img
+								th:src="@{${product.mainImagePath}}"
+								alt="product image"
+								width="150px"
+								height="150px"
+							/>
+							<br />
+							<b>[[${product.shortName}]]</b>
+						</a>
+					</div>
+					<div th:if="${product.discountPercent <= 0}">
+						<span
+							th:text="${#numbers.formatDecimal(product.price, 1, 'POINT', 2, 'COMMA')} + ' đ'"
+						></span>
+					</div>
+					<div th:if="${product.discountPercent > 0}">
+						<span
+							th:text="${#numbers.formatDecimal(product.discountPrice, 1, 'POINT', 2, 'COMMA')} + ' đ'"
+							style="font-size: larger; color: red"
+						></span>
+						<del>
+							<span
+								th:text="${#numbers.formatDecimal(product.price, 1, 'POINT', 2, 'COMMA')} + ' đ'"
+							></span>
+						</del>
+					</div>
+
+				</div>
+			</th:block>
+		</div>
+
+		<div
+			th:replace="~{fragments/pagination :: pagination('/c/' + ${category.name}, 'product')}"
+		></div>
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+</body>
+</html>

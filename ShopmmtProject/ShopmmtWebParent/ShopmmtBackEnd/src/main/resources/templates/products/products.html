@@ -12,6 +12,16 @@
 
 		<h2 class="mt-2">Quản lý sản phẩm</h2>
 
+		<th:block
+			sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng')"
+		>
+			<a
+				th:href="@{/products/new}"
+				class="fa-solid fa-plus fa-2x"
+				title="Thêm mới sản phẩm"
+			></a>
+		</th:block>
+
 		<div class="row mt-1">
 			<form
 				id="searchForm"
@@ -76,7 +86,7 @@
 		<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
 
 		<!-- Chỉnh lại CSS -->
-		<div class="mt-2">
+		<div class="full-details mt-2">
 			<table
 				class="table table-responsive-xl table-bordered table-striped table-hover"
 			>
@@ -95,7 +105,11 @@
 						<th
 							th:replace="~{fragments/column_link :: column_link('/products', 'category', 'Danh mục')}"
 						/>
-						<th>Khả dụng</th>
+						<th:block
+							sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng')"
+						>
+							<th>Khả dụng</th>
+						</th:block>
 						<th>Hành động</th>
 					</tr>
 				</thead>
@@ -118,11 +132,15 @@
 						</td>
 						<td>[[${product.brand.name}]]</td>
 						<td>[[${product.category.name}]]</td>
-						<td class="text-center">
-							<div
-								th:replace="~{fragments/enabled_status :: enabled_status(${product.enabled}, 'sản phẩm', '/products/' + ${product.id})}"
-							></div>
-						</td>
+						<th:block
+							sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng')"
+						>
+							<td class="text-center">
+								<div
+									th:replace="~{fragments/enabled_status :: enabled_status(${product.enabled}, 'sản phẩm', '/products/' + ${product.id})}"
+								></div>
+							</td>
+						</th:block>
 						<td class="text-center">
 							<a
 								th:href="@{'/products/detail/' + ${product.id}}"
@@ -131,19 +149,83 @@
 								data-bs-placement="top"
 								title="Xem chi tiết sản phẩm này"
 							> </a>
+
+							<th:block
+								sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng', 'Nhân viên bán hàng')"
+							>
 							&nbsp;
 							<div
-								th:replace="~{fragments/edit_delete :: edit('sản phẩm', '/products/showEdit/' + ${product.id})}"
-							></div>
+									th:replace="~{fragments/edit_delete :: edit('sản phẩm', '/products/showEdit/' + ${product.id})}"
+								></div>
+							</th:block>
+
+							<th:block
+								sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng')"
+							>
 							&nbsp;
 							<div
-								th:replace="~{fragments/edit_delete :: delete('sản phẩm', ${product.id}, '/products/delete/' + ${product.id}, true)}"
-							></div>
+									th:replace="~{fragments/edit_delete :: delete('sản phẩm', ${product.id}, '/products/delete/' + ${product.id}, true)}"
+								></div>
+							</th:block>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+
+		<!-- Responsive -->
+		<div class="less-details">
+			<div
+				th:each="product : ${listProducts}"
+				class="row m-1"
+			>
+				<div class="col-4">
+					<img
+						th:src="@{${product.mainImagePath}}"
+						style="width: 80px"
+						class="img-fluid"
+					/>
+				</div>
+				<div class="col-8">
+					<div>
+						<a
+							class="link-detail text-decoration-none"
+							th:href="@{'/products/detail/' + ${product.id}}"
+							title="Xem chi tiết"
+						>[[${product.name}]]</a>
+					</div>
+					<div class="mt-2">
+						<a
+							th:href="@{'/products/detail/' + ${product.id}}"
+							class="fa-solid fa-circle-info fa-xl icon-blue link-detail"
+							data-bs-toggle="tooltip"
+							data-bs-placement="top"
+							title="Xem chi tiết sản phẩm này"
+						> </a>
+
+						<th:block
+							sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng', 'Nhân viên bán hàng')"
+						>
+							&nbsp;
+							<div
+								th:replace="~{fragments/edit_delete :: edit('sản phẩm', '/products/showEdit/' + ${product.id})}"
+							></div>
+						</th:block>
+
+						<th:block
+							sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng')"
+						>
+							&nbsp;
+							<div
+								th:replace="~{fragments/edit_delete :: delete('sản phẩm', ${product.id}, '/products/delete/' + ${product.id}, true)}"
+							></div>
+						</th:block>
+					</div>
+				</div>
+				<div>&nbsp;</div>
+			</div>
+		</div>
+		<!-- END Responsive -->
 
 		<div
 			th:replace="~{fragments/pagination :: pagination('/products', 'products')}"

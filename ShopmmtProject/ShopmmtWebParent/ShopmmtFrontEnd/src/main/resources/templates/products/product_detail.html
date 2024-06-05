@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="~{fragments/page_head :: page_head('Thông tin sản phẩm', 'none')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+
+		<div th:replace="~{fragments/breadcrumb :: content}"></div>
+
+		<div class="row mt-2">
+			<div class="col-sm">
+				<div class="position-relative">
+					<img
+						id="bigImage"
+						th:src="@{${product.mainImagePath}}"
+						alt="productImage"
+						width="300px"
+						height="300px"
+					/>
+					<th:block th:if="${product.discountPercent > 0}">
+						<div class="sale-div position-absolute badge bg-success">Giảm
+							([[${product.discountPercent}]]%)</div>
+					</th:block>
+				</div>
+				<div class="row">
+					<div class="m-2">
+						<img
+							class="image-thumbnail m-1 border border-secondary"
+							th:src="@{${product.mainImagePath}}"
+							alt="product extra image"
+							height="80px"
+							index="0"
+						/>
+						<th:block th:each="extraImage, status : ${product.images}">
+							<div class="d-inline-block m-1 p-1">
+								<img
+									class="image-thumbnail border border-secondary"
+									th:src="@{${extraImage.imagePath}}"
+									alt="product extra image"
+									height="80px"
+									th:index="${status.count}"
+								/>
+							</div>
+						</th:block>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm">
+				<div>
+					<h2>[[${product.name}]]</h2>
+				</div>
+				<div>
+					<span>
+						<b>Thương hiệu:</b>
+						[[${product.brand.name}]]
+					</span>
+				</div>
+				<div>
+					<b>Giá:</b>
+					<span
+						th:if="${product.discountPercent <= 0}"
+						th:text="${#numbers.formatDecimal(product.price, 1, 'POINT', 2, 'COMMA')} + ' đ'"
+						style="font-size: larger; color: red"
+					></span>
+					<del th:if="${product.discountPercent > 0}">
+						<span
+							th:text="${#numbers.formatDecimal(product.price, 1, 'POINT', 2, 'COMMA')} + ' đ'"
+						></span>
+					</del>
+				</div>
+				<div th:if="${product.discountPercent > 0}">
+					<b>Giá ưu đãi:</b>
+					<span
+						style="font-size: larger; color: red"
+						th:text="${#numbers.formatDecimal(product.discountPrice, 1, 'POINT', 2, 'COMMA')} + ' đ'"
+					></span>
+				</div>
+				<div th:utext="${product.shortDescription}"></div>
+				<div>
+					<span
+						th:if="${product.inStock}"
+						class="text-success text-bold"
+					>
+						<b>Còn hàng</b>
+					</span>
+					<span
+						th:unless="${product.inStock}"
+						class="text-danger text-bold"
+					>
+						<b>Hết hàng</b>
+					</span>
+				</div>
+				<div class="mt-2">
+					<input
+						th:disabled="${!product.inStock}"
+						type="text"
+						size="5"
+						value="1"
+					/>
+				</div>
+				<div class="mt-3">
+					<input
+						th:disabled="${!product.inStock}"
+						type="button"
+						value="Thêm vào giỏ hàng"
+						class="btn btn-primary"
+					/>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<div>
+					<hr />
+				</div>
+				<div>
+					<h3>Mô tả:</h3>
+				</div>
+				<div th:utext="${product.fullDescription}"></div>
+			</div>
+		</div>
+
+		<div th:replace="~{products/images_carousel :: content}"></div>
+		
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			bigImage = $("#bigImage");
+			
+			$(".image-thumbnail").mouseover(function() {
+				currentImageSource = $(this).attr("src");
+				currentImageIndex = $(this).attr("index");
+				
+				bigImage.attr("src", currentImageSource);
+				bigImage.attr("index", currentImageIndex);
+			});
+			
+			bigImage.on("click", function() {
+				$("#carouselModal").modal("show");
+				imageIndex = parseInt(bigImage.attr("index"));
+				$("#carouselExampleIndicators").carousel(imageIndex);
+			});
+		});
+	</script>
+</body>
+</html>

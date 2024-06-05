@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.dao.DataIntegrityViolationException;
 
-import com.shopmmt.admin.exception.CategoryNotFoundException;
 import com.shopmmt.common.dto.CategoryDTO;
 import com.shopmmt.common.dto.CategoryPageInfoDTO;
 import com.shopmmt.common.entity.Category;
+import com.shopmmt.common.exception.CategoryNotFoundException;
 
 import jakarta.validation.Valid;
 
