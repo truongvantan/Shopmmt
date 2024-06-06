@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head
-	th:replace="~{fragments/page_head :: page_head('Trang chủ - Shopmmt', 'none')}"
+	th:replace="~{fragments/page_head :: page_head('Trang chủ', 'none')}"
 ></head>
 <body>
 	<div class="container-fluid mt-4">
 		<div th:replace="~{fragments/header :: header}"></div>
+		
+		<div th:replace="~{fragments/search_form :: search_form}"></div>
 
 		<h1>Danh mục</h1>
 

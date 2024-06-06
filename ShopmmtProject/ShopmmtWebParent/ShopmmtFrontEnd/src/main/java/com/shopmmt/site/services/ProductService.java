@@ -10,5 +10,7 @@ public interface ProductService {
 	Page<Product> listByCategory(int pageNum, Integer categoryId);
 	
 	Product getProductByName(String name) throws ProductNotFoundException;
+	
+	Page<Product> search(String keyword, int pageNum);
 
 }

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head>
+<head
+	th:replace="~{fragments/page_head :: page_head('Shopmmt - Cài đặt chung', 'tag')}"
+></head>
+<link
+	rel="stylesheet"
+	th:href="@{/richtext/richtext.min.css}"
+/>
+<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+</head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+
+		<div>
+			<h2 class="mt-2">Quản lý cài đặt chung</h2>
+		</div>
+
+		<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
+
+		<div class="border border-secondary rounded p-3">
+			<!-- Nav tabs -->
+			<ul
+				class="nav nav-tabs"
+				id="settingTab"
+				role="tablist"
+			>
+				<li
+					class="nav-item"
+					role="presentation"
+				>
+					<button
+						class="nav-link active"
+						data-bs-toggle="tab"
+						data-bs-target="#general"
+						type="button"
+						role="tab"
+					>Thông tin chung</button>
+				</li>
+				<li
+					class="nav-item"
+					role="presentation"
+				>
+					<button
+						class="nav-link"
+						data-bs-toggle="tab"
+						data-bs-target="#mailServer"
+						type="button"
+						role="tab"
+					>Mail Server</button>
+				</li>
+				<li
+					class="nav-item"
+					role="presentation"
+				>
+					<button
+						class="nav-link"
+						data-bs-toggle="tab"
+						data-bs-target="#mailTemplates"
+						type="button"
+						role="tab"
+					>Biểu mẫu E-mail</button>
+				</li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div
+					class="tab-pane p-3 active"
+					id="general"
+					role="tabpanel"
+				>
+					<div th:replace="~{settings/general :: content}"></div>
+				</div>
+				<div
+					class="tab-pane"
+					id="mailServer"
+					role="tabpanel"
+				>
+					<div th:replace="~{settings/mail_server :: content}"></div>
+				</div>
+				<div
+					class="tab-pane p-3"
+					id="mailTemplates"
+					role="tabpanel"
+				>
+					<div th:replace="~{settings/mail_templates/mail_templates :: content}"></div>
+				</div>
+			</div>
+			<!-- END Tab panes -->
+
+		</div>
+
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+
+	<script type="text/javascript">
+		const moduleURL = "[[@{/settings}]]";
+		const contextPath = "[[@{/}]]";
+		
+		$(document).ready(function() {
+			$("#customerVerificationContent").richText();
+		});
+	</script>
+
+	<script th:src="@{/js/common_form.js}"></script>
+</body>
+</html>

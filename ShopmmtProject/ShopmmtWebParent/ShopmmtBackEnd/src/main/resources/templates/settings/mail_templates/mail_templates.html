@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div
+		th:fragment="content"
+		th:remove="tag"
+	>
+		<form
+			th:action="@{/settings/save_mail_templates}"
+			method="post"
+		>
+			<div class="border border-secondary rounded p-3">
+				<!-- Nav tabs -->
+				<ul
+					class="nav nav-tabs"
+					id="mailTemplatesTab"
+					role="tablist"
+				>
+					<li
+						class="nav-item"
+						role="presentation"
+					>
+						<button
+							class="nav-link active"
+							data-bs-toggle="tab"
+							data-bs-target="#customerVerification"
+							type="button"
+							role="tab"
+						>Xác minh tài khoản đăng ký</button>
+					</li>
+					<li
+						class="nav-item"
+						role="presentation"
+					>
+						<button
+							class="nav-link"
+							data-bs-toggle="tab"
+							data-bs-target="#orderConfirmation"
+							type="button"
+							role="tab"
+						>Xác nhận đơn hàng</button>
+					</li>
+
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div
+						class="tab-pane p-3 active"
+						id="customerVerification"
+						role="tabpanel"
+					>
+						<div
+							th:replace="~{settings/mail_templates/customer_verification:: content}"
+						></div>
+					</div>
+					<div
+						class="tab-pane p-3"
+						id="orderConfirmation"
+						role="tabpanel"
+					>
+						<h2>Xác nhận đơn hàng</h2>
+					</div>
+				</div>
+				<!-- END Tab panes -->
+
+			</div>
+
+			<div class="text-center">
+				<input
+					type="submit"
+					value="Lưu"
+					class="btn btn-primary m-3"
+				/>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

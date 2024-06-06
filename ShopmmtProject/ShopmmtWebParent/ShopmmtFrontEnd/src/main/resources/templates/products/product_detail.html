@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head
-	th:replace="~{fragments/page_head :: page_head('Thông tin sản phẩm', 'none')}"
+	th:replace="~{fragments/page_head :: page_head(${pageTitle}, 'none')}"
 ></head>
 <body>
 	<div class="container-fluid mt-4">
 		<div th:replace="~{fragments/header :: header}"></div>
-
+		<div th:replace="~{fragments/search_form :: search_form}"></div>
 		<div th:replace="~{fragments/breadcrumb :: content}"></div>
 
 		<div class="row mt-2">
@@ -21,7 +21,7 @@
 					/>
 					<th:block th:if="${product.discountPercent > 0}">
 						<div class="sale-div position-absolute badge bg-success">Giảm
-							([[${product.discountPercent}]]%)</div>
+							([[${#numbers.formatDecimal(product.discountPercent, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]%)</div>
 					</th:block>
 				</div>
 				<div class="row">
@@ -61,21 +61,27 @@
 					<b>Giá:</b>
 					<span
 						th:if="${product.discountPercent <= 0}"
-						th:text="${#numbers.formatDecimal(product.price, 1, 'POINT', 2, 'COMMA')} + ' đ'"
 						style="font-size: larger; color: red"
-					></span>
+					>
+						<div
+							th:replace="~{products/product_fragment :: price_fragment(${product.price})}"
+						></div>
+					</span>
 					<del th:if="${product.discountPercent > 0}">
-						<span
-							th:text="${#numbers.formatDecimal(product.price, 1, 'POINT', 2, 'COMMA')} + ' đ'"
-						></span>
+						<span>
+							<div
+								th:replace="~{products/product_fragment :: price_fragment(${product.price})}"
+							></div>
+						</span>
 					</del>
 				</div>
 				<div th:if="${product.discountPercent > 0}">
 					<b>Giá ưu đãi:</b>
-					<span
-						style="font-size: larger; color: red"
-						th:text="${#numbers.formatDecimal(product.discountPrice, 1, 'POINT', 2, 'COMMA')} + ' đ'"
-					></span>
+					<span style="font-size: larger; color: red">
+						<div
+							th:replace="~{products/product_fragment :: price_fragment(${product.discountPrice})}"
+						></div>
+					</span>
 				</div>
 				<div th:utext="${product.shortDescription}"></div>
 				<div>
@@ -124,22 +130,22 @@
 		</div>
 
 		<div th:replace="~{products/images_carousel :: content}"></div>
-		
+
 		<div th:replace="~{fragments/footer :: footer}"></div>
 	</div>
-	
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			bigImage = $("#bigImage");
-			
+
 			$(".image-thumbnail").mouseover(function() {
 				currentImageSource = $(this).attr("src");
 				currentImageIndex = $(this).attr("index");
-				
+
 				bigImage.attr("src", currentImageSource);
 				bigImage.attr("index", currentImageIndex);
 			});
-			
+
 			bigImage.on("click", function() {
 				$("#carouselModal").modal("show");
 				imageIndex = parseInt(bigImage.attr("index"));

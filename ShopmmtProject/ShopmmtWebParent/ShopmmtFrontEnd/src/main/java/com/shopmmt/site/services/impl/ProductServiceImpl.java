@@ -36,4 +36,11 @@ public class ProductServiceImpl implements ProductService {
 		return product;
 	}
 
+	@Override
+	public Page<Product> search(String keyword, int pageNum) {
+		Pageable pageable = PageRequest.of(pageNum - 1, ConstantsUtil.SEARCH_RESULTS_PER_PAGE);
+		
+		return productRepository.search(keyword, pageable);
+	}
+
 }
