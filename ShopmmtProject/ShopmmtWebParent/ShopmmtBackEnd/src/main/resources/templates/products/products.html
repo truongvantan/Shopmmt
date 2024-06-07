@@ -195,6 +195,14 @@
 						>[[${product.name}]]</a>
 					</div>
 					<div class="mt-2">
+						<th:block
+							sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng')"
+						>
+							<div
+								th:replace="~{fragments/enabled_status :: enabled_status(${product.enabled}, 'sản phẩm', '/products/' + ${product.id})}"
+							></div>
+							&nbsp;
+						</th:block>
 						<a
 							th:href="@{'/products/detail/' + ${product.id}}"
 							class="fa-solid fa-circle-info fa-xl icon-blue link-detail"

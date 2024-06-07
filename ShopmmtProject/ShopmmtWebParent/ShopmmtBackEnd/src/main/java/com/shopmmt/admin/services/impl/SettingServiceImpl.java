@@ -12,6 +12,8 @@ import com.shopmmt.admin.services.SettingService;
 import com.shopmmt.common.entity.Setting;
 import com.shopmmt.common.enums.SettingCategory;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Service("settingService")
 public class SettingServiceImpl implements SettingService {
 
@@ -49,6 +51,18 @@ public class SettingServiceImpl implements SettingService {
 	@Override
 	public List<Setting> getMailTemplateSettings() {
 		return settingRepository.findByCategory(SettingCategory.MAIL_TEMPLATES);
+	}
+
+	@Override
+	public boolean checkValidSettingValue(HttpServletRequest request, List<Setting> listSettings) {
+		for (Setting setting : listSettings) {
+			String value = request.getParameter(setting.getKey());
+			if (value == null || "".equals(value.trim())) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 
 }

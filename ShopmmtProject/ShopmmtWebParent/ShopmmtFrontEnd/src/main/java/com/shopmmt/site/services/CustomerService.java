@@ -10,4 +10,6 @@ public interface CustomerService {
 
 	boolean validatePassword(String password, String confirmPassword);
 
+	boolean verify(String code);
+
 }

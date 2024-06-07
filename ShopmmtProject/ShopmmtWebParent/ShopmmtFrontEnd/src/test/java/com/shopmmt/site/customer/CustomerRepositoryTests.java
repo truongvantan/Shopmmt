@@ -27,9 +27,9 @@ public class CustomerRepositoryTests {
 	@Test
 	public void testCreateCustomer1() {
 		Customer customer = new Customer();
-		customer.setFirstName("Văn A");
-		customer.setLastName("Nguyễn");
-		customer.setPassword("@nguyenvana123");
+		customer.setFirstName("A");
+		customer.setLastName("Nguyễn Văn");
+		customer.setPassword("@Nguyenvana123");
 		customer.setEmail("nguyenva@gmail.com");
 		customer.setPhoneNumber("0905-123-456");
 		customer.setAddressLine1("193 Nguyễn Lương Bằng");
@@ -47,9 +47,9 @@ public class CustomerRepositoryTests {
 	@Test
 	public void testCreateCustomer2() {
 		Customer customer = new Customer();
-		customer.setFirstName("Thị B");
-		customer.setLastName("Trần");
-		customer.setPassword("@tranthib123");
+		customer.setFirstName("B");
+		customer.setLastName("Trần Thị");
+		customer.setPassword("@Tranthib123");
 		customer.setEmail("tranthib@gmail.com");
 		customer.setPhoneNumber("0905-444-777");
 		customer.setAddressLine1("20 Hoàng Diệu");

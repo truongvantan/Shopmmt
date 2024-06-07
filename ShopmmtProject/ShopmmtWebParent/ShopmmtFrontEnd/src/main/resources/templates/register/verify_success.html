@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="~{fragments/page_head :: page_head(${pageTitle}, 'none')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+
+		<div class="text-center mt-2">
+			<h2 class="text-success">Xác minh tài khoản thành công</h2>
+			<h4>Tài khoản của bạn đã được xác minh.</h4>
+			<div>
+				<a
+					th:href="@{/login}"
+					class="btn btn-primary"
+				>Đăng nhập</a>
+			</div>
+		</div>
+
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+</body>
+</html>

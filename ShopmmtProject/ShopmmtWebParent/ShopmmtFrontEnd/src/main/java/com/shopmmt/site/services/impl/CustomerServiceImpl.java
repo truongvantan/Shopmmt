@@ -10,21 +10,23 @@ import com.shopmmt.common.entity.Customer;
 import com.shopmmt.site.repositories.CustomerRepository;
 import com.shopmmt.site.services.CustomerService;
 
+import jakarta.transaction.Transactional;
 import net.bytebuddy.utility.RandomString;
 
 @Service("customerService")
+@Transactional
 public class CustomerServiceImpl implements CustomerService {
-	
+
 	@Autowired
 	private CustomerRepository customerRepository;
-	
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	@Override
 	public boolean isEmailUnique(String email) {
 		Customer customer = customerRepository.findByEmail(email);
-		
+
 		return customer == null;
 	}
 
@@ -33,13 +35,13 @@ public class CustomerServiceImpl implements CustomerService {
 		encodePassword(customer);
 		customer.setEnabled(false);
 		customer.setCreatedTime(new Date());
-		
+
 		String randomCode = RandomString.make(64);
 		customer.setVerificationCode(randomCode);
-		
+
 		customerRepository.save(customer);
 	}
-	
+
 	private void encodePassword(Customer customer) {
 		String encodedPassword = passwordEncoder.encode(customer.getPassword());
 		customer.setPassword(encodedPassword);
@@ -50,12 +52,24 @@ public class CustomerServiceImpl implements CustomerService {
 		if (password == null || confirmPassword == null) {
 			return false;
 		}
-		
+
 		if ((password != null && confirmPassword != null) && (!password.equals(confirmPassword))) {
 			return false;
 		}
-		
+
 		return true;
 	}
-	
+
+	@Override
+	public boolean verify(String verificationCode) {
+		Customer customer = customerRepository.findByVerificationCode(verificationCode);
+
+		if (customer == null || customer.isEnabled()) {
+			return false;
+		} else {
+			customerRepository.enable(customer.getId());
+			return true;
+		}
+	}
+
 }

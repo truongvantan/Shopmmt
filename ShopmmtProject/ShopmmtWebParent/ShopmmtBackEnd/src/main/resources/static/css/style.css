@@ -14,6 +14,10 @@
 *.icon-blue {color: #4942E4;}
 *.icon-yellow {color: #FFA700;}
 
+a:hover {
+	text-decoration: underline !important;
+}
+
 
 /* small screen  */
 @media screen and (max-width: 768px) {
@@ -25,9 +29,11 @@
 @media screen and (min-width: 768px) and (max-width: 1024px) {
 	div.full-details { display: block; }
 	div.less-details { display: none; }
+	.hideable-column { display: none }
 }
 
 /* large screen  */
 @media screen and (min-width: 1024px) {
 	div.less-details { display: none; }
+	.hideable-column { display: table-cell; }
 }

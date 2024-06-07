@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<div class="modal-header">
+	<h4 class="modal-title">Thông tin chi tiết khách hàng</h4>
+	<button
+		type="button"
+		class="btn-close"
+		data-bs-dismiss="modal"
+		aria-label="Close"
+	></button>
+</div>
+
+<div>
+	<ul
+		class="nav nav-tabs"
+		id="myTab"
+		role="tablist"
+	>
+		<li class="nav-item">
+			<a
+				class="nav-link active"
+				data-bs-toggle="tab"
+				href="#overview"
+				role="tab"
+			>Thông tin tổng quan</a>
+		</li>
+		<li class="nav-item">
+			<a
+				class="nav-link"
+				data-bs-toggle="tab"
+				href="#address"
+				role="tab"
+			>Địa chỉ</a>
+		</li>
+	</ul>
+
+	<div class="tab-content">
+		<!-- Tab pane Overview  -->
+		<div
+			class="tab-pane active p-3"
+			id="overview"
+			role="tabpanel"
+		>
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">ID:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${customer.id}"
+						readonly
+					/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Họ và tên:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${customer.fullName}"
+						readonly
+					/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">E-mail:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${customer.email}"
+						readonly
+					/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Số điện thoại:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${customer.phoneNumber}"
+						readonly
+					/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Khả dụng:</label>
+				<div class="col-sm-10 mt-2">
+					<input
+						type="checkbox"
+						th:checked="${customer.enabled}"
+						disabled="disabled"
+					/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Ngày tạo:</label>
+				<div class="col-sm-10 mt-2">
+					<span
+						th:text="${#dates.format(customer.createdTime, 'dd-MM-yyyy HH:mm:ss')}"
+					></span>
+				</div>
+			</div>
+		</div>
+		<!-- END Tab pane Overview  -->
+
+		<!-- Tab pane Address  -->
+		<div
+			class="tab-pane p-3"
+			id="address"
+			role="tabpanel"
+		>
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Địa chỉ 1:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${customer.addressLine1}"
+						readonly
+					/>
+				</div>
+			</div>
+			
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Địa chỉ 2:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${customer.addressLine2}"
+						readonly
+					/>
+				</div>
+			</div>
+			
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Quận/Huyện:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${customer.state}"
+						readonly
+					/>
+				</div>
+			</div>
+			
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Tỉnh/Thành phố:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${customer.city}"
+						readonly
+					/>
+				</div>
+			</div>
+			
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Mã bưu chính:</label>
+				<div class="col-sm-10">
+					<input
+						type="text"
+						class="form-control"
+						th:value="${customer.postalCode}"
+						readonly
+					/>
+				</div>
+			</div>
+			
+		</div>
+		<!-- END Tab pane Address  -->
+
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button
+		type="button"
+		class="btn btn-danger"
+		data-bs-dismiss="modal"
+	>Đóng</button>
+</div>
+</html>

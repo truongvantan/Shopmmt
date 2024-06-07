@@ -5,6 +5,8 @@ import java.util.List;
 import com.shopmmt.admin.common.GeneralSettingBag;
 import com.shopmmt.common.entity.Setting;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 public interface SettingService {
 	List<Setting> listAllSettings();
 	
@@ -12,7 +14,10 @@ public interface SettingService {
 	
 	void saveAll(Iterable<Setting> settings);
 	
+	boolean checkValidSettingValue(HttpServletRequest request, List<Setting> listSettings);
+	
 	List<Setting> getMailServerSettings();
 	
 	List<Setting> getMailTemplateSettings();
+
 }

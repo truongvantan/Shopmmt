@@ -56,17 +56,22 @@ public class SettingController {
 			return "redirect:/settings";
 		} else {
 			GeneralSettingBag settingBag = settingService.getGeneralSettings();
-
-			saveSiteLogo(multipartFile, settingBag);
-			saveCurrencySymbol(request, settingBag);
-
-			updateSettingValuesFromForm(request, settingBag.list());
-
-			redirectAttributes.addFlashAttribute("message", "Cập nhật thông tin thành công.");
-
-			return "redirect:/settings";
+			
+			if (!settingService.checkValidSettingValue(request, settingBag.list())) {
+				redirectAttributes.addFlashAttribute("error", "Vui lòng nhập đầy đủ thông tin.");
+				
+				return "redirect:/settings";
+			} else {
+				saveSiteLogo(multipartFile, settingBag);
+				saveCurrencySymbol(request, settingBag);
+				
+				updateSettingValuesFromForm(request, settingBag.list());
+				
+				redirectAttributes.addFlashAttribute("message", "Cập nhật thông tin thành công.");
+				
+				return "redirect:/settings";
+			}
 		}
-
 	}
 
 	private void saveSiteLogo(MultipartFile multipartFile, GeneralSettingBag settingBag) throws IOException {
@@ -105,20 +110,34 @@ public class SettingController {
 	@PostMapping("/settings/save_mail_server")
 	public String saveMailServerSetttings(HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		List<Setting> mailServerSettings = settingService.getMailServerSettings();
-		updateSettingValuesFromForm(request, mailServerSettings);
-
-		redirectAttributes.addFlashAttribute("message", "Cập nhật thông tin Mail Server thành công.");
-
-		return "redirect:/settings#mailServer";
+		
+		if (!settingService.checkValidSettingValue(request, mailServerSettings)) {
+			redirectAttributes.addFlashAttribute("error", "Vui lòng nhập đầy đủ thông tin.");
+			
+			return "redirect:/settings";
+		} else {
+			updateSettingValuesFromForm(request, mailServerSettings);
+			
+			redirectAttributes.addFlashAttribute("message", "Cập nhật thông tin Mail Server thành công.");
+			
+			return "redirect:/settings";
+		}
 	}
 
 	@PostMapping("/settings/save_mail_templates")
 	public String saveMailTemplateSetttings(HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		List<Setting> mailTemplateSettings = settingService.getMailTemplateSettings();
-		updateSettingValuesFromForm(request, mailTemplateSettings);
-
-		redirectAttributes.addFlashAttribute("message", "Cập nhật biểu mẫu E-mail thành công.");
-
-		return "redirect:/settings#mailTemplates";
+		
+		if (!settingService.checkValidSettingValue(request, mailTemplateSettings)) {
+			redirectAttributes.addFlashAttribute("error", "Vui lòng nhập đầy đủ thông tin.");
+			
+			return "redirect:/settings";
+		} else {
+			updateSettingValuesFromForm(request, mailTemplateSettings);
+			
+			redirectAttributes.addFlashAttribute("message", "Cập nhật biểu mẫu E-mail thành công.");
+			
+			return "redirect:/settings";
+		}
 	}
 }

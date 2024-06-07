@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head
+	th:replace="~{fragments/page_head :: page_head('Shopmmt - Quản lí khách hàng', 'none')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+
+		<h2 class="mt-2">Quản lý khách hàng</h2>
+
+		<div
+			th:replace="~{fragments/search_form :: search_form('/customers', 'khách hàng')}"
+		></div>
+
+		<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
+
+		<!-- Chỉnh lại CSS -->
+		<div class="mt-2 full-details">
+			<table
+				class="table table-responsive-xl table-bordered table-striped table-hover"
+			>
+				<thead class="table-dark">
+					<tr class="text-center">
+						<th
+							th:replace="~{fragments/column_link :: column_link('/customers', 'id', 'ID')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/customers', 'lastName', 'Họ đệm')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/customers', 'firstName', 'Tên')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/customers', 'email', 'E-mail')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/customers', 'addressLine1', 'Địa chỉ')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/customers', 'state', 'Quận/Huyện')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/customers', 'city', 'Tỉnh/Thành phố')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/customers', 'enabled', 'Khả dụng')}"
+						/>
+						<th>Hành động</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="customer : ${listCustomers}">
+						<td class="text-center">[[${customer.id}]]</td>
+						<td>[[${customer.lastName}]]</td>
+						<td>[[${customer.firstName}]]</td>
+						<td>[[${customer.email}]]</td>
+						<td>[[${customer.addressLine1}]]</td>
+						<td class="text-center">[[${customer.state}]]</td>
+						<td class="text-center">[[${customer.city}]]</td>
+						<td class="text-center">
+							<div
+								th:replace="~{fragments/enabled_status :: enabled_status(${customer.enabled}, 'khách hàng', '/customers/' + ${customer.id})}"
+							></div>
+						</td>
+						<td class="text-center">
+							<a
+								th:href="@{'/customers/detail/' + ${customer.id}}"
+								class="fa-solid fa-circle-info fa-xl icon-blue link-detail"
+								data-bs-toggle="tooltip"
+								data-bs-placement="top"
+								title="Xem thông tin chi tiết khách hàng này"
+							> </a>
+							&nbsp;
+							<div
+								th:replace="~{fragments/edit_delete :: edit('khách hàng', '/customers/showEdit/' + ${customer.id})}"
+							></div>
+							<div
+								th:replace="~{fragments/edit_delete :: delete('khách hàng', ${customer.id}, '/customers/delete/' + ${customer.id}, true)}"
+							></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Responsive -->
+		<div class="less-details">
+			<div
+				th:each="customer : ${listCustomers}"
+				class="row mt-4"
+			>
+				<div class="col-4">
+					<span>
+						<b>[[${customer.fullName}]]</b>
+					</span>
+				</div>
+				<div class="col-8">
+					<div class="mb-1">
+						<span>[[${customer.city}]]</span>
+					</div>
+					<div>
+						<div
+							th:replace="~{fragments/enabled_status :: enabled_status(${customer.enabled}, 'khách hàng', '/customers/' + ${customer.id})}"
+						></div>
+						&nbsp;
+						<a
+							th:href="@{'/customers/detail/' + ${customer.id}}"
+							class="fa-solid fa-circle-info fa-xl icon-blue link-detail"
+							data-bs-toggle="tooltip"
+							data-bs-placement="top"
+							title="Xem thông tin chi tiết khách hàng này"
+						> </a>
+						&nbsp;
+						<div
+							th:replace="~{fragments/edit_delete :: edit('khách hàng', '/customers/showEdit/' + ${customer.id})}"
+						></div>
+						&nbsp;
+						<div
+							th:replace="~{fragments/edit_delete :: delete('khách hàng', ${customer.id}, '/customers/delete/' + ${customer.id}, true)}"
+						></div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- END Responsive -->
+
+		<div
+			th:replace="~{fragments/pagination :: pagination('/customers', 'customers')}"
+		></div>
+
+		<div th:replace="~{fragments/confirm_modal :: confirm_modal}"></div>
+
+		<!-- Modal detail  -->
+		<div
+			class="modal fade"
+			id="detailModal"
+		>
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content"></div>
+			</div>
+		</div>
+		<!-- END Modal detail  -->
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+
+
+	<script th:src="@{/js/common_list.js}"></script>
+	<script type="text/javascript">
+		const moduleURL = "[[@{/customers}]]";
+
+		$(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+
+		$(document).ready(
+				function() {
+					$(".link-delete").on("click", function(e) {
+						e.preventDefault();
+						showDeleteConfirmModal($(this), 'khách hàng');
+					});
+					$(".link-detail").on(
+							"click",
+							function(e) {
+								e.preventDefault();
+								linkDetailURL = $(this).attr("href");
+								$("#detailModal").modal("show").find(
+										".modal-content").load(linkDetailURL);
+							});
+				});
+	</script>
+
+</body>
+</html>

@@ -390,3 +390,93 @@ java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'hoasu11920@g
 2024-06-07T00:07:02.205+07:00  INFO 17072 --- [RMI TCP Connection(115)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-06-07T00:07:02.205+07:00  INFO 17072 --- [RMI TCP Connection(115)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown initiated...
 2024-06-07T00:07:02.209+07:00  INFO 17072 --- [RMI TCP Connection(115)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown completed.
+2024-06-07T12:44:11.254+07:00  INFO 14708 --- [restartedMain] c.s.site.ShopmmtFrontEndApplication      : Starting ShopmmtFrontEndApplication using Java 17.0.10 with PID 14708 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtFrontEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtFrontEnd)
+2024-06-07T12:44:11.257+07:00  INFO 14708 --- [restartedMain] c.s.site.ShopmmtFrontEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T12:44:11.311+07:00  INFO 14708 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-06-07T12:44:11.311+07:00  INFO 14708 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-06-07T12:44:12.229+07:00  INFO 14708 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-07T12:44:12.320+07:00  INFO 14708 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 4 JPA repository interfaces.
+2024-06-07T12:44:12.900+07:00  INFO 14708 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 80 (http)
+2024-06-07T12:44:12.914+07:00  INFO 14708 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-07T12:44:12.916+07:00  INFO 14708 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-07T12:44:12.962+07:00  INFO 14708 --- [restartedMain] o.a.c.c.C.[.[localhost].[/Shopmmt]       : Initializing Spring embedded WebApplicationContext
+2024-06-07T12:44:12.963+07:00  INFO 14708 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1651 ms
+2024-06-07T12:44:13.142+07:00  INFO 14708 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-07T12:44:13.219+07:00  INFO 14708 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-07T12:44:13.263+07:00  INFO 14708 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-07T12:44:13.461+07:00  INFO 14708 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-07T12:44:13.496+07:00  INFO 14708 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-07T12:44:13.771+07:00  INFO 14708 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@21c29ad1
+2024-06-07T12:44:13.774+07:00  INFO 14708 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-07T12:44:14.968+07:00  INFO 14708 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-07T12:44:15.102+07:00  INFO 14708 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-07T12:44:15.294+07:00  INFO 14708 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-07T12:44:15.871+07:00  WARN 14708 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-07T12:44:15.887+07:00  WARN 14708 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: cc118b00-e9d9-47c3-b901-afcb411426bb
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-06-07T12:44:15.992+07:00  INFO 14708 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-07T12:44:16.388+07:00  INFO 14708 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1881aa01, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@48f3d3db, org.springframework.security.web.context.SecurityContextHolderFilter@132430f2, org.springframework.security.web.header.HeaderWriterFilter@511623bd, org.springframework.web.filter.CorsFilter@22d9aaa4, org.springframework.security.web.csrf.CsrfFilter@61988110, org.springframework.security.web.authentication.logout.LogoutFilter@73adb24b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@18b34bf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6a86b489, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7ad247f, org.springframework.security.web.access.ExceptionTranslationFilter@1ce5f079, org.springframework.security.web.access.intercept.AuthorizationFilter@62e65882]
+2024-06-07T12:44:16.397+07:00  WARN 14708 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2024-06-07T12:44:16.397+07:00  INFO 14708 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/images/**']
+2024-06-07T12:44:16.397+07:00  WARN 14708 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2024-06-07T12:44:16.397+07:00  INFO 14708 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/js/**']
+2024-06-07T12:44:16.397+07:00  WARN 14708 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2024-06-07T12:44:16.397+07:00  INFO 14708 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+2024-06-07T12:44:16.398+07:00  WARN 14708 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/css/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2024-06-07T12:44:16.398+07:00  INFO 14708 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/css/**']
+2024-06-07T12:44:16.398+07:00  WARN 14708 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/fontawesome/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2024-06-07T12:44:16.398+07:00  INFO 14708 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/fontawesome/**']
+2024-06-07T12:44:16.398+07:00  WARN 14708 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/fonts/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2024-06-07T12:44:16.398+07:00  INFO 14708 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/fonts/**']
+2024-06-07T12:44:16.398+07:00  WARN 14708 --- [restartedMain] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webfonts/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2024-06-07T12:44:16.398+07:00  INFO 14708 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webfonts/**']
+2024-06-07T12:44:16.673+07:00  INFO 14708 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-07T12:44:16.715+07:00  INFO 14708 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 80 (http) with context path '/Shopmmt'
+2024-06-07T12:44:16.725+07:00  INFO 14708 --- [restartedMain] c.s.site.ShopmmtFrontEndApplication      : Started ShopmmtFrontEndApplication in 5.863 seconds (process running for 6.607)
+2024-06-07T12:44:37.106+07:00  INFO 14708 --- [http-nio-80-exec-1] o.a.c.c.C.[.[localhost].[/Shopmmt]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-07T12:44:37.108+07:00  INFO 14708 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-07T12:44:37.109+07:00  INFO 14708 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-07T12:47:25.391+07:00  INFO 14708 --- [RMI TCP Connection(10)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-06-07T12:47:25.405+07:00  INFO 14708 --- [RMI TCP Connection(10)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-07T12:47:25.408+07:00  INFO 14708 --- [RMI TCP Connection(10)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-07T12:47:25.414+07:00  INFO 14708 --- [RMI TCP Connection(10)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-07T15:51:37.808+07:00  INFO 17028 --- [main] c.s.s.customer.CustomerRepositoryTests   : Starting CustomerRepositoryTests using Java 17.0.10 with PID 17028 (started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtFrontEnd)
+2024-06-07T15:51:37.810+07:00  INFO 17028 --- [main] c.s.s.customer.CustomerRepositoryTests   : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T15:51:38.190+07:00  INFO 17028 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-07T15:51:38.259+07:00  INFO 17028 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 4 JPA repository interfaces.
+2024-06-07T15:51:38.592+07:00  INFO 17028 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-07T15:51:38.657+07:00  INFO 17028 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-07T15:51:38.701+07:00  INFO 17028 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-07T15:51:38.963+07:00  INFO 17028 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-07T15:51:38.996+07:00  INFO 17028 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-07T15:51:39.280+07:00  INFO 17028 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@163e8949
+2024-06-07T15:51:39.283+07:00  INFO 17028 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-07T15:51:40.514+07:00  INFO 17028 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-07T15:51:40.631+07:00  INFO 17028 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-07T15:51:40.888+07:00  INFO 17028 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-07T15:51:41.469+07:00  INFO 17028 --- [main] c.s.s.customer.CustomerRepositoryTests   : Started CustomerRepositoryTests in 4.023 seconds (process running for 5.274)
+2024-06-07T15:51:42.245+07:00  INFO 17028 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-07T15:51:42.248+07:00  INFO 17028 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-07T15:51:42.256+07:00  INFO 17028 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-07T15:52:22.952+07:00  INFO 4232 --- [main] c.s.s.customer.CustomerRepositoryTests   : Starting CustomerRepositoryTests using Java 17.0.10 with PID 4232 (started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtFrontEnd)
+2024-06-07T15:52:22.953+07:00  INFO 4232 --- [main] c.s.s.customer.CustomerRepositoryTests   : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T15:52:23.316+07:00  INFO 4232 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-07T15:52:23.389+07:00  INFO 4232 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 4 JPA repository interfaces.
+2024-06-07T15:52:23.725+07:00  INFO 4232 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-07T15:52:23.781+07:00  INFO 4232 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-07T15:52:23.816+07:00  INFO 4232 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-07T15:52:24.081+07:00  INFO 4232 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-07T15:52:24.122+07:00  INFO 4232 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-07T15:52:24.402+07:00  INFO 4232 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58601e7a
+2024-06-07T15:52:24.405+07:00  INFO 4232 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-07T15:52:25.611+07:00  INFO 4232 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-07T15:52:25.723+07:00  INFO 4232 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-07T15:52:25.992+07:00  INFO 4232 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-07T15:52:26.575+07:00  INFO 4232 --- [main] c.s.s.customer.CustomerRepositoryTests   : Started CustomerRepositoryTests in 3.973 seconds (process running for 4.925)
+2024-06-07T15:52:27.251+07:00  INFO 4232 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-07T15:52:27.254+07:00  INFO 4232 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-07T15:52:27.263+07:00  INFO 4232 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

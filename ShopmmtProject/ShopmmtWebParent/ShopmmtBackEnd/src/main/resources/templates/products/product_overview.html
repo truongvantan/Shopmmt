@@ -17,18 +17,32 @@
 				<span class="text-danger">(*)</span>
 			</label>
 			<div class="col-sm-10">
-				<input
-					type="text"
-					class="form-control"
-					id="name"
-					th:field="*{name}"
-					th:readonly="${#authorization.expression('hasAuthority(''Nhân viên bán hàng'')')}"
-				>
-				<span
-					th:if="${#fields.hasErrors('name')}"
-					th:errors="${productDTO.name}"
-					class="text-danger"
-				>Name Error</span>
+				<th:block th:if="${!#authorization.expression('hasAuthority(''Admin'')') && !#authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
+					<th:block th:if="${#authorization.expression('hasAuthority(''Nhân viên bán hàng'')')}">
+						<input
+							type="text"
+							class="form-control"
+							id="name"
+							th:field="*{name}"
+							readonly="readonly"
+						>
+					</th:block>
+				</th:block>
+				
+				<th:block th:if="${#authorization.expression('hasAuthority(''Admin'')') || #authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
+					<input
+						type="text"
+						class="form-control"
+						id="name"
+						th:field="*{name}"
+					>
+					<span
+						th:if="${#fields.hasErrors('name')}"
+						th:errors="${productDTO.name}"
+						class="text-danger"
+					>Name Error</span>
+				</th:block>
+				
 			</div>
 		</div>
 
@@ -41,12 +55,11 @@
 				<span class="text-danger">(*)</span>
 			</label>
 			<div class="col-sm-10">
-				<th:block
-					sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng')"
-				>
+				<th:block th:if="${#authorization.expression('hasAuthority(''Admin'')') || #authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
 					<select
 						th:field="*{brand}"
 						class="form-select"
+						required
 					>
 						<th:block th:each="brand : ${listBrands}">
 							<option th:value="${brand.id}">[[${brand.name}]]</option>
@@ -54,13 +67,15 @@
 					</select>
 				</th:block>
 
-				<th:block sec:authorize="hasAuthority('Nhân viên bán hàng')">
-					<input
-						type="text"
-						class="form-control"
-						th:value="${productDTO.brand.name}"
-						readonly
-					/>
+				<th:block th:if="${!#authorization.expression('hasAuthority(''Admin'')') && !#authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
+					<th:block th:if="${#authorization.expression('hasAuthority(''Nhân viên bán hàng'')')}">
+						<input
+							type="text"
+							class="form-control"
+							th:value="${productDTO.brand.name}"
+							readonly
+						/>
+					</th:block>
 				</th:block>
 			</div>
 		</div>
@@ -74,13 +89,12 @@
 				<span class="text-danger">(*)</span>
 			</label>
 			<div class="col-sm-10">
-				<th:block
-					sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng')"
-				>
+				<th:block th:if="${#authorization.expression('hasAuthority(''Admin'')') || #authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
 					<th:block th:if="${productDTO.category != null}">
 						<select
 							th:field="*{category}"
 							class="form-select"
+							required
 						>
 							<th:block th:each="category : ${productDTO.brand.categories}">
 								<option th:value="${category.id}">[[${category.name}]]</option>
@@ -91,18 +105,21 @@
 						<select
 							th:field="*{category}"
 							class="form-select"
+							required
 						>
 						</select>
 					</th:block>
 				</th:block>
 
-				<th:block sec:authorize="hasAuthority('Nhân viên bán hàng')">
-					<input
-						type="text"
-						class="form-control"
-						th:value="${productDTO.category.name}"
-						readonly
-					/>
+				<th:block th:if="${!#authorization.expression('hasAuthority(''Admin'')') && !#authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
+					<th:block th:if="${#authorization.expression('hasAuthority(''Nhân viên bán hàng'')')}">
+						<input
+							type="text"
+							class="form-control"
+							th:value="${productDTO.category.name}"
+							readonly
+						/>
+					</th:block>
 				</th:block>
 			</div>
 		</div>
@@ -113,15 +130,23 @@
 				for="enabled"
 			>Khả dụng:</label>
 			<div class="col-sm-10">
-				<div class="form-check form-switch mt-2">
-					<input
-						class="form-check-input"
-						type="checkbox"
-						id="enabled"
-						th:field="*{enabled}"
-						th:disabled="${#authorization.expression('hasAuthority(''Nhân viên bán hàng'')')}"
-					/>
-				</div>
+			
+				<th:block th:if="${!#authorization.expression('hasAuthority(''Admin'')') && !#authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
+					<th:block th:if="${#authorization.expression('hasAuthority(''Nhân viên bán hàng'')')}">
+						<input type="checkbox" th:field="*{enabled}" disabled="disabled" />
+					</th:block>
+				</th:block>
+			
+				<th:block th:if="${#authorization.expression('hasAuthority(''Admin'')') || #authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
+					<div class="form-check form-switch mt-2">
+						<input
+							class="form-check-input"
+							type="checkbox"
+							id="enabled"
+							th:field="*{enabled}"
+						/>
+					</div>
+				</th:block>
 			</div>
 		</div>
 
@@ -131,15 +156,22 @@
 				for="inStock"
 			>Còn hàng:</label>
 			<div class="col-sm-10">
-				<div class="form-check form-switch mt-2">
-					<input
-						class="form-check-input"
-						type="checkbox"
-						id="inStock"
-						th:field="*{inStock}"
-						th:disabled="${#authorization.expression('hasAuthority(''Nhân viên bán hàng'')')}"
-					/>
-				</div>
+				<th:block th:if="${!#authorization.expression('hasAuthority(''Admin'')') && !#authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
+					<th:block th:if="${#authorization.expression('hasAuthority(''Nhân viên bán hàng'')')}">
+						<input type="checkbox" th:field="*{inStock}" disabled="disabled" />
+					</th:block>
+				</th:block>
+			
+				<th:block th:if="${#authorization.expression('hasAuthority(''Admin'')') || #authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
+					<div class="form-check form-switch mt-2">
+						<input
+							class="form-check-input"
+							type="checkbox"
+							id="inStock"
+							th:field="*{inStock}"
+						/>
+					</div>
+				</th:block>
 			</div>
 		</div>
 
