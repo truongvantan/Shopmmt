@@ -995,3 +995,104 @@ java.io.StreamCorruptedException: invalid type code: 00
 2024-06-08T22:00:19.611+07:00  INFO 15844 --- [ShopmmtCommon] [RMI TCP Connection(27)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-06-08T22:00:19.612+07:00  INFO 15844 --- [ShopmmtCommon] [RMI TCP Connection(27)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
 2024-06-08T22:00:19.614+07:00  INFO 15844 --- [ShopmmtCommon] [RMI TCP Connection(27)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2024-06-08T22:39:46.517+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] c.s.site.ShopmmtFrontEndApplication      : Starting ShopmmtFrontEndApplication using Java 17.0.10 with PID 12840 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtFrontEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtFrontEnd)
+2024-06-08T22:39:46.526+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] c.s.site.ShopmmtFrontEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-08T22:39:46.564+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-06-08T22:39:46.564+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-06-08T22:39:47.187+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-08T22:39:47.257+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 4 JPA repository interfaces.
+2024-06-08T22:39:47.781+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 80 (http)
+2024-06-08T22:39:47.795+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-08T22:39:47.795+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-08T22:39:47.847+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] o.a.c.c.C.[.[localhost].[/Shopmmt]       : Initializing Spring embedded WebApplicationContext
+2024-06-08T22:39:47.847+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1283 ms
+2024-06-08T22:39:47.978+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-08T22:39:48.025+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-08T22:39:48.058+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-08T22:39:48.240+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-08T22:39:48.273+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-08T22:39:48.548+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4b01b74c
+2024-06-08T22:39:48.551+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-08T22:39:49.715+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-08T22:39:49.823+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-08T22:39:50.030+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-08T22:39:50.298+07:00  WARN 12840 --- [ShopmmtCommon] [restartedMain] o.a.c.c.C.[.[localhost].[/Shopmmt]       : Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [30845853030DDE6C34D31BEC5CDC7D6A]
+2024-06-08T22:39:50.300+07:00 ERROR 12840 --- [ShopmmtCommon] [restartedMain] o.a.catalina.session.StandardManager     : Exception loading sessions from persistent storage
+
+java.io.StreamCorruptedException: invalid type code: 00
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1764) ~[na:na]
+	at java.base/java.io.ObjectInputStream$FieldValues.<init>(ObjectInputStream.java:2606) ~[na:na]
+	at java.base/java.io.ObjectInputStream.defaultReadObject(ObjectInputStream.java:647) ~[na:na]
+	at java.base/java.lang.Throwable.readObject(Throwable.java:912) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1100) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2423) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:509) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:467) ~[na:na]
+	at org.apache.catalina.session.StandardSession.doReadObject(StandardSession.java:1348) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.session.StandardSession.readObjectData(StandardSession.java:985) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.session.StandardManager.doLoad(StandardManager.java:210) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.session.StandardManager.load(StandardManager.java:156) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.session.StandardManager.startInternal(StandardManager.java:346) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4907) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:845) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:240) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:433) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:921) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:437) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:126) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:105) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:499) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:218) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:618) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.5.jar:3.2.5]
+	at com.shopmmt.site.ShopmmtFrontEndApplication.main(ShopmmtFrontEndApplication.java:12) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.5.jar:3.2.5]
+
+2024-06-08T22:39:50.596+07:00  WARN 12840 --- [ShopmmtCommon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-08T22:39:50.674+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-08T22:39:51.076+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@497debe5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4173d1f3, org.springframework.security.web.context.SecurityContextHolderFilter@696ff95f, org.springframework.security.web.header.HeaderWriterFilter@793f4f0a, org.springframework.web.filter.CorsFilter@6f4c9d9, org.springframework.security.web.csrf.CsrfFilter@6635abc0, org.springframework.security.web.authentication.logout.LogoutFilter@39112213, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@5e9fa55, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@14dbbe10, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4b0ec02a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7c9414db, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@43d88beb, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@54426044, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@79620ef1, org.springframework.security.web.access.ExceptionTranslationFilter@5c89e7a2, org.springframework.security.web.access.intercept.AuthorizationFilter@6e620771]
+2024-06-08T22:39:51.276+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-08T22:39:51.322+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 80 (http) with context path '/Shopmmt'
+2024-06-08T22:39:51.332+07:00  INFO 12840 --- [ShopmmtCommon] [restartedMain] c.s.site.ShopmmtFrontEndApplication      : Started ShopmmtFrontEndApplication in 5.208 seconds (process running for 5.846)
+2024-06-08T22:40:07.667+07:00  INFO 12840 --- [ShopmmtCommon] [http-nio-80-exec-1] o.a.c.c.C.[.[localhost].[/Shopmmt]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-08T22:40:07.668+07:00  INFO 12840 --- [ShopmmtCommon] [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-08T22:40:07.669+07:00  INFO 12840 --- [ShopmmtCommon] [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-08T22:42:06.658+07:00  INFO 12840 --- [ShopmmtCommon] [RMI TCP Connection(11)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-06-08T22:42:06.678+07:00  INFO 12840 --- [ShopmmtCommon] [RMI TCP Connection(11)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-08T22:42:06.680+07:00  INFO 12840 --- [ShopmmtCommon] [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-08T22:42:06.685+07:00  INFO 12840 --- [ShopmmtCommon] [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
