@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div
+		th:fragment="alert_message_box"
+		class="row mt-3"
+	>
+		<div class="col-xs-12">
+			<div
+				th:if="${message != null}"
+				class="alert alert-success text-center"
+			>[[${message}]]</div>
+			<div
+				th:if="${error != null}"
+				class="alert alert-danger text-center"
+			>[[${error}]]</div>
+		</div>
+	</div>
+</body>
+</html>

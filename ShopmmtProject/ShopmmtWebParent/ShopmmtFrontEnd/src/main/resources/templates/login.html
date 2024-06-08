@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="~{fragments/page_head :: page_head('Đăng nhập', 'none')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+		<section>
+			<div class="container py-5 h-100">
+				<div
+					class="row d-flex justify-content-center align-items-center h-100"
+				>
+					<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+						<div
+							class="card shadow-2-strong"
+							style="border-radius: 1rem; background-color: #eaeaea24;"
+						>
+							<div class="card-body p-4 text-center">
+								<img
+									alt="logo"
+									th:src="@{/images/logo-blue.png}"
+									width="100"
+									height="100"
+								>
+								<h3 class="mb-3">Đăng nhập</h3>
+								<div th:if="${param.error}">
+									<p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+								</div>
+								<div th:if="${param.logout}">
+									<p class="text-warning">Bạn đã đăng xuất khỏi hệ thống.</p>
+								</div>
+								<form
+									th:action="@{/login}"
+									method="post"
+								>
+									<div class="form-outline mb-4">
+										<input
+											type="text"
+											name="email"
+											id="email"
+											class="form-control form-control-lg"
+											placeholder="Email"
+										/>
+									</div>
+									<div class="form-outline mb-4">
+										<input
+											type="password"
+											name="password"
+											id="password"
+											class="form-control form-control-lg"
+											placeholder="Mật khẩu"
+										/>
+									</div>
+									<!-- Checkbox -->
+									<div
+										class="d-flex justify-content-between align-items-center mb-2"
+									>
+										<div class="form-check mb-0">
+											<input
+												class="form-check-input me-2"
+												type="checkbox"
+												name="remember-me"
+												id="rememberMe"
+											/>
+											<label
+												class="form-check-label"
+												for="rememberMe"
+											> Ghi nhớ đăng nhập </label>
+										</div>
+										<a href="#">Quên mật khẩu?</a>
+									</div>
+									<button
+										class="btn btn-primary btn-lg btn-block rounded-pill w-100 mt-4"
+										type="submit"
+									>Đăng nhập</button>
+								</form>
+
+								<hr class="my-3">
+
+								<a
+									class="btn btn-primary btn-lg btn-block rounded-pill w-100 mb-3"
+									style="background-color: #dd4b39;"
+									th:href="@{/oauth2/authorization/google}"
+								>
+									<i class="fab fa-google me-2"></i>
+									Đăng nhập với Google
+								</a>
+								
+								<a
+									class="btn btn-primary btn-lg btn-block rounded-pill w-100 mb-3"
+									style="background-color: #3b5998;"
+									th:href="@{/oauth2/authorization/facebook}"
+								>
+									<i class="fa-brands fa-facebook me-2"></i>
+									Đăng nhập với Facebook
+								</a>
+								
+								<span>
+									Bạn chưa có tài khoản?
+									<a
+										th:href="@{/register}"
+										class="fw-bold"
+									>Đăng kí ngay</a>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+
+</body>
+</html>

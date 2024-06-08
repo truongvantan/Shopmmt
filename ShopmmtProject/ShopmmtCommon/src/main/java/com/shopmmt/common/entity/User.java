@@ -160,7 +160,7 @@ public class User {
 	
 	@Transient
 	public String getFullName() {
-		return this.firstName + " " + this.lastName;
+		return this.lastName + " " + this.firstName;
 	}
 	
 	public boolean hasRole(String roleName) {

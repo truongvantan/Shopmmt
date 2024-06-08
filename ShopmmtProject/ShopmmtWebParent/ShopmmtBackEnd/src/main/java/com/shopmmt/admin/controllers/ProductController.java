@@ -302,13 +302,15 @@ public class ProductController {
 			@AuthenticationPrincipal ShopmmtUserDetails loggedUser,
 			RedirectAttributes redirectAttributes) throws IOException {
 		
-		if (loggedUser.hasRole("Nhân viên bán hàng")) {
-			Product product = new Product(productDTO);
-			productService.saveProductPrice(product);
-			
-			redirectAttributes.addFlashAttribute("message", "Chỉnh sửa sản phẩm ID " + id + " thành công");
-			
-			return "redirect:/products";			
+		if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Nhân viên kho hàng")) {
+			if (loggedUser.hasRole("Salesperson")) {
+				Product product = new Product(productDTO);
+				productService.saveProductPrice(product);
+				
+				redirectAttributes.addFlashAttribute("message", "Chỉnh sửa sản phẩm ID " + id + " thành công");
+				
+				return "redirect:/products";			
+			}
 		}
 		
 		if (bindingResult.hasErrors()) {

@@ -8,14 +8,6 @@
 		th:fragment="header"
 		class="sticky-top"
 	>
-		<form
-			th:action="@{/logout}"
-			method="post"
-			th:hidden="true"
-			name="logoutForm"
-		>
-			<input type="submit" />
-		</form>
 		<nav class="navbar navbar-expand-lg bg-dark navbar-dark ps-2">
 			<a
 				class="navbar-brand"
@@ -44,8 +36,8 @@
 					<li class="nav-item">
 						<a
 							class="nav-link"
-							href="#"
-						>Mua sắm</a>
+							th:href="@{/}"
+						>Trang chủ</a>
 					</li>
 					<li class="nav-item">
 						<a
@@ -68,7 +60,7 @@
 					<li class="nav-item">
 						<a
 							class="nav-link"
-							href="#"
+							th:href="@{/login}"
 						>Đăng nhập</a>
 					</li>
 				</ul>

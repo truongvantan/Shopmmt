@@ -2,6 +2,7 @@ package com.shopmmt.common.dto;
 
 import com.shopmmt.common.constants.ConstantsUtil;
 import com.shopmmt.common.entity.Customer;
+import com.shopmmt.common.enums.AuthenticationType;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -46,10 +47,12 @@ public class CustomerRegisterFormDTO {
 	@Size(max = 10, message = "Tối đa 10 ký tự.")
 	private String postalCode;
 
+	private AuthenticationType authenticationType;
+
 	public CustomerRegisterFormDTO() {
 		super();
 	}
-	
+
 	public CustomerRegisterFormDTO(Customer customer) {
 		this.id = customer.getId();
 		this.email = customer.getEmail();
@@ -62,6 +65,15 @@ public class CustomerRegisterFormDTO {
 		this.city = customer.getCity();
 		this.state = customer.getState();
 		this.postalCode = customer.getPostalCode();
+		this.authenticationType = customer.getAuthenticationType();
+	}
+
+	public AuthenticationType getAuthenticationType() {
+		return authenticationType;
+	}
+
+	public void setAuthenticationType(AuthenticationType authenticationType) {
+		this.authenticationType = authenticationType;
 	}
 
 	public Integer getId() {
@@ -150,6 +162,16 @@ public class CustomerRegisterFormDTO {
 
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
+	}
+	
+	@Override
+	public String toString() {
+		return "CustomerRegisterFormDTO [id=" + id + ", email=" + email + ", firstName=" + firstName + ", lastName="
+				+ lastName + "]";
+	}
+
+	public String getFullName() {
+		return lastName + " " + firstName;
 	}
 
 }

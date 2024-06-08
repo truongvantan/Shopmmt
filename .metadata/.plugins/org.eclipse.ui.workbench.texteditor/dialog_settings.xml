@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="data-bs-slide-to"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="customerService"/>
+			<item value="{#authorization.expression(&apos;hasAuthority(&apos;&apos;Nhân viên bán hàng&apos;&apos;)&apos;)}"/>
 			<item value="data-slide-to"/>
 			<item value="active"/>
 			<item value="data-target"/>
@@ -21,8 +23,6 @@
 			<item value="product"/>
 			<item value="ProductDTO"/>
 			<item value="categories"/>
-			<item value="children"/>
-			<item value="println"/>
 		</list>
 		<list key="replacehistory">
 			<item value="data-bs-slide-to"/>

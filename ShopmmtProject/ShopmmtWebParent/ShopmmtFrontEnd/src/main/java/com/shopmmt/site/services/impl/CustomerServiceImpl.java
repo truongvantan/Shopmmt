@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.shopmmt.common.constants.ConstantsUtil;
 import com.shopmmt.common.entity.Customer;
+import com.shopmmt.common.enums.AuthenticationType;
 import com.shopmmt.site.repositories.CustomerRepository;
 import com.shopmmt.site.services.CustomerService;
 
@@ -35,6 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
 		encodePassword(customer);
 		customer.setEnabled(false);
 		customer.setCreatedTime(new Date());
+		customer.setAuthenticationType(AuthenticationType.DATABASE);
 
 		String randomCode = RandomString.make(64);
 		customer.setVerificationCode(randomCode);
@@ -69,6 +72,88 @@ public class CustomerServiceImpl implements CustomerService {
 		} else {
 			customerRepository.enable(customer.getId());
 			return true;
+		}
+	}
+
+	@Override
+	public void updateAuthenticationType(Customer customer, AuthenticationType type) {
+		if (!type.equals(customer.getAuthenticationType())) {
+			customerRepository.updateAuthenticationType(customer.getId(), type);
+		}
+	}
+
+	@Override
+	public Customer getCustomerByEmail(String email) {
+		return customerRepository.findByEmail(email);
+	}
+
+	@Override
+	public void addNewCustomerUponOAuthLogin(String name, String email, AuthenticationType authenticationType) {
+		Customer customer = new Customer();
+		customer.setEmail(email);
+		setName(name, customer);
+
+		customer.setEnabled(true);
+		customer.setCreatedTime(new Date());
+		customer.setAuthenticationType(authenticationType);
+		customer.setPassword("");
+		customer.setAddressLine1("");
+		customer.setCity("");
+		customer.setState("");
+		customer.setPhoneNumber("");
+		customer.setPostalCode("");
+
+		customerRepository.save(customer);
+	}
+
+	private void setName(String name, Customer customer) {
+		String[] nameArray = name.split(" ");
+		if (nameArray.length < 2) {
+			customer.setFirstName(name);
+			customer.setLastName("");
+		} else {
+			String firstName = nameArray[0];
+			customer.setFirstName(firstName);
+
+			String lastName = name.replaceFirst(firstName, "");
+			customer.setLastName(lastName);
+		}
+	}
+
+	@Override
+	public void update(Customer customerInForm) {
+		Customer customerInDB = customerRepository.findById(customerInForm.getId()).get();
+
+		if (AuthenticationType.DATABASE.equals(customerInDB.getAuthenticationType())) {
+			if (!customerInForm.getPassword().isEmpty()) {
+				String encodedPassword = passwordEncoder.encode(customerInForm.getPassword());
+				customerInForm.setPassword(encodedPassword);
+			} else {
+				customerInForm.setPassword(customerInDB.getPassword());
+			}
+		} else {
+			customerInForm.setPassword(customerInDB.getPassword());
+		}
+
+		customerInForm.setEnabled(customerInDB.isEnabled());
+		customerInForm.setCreatedTime(customerInDB.getCreatedTime());
+		customerInForm.setVerificationCode(customerInDB.getVerificationCode());
+		customerInForm.setAuthenticationType(customerInDB.getAuthenticationType());
+
+		customerRepository.save(customerInForm);
+	}
+
+	@Override
+	public String checkValidPassword(String newPassword, String confirmPassword) {
+		if (("".equals(newPassword) || newPassword == null)
+				&& ("".equals(confirmPassword) || confirmPassword == null)) {
+			return "Valid new password";
+		} else if (!newPassword.matches(ConstantsUtil.REGEX_PASSWORD)) {
+			return "Invalid new password";
+		} else if (!newPassword.equals(confirmPassword)) {
+			return "Confirm password does not match";
+		} else {
+			return "Valid new password";
 		}
 	}
 

@@ -14,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
 import com.shopmmt.common.entity.Customer;
+import com.shopmmt.common.enums.AuthenticationType;
 import com.shopmmt.site.repositories.CustomerRepository;
 
 @DataJpaTest(showSql = false)
@@ -122,5 +123,15 @@ public class CustomerRepositoryTests {
 
 		Customer customer = customerRepository.findById(customerId).get();
 		assertThat(customer.isEnabled()).isTrue();
+	}
+	
+	@Test
+	public void testUpdateAuthenticationType() {
+		Integer id = 12;
+		customerRepository.updateAuthenticationType(id, AuthenticationType.DATABASE);
+		
+		Customer customer = customerRepository.findById(id).get();
+		
+		assertThat(customer.getAuthenticationType()).isEqualTo(AuthenticationType.DATABASE);
 	}
 }

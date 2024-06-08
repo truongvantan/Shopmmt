@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
 <body>
 	<div
 		th:fragment="search_form"
 		class="row"
 	>
+
+		<th:block sec:authorize="isAuthenticated()">
+			<form
+				th:action="@{/logout}"
+				method="post"
+				th:hidden="true"
+				name="logoutForm"
+			>
+				<input type="submit" />
+			</form>
+		</th:block>
+		
 		<div class="col-md">
 			<nav class="navbar navbar-expand-sm bg-light">
 				<div id="searchNavbar">
@@ -28,6 +43,56 @@
 							<i class="fa-solid fa-magnifying-glass"></i>
 						</button>
 					</form>
+
+					<ul class="navbar-nav">
+						<th:block sec:authorize="isAuthenticated()">
+							<li class="nav-item">
+								<b>
+									<a
+										class="nav-link"
+										th:href="@{/account_details}"
+										sec:authentication="principal.fullName"
+									></a>
+								</b>
+							</li>
+
+							<li class="nav-item">
+								<a
+									class="nav-link"
+									href="#"
+								>Địa chỉ giao hàng</a>
+							</li>
+
+							<li class="nav-item">
+								<a
+									class="nav-link"
+									href="#"
+								>Đánh giá</a>
+							</li>
+
+							<li class="nav-item">
+								<a
+									class="nav-link"
+									href="#"
+								>Đơn hàng</a>
+							</li>
+
+							<li class="nav-item">
+								<a
+									class="nav-link"
+									href="#"
+								>Giỏ hàng</a>
+							</li>
+
+							<li class="nav-item">
+								<a
+									id="logoutLink"
+									class="nav-link"
+									href="javascript: document.logoutForm.submit()"
+								>Đăng xuất</a>
+							</li>
+						</th:block>
+					</ul>
 				</div>
 			</nav>
 		</div>
