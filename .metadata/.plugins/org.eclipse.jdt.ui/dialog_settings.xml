@@ -39,6 +39,8 @@
 		<item key="updateTextualMatches" value="false"/>
 		<item key="updateQualifiedNames" value="false"/>
 		<item key="patterns" value="*"/>
+		<item key="updateSimilarElements" value="false"/>
+		<item key="updateSimilarElementsMatchStrategy" value="1"/>
 	</section>
 	<section name="NewClassCreationWizard.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="521"/>
@@ -91,8 +93,8 @@
 		<item key="create_package_info_java" value="false"/>
 	</section>
 	<section name="NewInterfaceCreationWizard.dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="509"/>
-		<item key="DIALOG_Y_ORIGIN" value="56"/>
+		<item key="DIALOG_X_ORIGIN" value="511"/>
+		<item key="DIALOG_Y_ORIGIN" value="108"/>
 		<item key="DIALOG_WIDTH" value="920"/>
 		<item key="DIALOG_HEIGHT" value="703"/>
 		<item key="DIALOG_FONT_NAME" value="1|JetBrains Mono|10.2|0|WINDOWS|1|-17|0|0|0|400|0|0|0|0|3|2|1|49|JetBrains Mono"/>

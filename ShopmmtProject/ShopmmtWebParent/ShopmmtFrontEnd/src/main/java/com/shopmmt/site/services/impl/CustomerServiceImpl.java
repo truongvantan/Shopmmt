@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.shopmmt.common.constants.ConstantsUtil;
 import com.shopmmt.common.entity.Customer;
 import com.shopmmt.common.enums.AuthenticationType;
+import com.shopmmt.common.exception.CustomerNotFoundException;
 import com.shopmmt.site.repositories.CustomerRepository;
 import com.shopmmt.site.services.CustomerService;
 
@@ -157,4 +158,52 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 	}
 
+	@Override
+	public String updateResetPasswordToken(String email) throws CustomerNotFoundException {
+		Customer customer = customerRepository.findByEmail(email);
+		
+		if (customer != null) {
+			String token = RandomString.make(30);
+			customer.setResetPasswordToken(token);
+			customerRepository.save(customer);
+			
+			return token;
+		} else {
+			throw new CustomerNotFoundException("Could not find any customer with the email " + email);
+		}
+		
+	}
+
+	@Override
+	public Customer getByResetPasswordToken(String token) {
+		return customerRepository.findByResetPasswordToken(token);
+	}
+
+	@Override
+	public String checkValidResetPassword(String newPassword, String confirmPassword) {
+		if (newPassword == null || !newPassword.matches(ConstantsUtil.REGEX_PASSWORD)) {
+			return "Invalid new password";
+		} else if (!newPassword.equals(confirmPassword)) {
+			return "Confirm password does not match";
+		} else {
+			return "Valid new password";
+		}
+	}
+
+	@Override
+	public void updatePassword(String token, String newPassword) throws CustomerNotFoundException {
+		Customer customer = customerRepository.findByResetPasswordToken(token);
+		
+		if (customer == null) {
+			throw new CustomerNotFoundException("No customer found: invalid token");
+		}
+		
+		customer.setPassword(newPassword);
+		customer.setResetPasswordToken(null);
+		encodePassword(customer);
+		
+		customerRepository.save(customer);
+	}
+	
+	
 }

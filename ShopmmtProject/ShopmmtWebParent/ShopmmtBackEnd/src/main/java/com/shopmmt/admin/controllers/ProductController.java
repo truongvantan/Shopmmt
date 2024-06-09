@@ -51,7 +51,7 @@ public class ProductController {
 
 	@Autowired
 	private BrandService brandService;
-	
+
 	@Autowired
 	private CategoryService categoryService;
 
@@ -59,7 +59,7 @@ public class ProductController {
 	public String listFirstPage(Model model) {
 		return listByPage(model, 1, "id", "asc", null, 0);
 	}
-	
+
 	@GetMapping("/products/page/{pageNum}")
 	public String listByPage(Model model, @PathVariable(name = "pageNum", required = false) int pageNum,
 			@RequestParam("sortField") String sortField,
@@ -71,9 +71,9 @@ public class ProductController {
 
 		Page<Product> pageProduct = productService.listByPage(pageNum, sortField, sortDir, keyword, categoryId);
 		List<Product> listProducts = pageProduct.getContent();
-		
+
 		List<CategoryDTO> listCategories = categoryService.listCategoriesUsedInForm();
-		
+
 		if (categoryId != null) {
 			model.addAttribute("categoryId", categoryId);
 		}
@@ -114,14 +114,24 @@ public class ProductController {
 			@RequestParam(name = "imageIDs", required = false) String[] imageIDs,
 			@RequestParam(name = "imageNames", required = false) String[] imageNames,
 			@Valid @ModelAttribute(name = "productDTO") ProductDTO productDTO, BindingResult bindingResult,
-			@AuthenticationPrincipal ShopmmtUserDetails loggedUser,
-			RedirectAttributes redirectAttributes) throws IOException {
-		
+			@AuthenticationPrincipal ShopmmtUserDetails loggedUser, RedirectAttributes redirectAttributes)
+			throws IOException {
+
+		boolean isReadOnlyForSalesperson = false;
+
+		if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Nhân viên kho hàng")) {
+			if (loggedUser.hasRole("Nhân viên bán hàng")) {
+				isReadOnlyForSalesperson = true;
+				model.addAttribute("isReadOnlyForSalesperson", isReadOnlyForSalesperson);
+			}
+		}
+
 		if (bindingResult.hasErrors()) {
 			System.err.println("Lỗi binding result productDTO");
 			List<Brand> listBrands = brandService.findAll();
 			Integer numberOfExistingExtraImages = productDTO.getImages().size();
 
+			model.addAttribute("isReadOnlyForSalesperson", isReadOnlyForSalesperson);
 			model.addAttribute("numberOfExistingExtraImages", numberOfExistingExtraImages);
 			model.addAttribute("listBrands", listBrands);
 
@@ -132,6 +142,7 @@ public class ProductController {
 				List<Brand> listBrands = brandService.findAll();
 				Integer numberOfExistingExtraImages = productDTO.getImages().size();
 
+				model.addAttribute("isReadOnlyForSalesperson", isReadOnlyForSalesperson);
 				model.addAttribute("numberOfExistingExtraImages", numberOfExistingExtraImages);
 				model.addAttribute("listBrands", listBrands);
 				model.addAttribute("error", "Vui lòng chọn tệp có kích thước không vượt quá 1MB");
@@ -171,8 +182,6 @@ public class ProductController {
 		}
 
 		for (int count = 0; count < detailNames.length; count++) {
-			System.err.println(
-					"id: " + detailIDs[count] + ", name: " + detailNames[count] + ", value: " + detailValues[count]);
 			String name = detailNames[count];
 			String value = detailValues[count];
 			Integer id = ValidateCommon.isValidStringIntegerNumber(detailIDs[count])
@@ -265,7 +274,7 @@ public class ProductController {
 
 	@GetMapping("/products/showEdit/{id}")
 	public String showEditProduct(Model model, @PathVariable(name = "id", required = false) Integer id,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes, @AuthenticationPrincipal ShopmmtUserDetails loggedUser) {
 
 		try {
 			Product product = productService.findById(id);
@@ -273,6 +282,15 @@ public class ProductController {
 
 			List<Brand> listBrands = brandService.findAll();
 			Integer numberOfExistingExtraImages = productDTO.getImages().size();
+
+			boolean isReadOnlyForSalesperson = false;
+
+			if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Nhân viên kho hàng")) {
+				if (loggedUser.hasRole("Nhân viên bán hàng")) {
+					isReadOnlyForSalesperson = true;
+					model.addAttribute("isReadOnlyForSalesperson", isReadOnlyForSalesperson);
+				}
+			}
 
 			model.addAttribute("listBrands", listBrands);
 			model.addAttribute("productDTO", productDTO);
@@ -299,25 +317,36 @@ public class ProductController {
 			@RequestParam(name = "imageIDs", required = false) String[] imageIDs,
 			@RequestParam(name = "imageNames", required = false) String[] imageNames,
 			@Valid @ModelAttribute(name = "productDTO") ProductDTO productDTO, BindingResult bindingResult,
-			@AuthenticationPrincipal ShopmmtUserDetails loggedUser,
-			RedirectAttributes redirectAttributes) throws IOException {
-		
+			@AuthenticationPrincipal ShopmmtUserDetails loggedUser, RedirectAttributes redirectAttributes)
+			throws IOException {
+
+		boolean isReadOnlyForSalesperson = false;
+
 		if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Nhân viên kho hàng")) {
-			if (loggedUser.hasRole("Salesperson")) {
-				Product product = new Product(productDTO);
-				productService.saveProductPrice(product);
-				
-				redirectAttributes.addFlashAttribute("message", "Chỉnh sửa sản phẩm ID " + id + " thành công");
-				
-				return "redirect:/products";			
+			if (loggedUser.hasRole("Nhân viên bán hàng")) {
+				isReadOnlyForSalesperson = true;
+				model.addAttribute("isReadOnlyForSalesperson", isReadOnlyForSalesperson);
 			}
 		}
-		
+
+		if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Nhân viên kho hàng")) {
+			if (loggedUser.hasRole("Nhân viên bán hàng")) {
+				isReadOnlyForSalesperson = true;
+				Product product = new Product(productDTO);
+				productService.saveProductPrice(product);
+
+				redirectAttributes.addFlashAttribute("message", "Chỉnh sửa sản phẩm ID " + id + " thành công");
+
+				return "redirect:/products";
+			}
+		}
+
 		if (bindingResult.hasErrors()) {
 			System.err.println("Lỗi binding result productDTO");
 			List<Brand> listBrands = brandService.findAll();
 			Integer numberOfExistingExtraImages = productDTO.getImages().size();
 
+			model.addAttribute("isReadOnlyForSalesperson", isReadOnlyForSalesperson);
 			model.addAttribute("numberOfExistingExtraImages", numberOfExistingExtraImages);
 			model.addAttribute("listBrands", listBrands);
 			model.addAttribute("id", id);
@@ -329,6 +358,7 @@ public class ProductController {
 				List<Brand> listBrands = brandService.findAll();
 				Integer numberOfExistingExtraImages = productDTO.getImages().size();
 
+				model.addAttribute("isReadOnlyForSalesperson", isReadOnlyForSalesperson);
 				model.addAttribute("numberOfExistingExtraImages", numberOfExistingExtraImages);
 				model.addAttribute("listBrands", listBrands);
 				model.addAttribute("error", "Vui lòng chọn tệp có kích thước không vượt quá 1MB");
@@ -421,7 +451,8 @@ public class ProductController {
 	}
 
 	@GetMapping("/products/detail/{id}")
-	public String viewProductDetails(Model model, @PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
+	public String viewProductDetails(Model model, @PathVariable("id") Integer id,
+			RedirectAttributes redirectAttributes) {
 		try {
 			Product product = productService.findById(id);
 			model.addAttribute("product", product);

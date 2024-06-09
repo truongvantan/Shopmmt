@@ -56,5 +56,30 @@
 			th:remove="tag"
 		>[[${CURRENCY_SYMBOL}]]</span>
 	</div>
+
+	<div
+		th:fragment="product_price"
+		th:remove="tag"
+	>
+		<th:block th:if="${product.discountPercent &lt;= 0}">
+			<div
+				th:replace="~{products/product_fragment :: price_fragment(${product.price})}"
+			></div>
+		</th:block>
+		<th:block th:if="${product.discountPercent > 0}">
+			<span style="font-size: larger; color: red">
+				<div
+					th:replace="~{products/product_fragment :: price_fragment(${product.discountPrice})}"
+				></div>
+			</span>
+			<del>
+				<span>
+					<div
+						th:replace="~{products/product_fragment :: price_fragment(${product.price})}"
+					></div>
+				</span>
+			</del>
+		</th:block>
+	</div>
 </body>
 </html>

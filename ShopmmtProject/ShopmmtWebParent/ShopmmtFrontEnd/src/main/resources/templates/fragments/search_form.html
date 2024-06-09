@@ -19,7 +19,7 @@
 				<input type="submit" />
 			</form>
 		</th:block>
-		
+
 		<div class="col-md">
 			<nav class="navbar navbar-expand-sm bg-light">
 				<div id="searchNavbar">
@@ -44,7 +44,7 @@
 						</button>
 					</form>
 
-					<ul class="navbar-nav">
+					<ul class="navbar-nav mt-2">
 						<th:block sec:authorize="isAuthenticated()">
 							<li class="nav-item">
 								<b>
@@ -54,6 +54,16 @@
 										sec:authentication="principal.fullName"
 									></a>
 								</b>
+							</li>
+
+							<li class="nav-item">
+								<a
+									class="nav-link"
+									th:href="@{/cart}"
+									title="Giỏ hàng"
+								>
+									<i class="fa-solid fa-xl fa-cart-shopping"></i>
+								</a>
 							</li>
 
 							<li class="nav-item">
@@ -75,13 +85,6 @@
 									class="nav-link"
 									href="#"
 								>Đơn hàng</a>
-							</li>
-
-							<li class="nav-item">
-								<a
-									class="nav-link"
-									href="#"
-								>Giỏ hàng</a>
 							</li>
 
 							<li class="nav-item">

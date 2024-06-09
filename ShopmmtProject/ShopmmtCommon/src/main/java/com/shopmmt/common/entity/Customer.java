@@ -64,8 +64,16 @@ public class Customer {
 	@Column(name = "authentication_type", length = 10)
 	private AuthenticationType authenticationType;
 
+	@Column(name = "reset_password_token", length = 64)
+	private String resetPasswordToken;
+
 	public Customer() {
 		super();
+	}
+
+	public Customer(Integer id) {
+		super();
+		this.id = id;
 	}
 
 	public Customer(CustomerRegisterFormDTO customerDTO) {
@@ -82,7 +90,7 @@ public class Customer {
 		this.postalCode = customerDTO.getPostalCode();
 		this.authenticationType = customerDTO.getAuthenticationType();
 	}
-	
+
 	public Customer(CustomerAccountDetailDTO customerDTO) {
 		this.id = customerDTO.getId();
 		this.email = customerDTO.getEmail();
@@ -96,6 +104,14 @@ public class Customer {
 		this.state = customerDTO.getState();
 		this.postalCode = customerDTO.getPostalCode();
 		this.authenticationType = customerDTO.getAuthenticationType();
+	}
+
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
 	}
 
 	public AuthenticationType getAuthenticationType() {

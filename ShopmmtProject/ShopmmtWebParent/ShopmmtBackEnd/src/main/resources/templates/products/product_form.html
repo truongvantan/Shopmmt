@@ -101,19 +101,13 @@
 						id="description"
 						role="tabpanel"
 					>
-						<th:block
-							th:if="${!#authorization.expression('hasAuthority(''Admin'')') && !#authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}"
-						>
-							<th:block th:if="{#authorization.expression('hasAuthority(''Nhân viên bán hàng'')')}">
-								<div
-									th:replace="~{products/product_description_readonly :: content}"
-								></div>
-							</th:block>
+						<th:block th:if="${isReadOnlyForSalesperson}">
+							<div
+								th:replace="~{products/product_description_readonly :: content}"
+							></div>
 						</th:block>
 
-						<th:block
-							th:if="${#authorization.expression('hasAuthority(''Admin'')') || #authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}"
-						>
+						<th:block th:unless="${isReadOnlyForSalesperson}">
 							<div th:replace="~{products/product_description :: content}"></div>
 						</th:block>
 					</div>
@@ -122,13 +116,11 @@
 						id="images"
 						role="tabpanel"
 					>
-						<th:block th:if="${!#authorization.expression('hasAuthority(''Admin'')') && !#authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
-							<th:block th:if="${#authorization.expression('hasAuthority(''Nhân viên bán hàng'')')}">
-								<div th:replace="~{products/product_images_readonly :: content}"></div>
-							</th:block>
+						<th:block th:if="${isReadOnlyForSalesperson}">
+							<div th:replace="~{products/product_images_readonly :: content}"></div>
 						</th:block>
 
-						<th:block th:if="${#authorization.expression('hasAuthority(''Admin'')') || #authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
+						<th:block th:unless="${isReadOnlyForSalesperson}">
 							<div th:replace="~{products/product_images :: content}"></div>
 						</th:block>
 					</div>
@@ -137,13 +129,11 @@
 						id="details"
 						role="tabpanel"
 					>
-						<th:block th:if="${!#authorization.expression('hasAuthority(''Admin'')') && !#authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
-							<th:block th:if="${#authorization.expression('hasAuthority(''Nhân viên bán hàng'')')}">
-								<div th:replace="~{products/product_details_readonly :: content}"></div>
-							</th:block>
+						<th:block th:if="${isReadOnlyForSalesperson}">
+							<div th:replace="~{products/product_details_readonly :: content}"></div>
 						</th:block>
 
-						<th:block th:if="${#authorization.expression('hasAuthority(''Admin'')') || #authorization.expression('hasAuthority(''Nhân viên kho hàng'')')}">
+						<th:block th:unless="${isReadOnlyForSalesperson}">
 							<div th:replace="~{products/product_details :: content}"></div>
 							<div class="text-center">
 								<button

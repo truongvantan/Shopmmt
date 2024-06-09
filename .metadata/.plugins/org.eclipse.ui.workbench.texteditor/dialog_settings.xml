@@ -8,6 +8,12 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="@Param"/>
+			<item value="@RequestParam"/>
+			<item value="checkValidSettingValue"/>
+			<item value="pid"/>
+			<item value="ád"/>
+			<item value="System."/>
 			<item value="customerService"/>
 			<item value="{#authorization.expression(&apos;hasAuthority(&apos;&apos;Nhân viên bán hàng&apos;&apos;)&apos;)}"/>
 			<item value="data-slide-to"/>
@@ -17,12 +23,6 @@
 			<item value="data-toggle"/>
 			<item value="data"/>
 			<item value="allParentIDs"/>
-			<item value="dat"/>
-			<item value="imageIDs"/>
-			<item value="productDTO"/>
-			<item value="product"/>
-			<item value="ProductDTO"/>
-			<item value="categories"/>
 		</list>
 		<list key="replacehistory">
 			<item value="data-bs-slide-to"/>

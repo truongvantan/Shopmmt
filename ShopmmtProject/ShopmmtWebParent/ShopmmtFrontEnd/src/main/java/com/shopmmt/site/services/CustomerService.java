@@ -2,6 +2,7 @@ package com.shopmmt.site.services;
 
 import com.shopmmt.common.entity.Customer;
 import com.shopmmt.common.enums.AuthenticationType;
+import com.shopmmt.common.exception.CustomerNotFoundException;
 
 public interface CustomerService {
 
@@ -22,5 +23,13 @@ public interface CustomerService {
 	void update(Customer customer);
 
 	String checkValidPassword(String newPassword, String confirmPassword);
+
+	String updateResetPasswordToken(String email) throws CustomerNotFoundException;
+	
+	Customer getByResetPasswordToken(String token);
+
+	String checkValidResetPassword(String newPassword, String confirmPassword);
+
+	void updatePassword(String token, String newPassword) throws CustomerNotFoundException;
 
 }

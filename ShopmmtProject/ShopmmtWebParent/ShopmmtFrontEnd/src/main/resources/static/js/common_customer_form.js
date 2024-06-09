@@ -5,9 +5,9 @@ function showModalDialog(title, message) {
 }
 
 function showErrorModal(message) {
-	showModalDialog("Error", message);
+	showModalDialog("Lỗi", message);
 }
 
 function showWarningModal(message) {
-	showModalDialog("Warning", message);
+	showModalDialog("Cảnh báo", message);
 }

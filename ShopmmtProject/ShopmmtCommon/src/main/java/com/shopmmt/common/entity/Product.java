@@ -79,7 +79,12 @@ public class Product {
 	public Product() {
 		super();
 	}
-	
+
+	public Product(Integer id) {
+		super();
+		this.id = id;
+	}
+
 	public Product(Product product) {
 		this.id = product.getId();
 		this.name = product.getName();
@@ -248,7 +253,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", cost=" + cost + ", price=" + price + "]";
+		return "Product [id=" + id + ", name=" + name + "]";
 	}
 
 	public void addExtraImage(String imageName) {
@@ -263,37 +268,37 @@ public class Product {
 
 		return "/product-images/" + this.id + "/" + this.mainImage;
 	}
-	
+
 	public void addDetail(String name, String value) {
 		this.details.add(new ProductDetail(name, value, this));
 	}
 
 	public boolean containsImageName(String imageName) {
 		Iterator<ProductImage> iterator = images.iterator();
-		
+
 		while (iterator.hasNext()) {
 			ProductImage image = iterator.next();
 			if (image.getName().equals(imageName)) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
 	public void addDetail(Integer id, String name, String value) {
 		this.details.add(new ProductDetail(id, name, value, this));
 	}
-	
+
 	@Transient
 	public double getDiscountPrice() {
 		if (discountPercent > 0) {
 			return price * ((100 - discountPercent) / 100);
 		}
-		
+
 		return this.price;
 	}
-	
+
 	@Transient
 	public String getShortName() {
 		if (name.length() > 50) {

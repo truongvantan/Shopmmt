@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="~{fragments/page_head :: page_head(${pageTitle}, 'none')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+
+		<div class="text-center mt-2">
+			<h2 class="text-danger">Đặt lại mật khẩu</h2>
+			<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
+		</div>
+
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+</body>
+</html>

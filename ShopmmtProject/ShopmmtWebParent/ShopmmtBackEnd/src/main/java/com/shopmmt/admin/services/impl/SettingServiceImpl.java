@@ -56,7 +56,12 @@ public class SettingServiceImpl implements SettingService {
 	@Override
 	public boolean checkValidSettingValue(HttpServletRequest request, List<Setting> listSettings) {
 		for (Setting setting : listSettings) {
+			if ("SITE_LOGO".equalsIgnoreCase(setting.getKey()) || "CURRENCY_SYMBOL".equalsIgnoreCase(setting.getKey())) {
+				continue;
+			}
+			
 			String value = request.getParameter(setting.getKey());
+			
 			if (value == null || "".equals(value.trim())) {
 				return false;
 			}

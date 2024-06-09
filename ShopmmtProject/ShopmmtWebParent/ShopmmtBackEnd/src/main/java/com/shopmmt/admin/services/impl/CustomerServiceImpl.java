@@ -97,6 +97,8 @@ public class CustomerServiceImpl implements CustomerService {
 		customer.setEnabled(customerInDB.isEnabled());
 		customer.setCreatedTime(customerInDB.getCreatedTime());
 		customer.setVerificationCode(customerInDB.getVerificationCode());
+		customer.setAuthenticationType(customerInDB.getAuthenticationType());
+		customer.setResetPasswordToken(customerInDB.getResetPasswordToken());
 		
 		customerRepository.save(customer);
 	}
