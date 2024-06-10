@@ -14,6 +14,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "customers")
@@ -241,6 +242,41 @@ public class Customer {
 
 	public String getFullName() {
 		return lastName + " " + firstName;
+	}
+	
+	@Transient
+	public String getAddress() {
+		String address = lastName != null ? lastName : "";
+		
+		if (firstName != null && !firstName.isEmpty()) {
+			address += " " + firstName;
+		}
+		
+		if (addressLine1 != null && !addressLine1.isEmpty()) {
+			address += ", " + addressLine1;
+		}
+		
+		if (addressLine2 != null && !addressLine2.isEmpty()) {
+			address += ", " + addressLine2;
+		}
+		
+		if (state != null && !state.isEmpty()) {
+			address += ", " + state;
+		}
+		
+		if (city != null && !city.isEmpty()) {
+			address += ", " + city;
+		}
+		
+		if (postalCode!= null && !postalCode.isEmpty()) {
+			address += ". Mã bưu chính: " + postalCode;
+		}
+		
+		if (phoneNumber != null && !phoneNumber.isEmpty()) {
+			address += ". Số điện thoại: " + phoneNumber;
+		}
+		
+		return address;
 	}
 
 }

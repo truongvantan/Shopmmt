@@ -25,7 +25,12 @@
     <typeInfo handle="=ShopmmtCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.common.entity{User.java[User" modifiers="1" timestamp="1717819069628"/>
     <typeInfo handle="=ShopmmtCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.common.dto{CustomerRegisterFormDTO.java[CustomerRegisterFormDTO" modifiers="1" timestamp="1717824916923"/>
     <typeInfo handle="=ShopmmtBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.admin.repositories{UserRepository.java[UserRepository" modifiers="513" timestamp="1715323918663"/>
-    <typeInfo handle="=ShopmmtCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.common.entity{Customer.java[Customer" modifiers="1" timestamp="1717919504267"/>
-    <typeInfo handle="=ShopmmtFrontEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.site.services.impl{ShoppingCartServiceImpl.java[ShoppingCartServiceImpl" modifiers="1" timestamp="1717929995506"/>
+    <typeInfo handle="=ShopmmtFrontEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.site.services.impl{ShoppingCartServiceImpl.java[ShoppingCartServiceImpl" modifiers="1" timestamp="1717943755858"/>
     <typeInfo handle="=ShopmmtCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.common.entity{CartItem.java[CartItem" modifiers="1" timestamp="1717925706461"/>
+    <typeInfo handle="=ShopmmtCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.common.entity{Customer.java[Customer" modifiers="1" timestamp="1717919504267"/>
+    <typeInfo handle="=ShopmmtCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.common.entity{Address.java[Address" modifiers="1" timestamp="1718025773704"/>
+    <typeInfo handle="=ShopmmtFrontEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.site.controllers{CustomerController.java[CustomerController" modifiers="1" timestamp="1717922435223"/>
+    <typeInfo handle="=ShopmmtFrontEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.site.repositories{AddressRepository.java[AddressRepository" modifiers="513" timestamp="1718025903192"/>
+    <typeInfo handle="=ShopmmtFrontEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.site.services{AddressService.java[AddressService" modifiers="513" timestamp="1718026359502"/>
+    <typeInfo handle="=ShopmmtFrontEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopmmt.site.services.impl{AddressServiceImpl.java[AddressServiceImpl" modifiers="1" timestamp="1718030707666"/>
 </typeInfoHistroy>
