@@ -12,6 +12,12 @@
 
 		<h2 class="mt-2">Quản lý danh mục</h2>
 
+		<a
+			th:href="@{/categories/new}"
+			class="fa-solid fa-plus fa-2x"
+			title="Thêm mới danh mục"
+		></a>
+		
 		<div
 			th:replace="~{fragments/search_form :: search_form('/categories', 'danh mục')}"
 		></div>

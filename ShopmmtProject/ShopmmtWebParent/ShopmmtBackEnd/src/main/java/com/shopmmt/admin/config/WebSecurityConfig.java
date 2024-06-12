@@ -52,6 +52,8 @@ public class WebSecurityConfig {
 				.hasAnyAuthority("Admin", "Nhân viên kho hàng", "Nhân viên bán hàng", "Nhân viên giao hàng")
 
 				.requestMatchers("/products/**").hasAnyAuthority("Admin", "Nhân viên kho hàng")
+				
+				.requestMatchers("/customers/**", "/orders/**").hasAnyAuthority("Admin", "Nhân viên bán hàng")
 
 				.requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**", "/fontawesome/**", "/fonts/**",
 						"/webfonts/**")

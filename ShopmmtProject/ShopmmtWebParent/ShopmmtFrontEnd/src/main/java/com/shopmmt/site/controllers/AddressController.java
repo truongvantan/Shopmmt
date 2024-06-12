@@ -84,10 +84,17 @@ public class AddressController {
 
 			address.setCustomer(customer);
 			addressService.save(address);
+			
+			String redirectOption = request.getParameter("redirect");
+			String redirectURL = "redirect:/address_book";
+			
+			if ("checkout".equals(redirectOption)) {
+				redirectURL += "?redirect=checkout";
+			}
 
 			redirectAttributes.addFlashAttribute("message", "Thêm mới địa chỉ thành công.");
-
-			return "redirect:/address_book";
+			
+			return redirectURL;
 		}
 
 	}
@@ -123,10 +130,17 @@ public class AddressController {
 
 			address.setCustomer(customer);
 			addressService.save(address);
+			
+			String redirectOption = request.getParameter("redirect");
+			String redirectURL = "redirect:/address_book";
+			
+			if ("checkout".equals(redirectOption)) {
+				redirectURL += "?redirect=checkout";
+			}
 
-			redirectAttributes.addFlashAttribute("message", "Cập nhật địa chỉ thành công.");
-
-			return "redirect:/address_book";
+			redirectAttributes.addFlashAttribute("message", "Cập nhật địa chỉ thành công.");			
+			
+			return redirectURL;
 
 		}
 
@@ -137,10 +151,17 @@ public class AddressController {
 			HttpServletRequest request) {
 		Customer customer = getAuthenticatedCustomer(request);
 		addressService.delete(addressId, customer.getId());
+		
+		String redirectOption = request.getParameter("redirect");
+		String redirectURL = "redirect:/address_book";
+		
+		if ("checkout".equals(redirectOption)) {
+			redirectURL += "?redirect=checkout";
+		}
 
 		ra.addFlashAttribute("message", "Xóa địa chỉ ID " + addressId + " thành công.");
 
-		return "redirect:/address_book";
+		return redirectURL;
 	}
 
 	@GetMapping("/address_book/default/{id}")
@@ -149,8 +170,17 @@ public class AddressController {
 		
 		Customer customer = getAuthenticatedCustomer(request);
 		addressService.setDefaultAddress(addressId, customer.getId());
+		
+		String redirectOption = request.getParameter("redirect");
+		String redirectURL = "redirect:/address_book";
+		
+		if ("cart".equals(redirectOption)) {
+			redirectURL = "redirect:/cart";
+		} else if ("checkout".equals(redirectOption)) {
+			redirectURL = "redirect:/checkout";
+		}
 
-		return "redirect:/address_book";
+		return redirectURL;
 	}
 
 }

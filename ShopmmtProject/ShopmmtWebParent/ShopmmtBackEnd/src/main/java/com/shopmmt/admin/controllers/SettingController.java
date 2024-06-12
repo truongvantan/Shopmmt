@@ -140,4 +140,23 @@ public class SettingController {
 			return "redirect:/settings";
 		}
 	}
+	
+	@PostMapping("/settings/save_payment")
+	public String savePaymentSetttings(HttpServletRequest request, RedirectAttributes redirectAttributes) {
+		List<Setting> paymentSettings = settingService.getPaymentSettings();
+		
+		if (!settingService.checkValidSettingValue(request, paymentSettings)) {
+			redirectAttributes.addFlashAttribute("error", "Vui lòng nhập đầy đủ thông tin.");
+			
+			return "redirect:/settings";
+		} else {
+			updateSettingValuesFromForm(request, paymentSettings);
+			
+			redirectAttributes.addFlashAttribute("message", "Cập nhật thông tin thanh toán thành công.");
+			
+			return "redirect:/settings";
+		}
+		
+		
+	}
 }

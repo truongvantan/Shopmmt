@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="~{fragments/page_head :: page_head('Hoàn tất đặt hàng', 'none')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+		<div th:replace="~{fragments/search_form :: search_form}"></div>
+		
+		<h1 class="text-center mt-4 text-success">HOÀN TẤT ĐẶT HÀNG</h1>
+		<p class="text-center">Đơn hàng của bạn đã được chúng tôi tiếp nhận và một email xác nhận đặt hàng đã được gửi đến email của bạn.<br> Vui lòng kiểm tra email để biết thêm chi tiết.</p>
+		
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+
+	</div>
+
+</body>
+</html>

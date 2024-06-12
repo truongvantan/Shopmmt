@@ -66,6 +66,18 @@
 						role="tab"
 					>Biểu mẫu E-mail</button>
 				</li>
+				<li
+					class="nav-item"
+					role="presentation"
+				>
+					<button
+						class="nav-link"
+						data-bs-toggle="tab"
+						data-bs-target="#payment"
+						type="button"
+						role="tab"
+					>Thanh toán PAYPAL</button>
+				</li>
 			</ul>
 
 			<!-- Tab panes -->
@@ -91,6 +103,13 @@
 				>
 					<div th:replace="~{settings/mail_templates/mail_templates :: content}"></div>
 				</div>
+				<div
+					class="tab-pane p-3"
+					id="payment"
+					role="tabpanel"
+				>
+					<div th:replace="~{settings/payment :: content}"></div>
+				</div>
 			</div>
 			<!-- END Tab panes -->
 
@@ -106,6 +125,7 @@
 		
 		$(document).ready(function() {
 			$("#customerVerificationContent").richText();
+			$("#orderConfirmationContent").richText();
 		});
 	</script>
 

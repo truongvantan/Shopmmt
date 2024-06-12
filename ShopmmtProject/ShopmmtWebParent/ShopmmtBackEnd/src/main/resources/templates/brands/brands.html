@@ -12,6 +12,12 @@
 
 		<h2 class="mt-2">Quản lý thương hiệu</h2>
 
+		<a
+			th:href="@{/brands/new}"
+			class="fa-solid fa-plus fa-2x"
+			title="Thêm mới thương hiệu"
+		></a>
+
 		<div
 			th:replace="~{fragments/search_form :: search_form('/brands', 'thương hiệu')}"
 		></div>

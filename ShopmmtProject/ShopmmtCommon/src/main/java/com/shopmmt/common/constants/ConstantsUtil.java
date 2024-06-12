@@ -9,10 +9,14 @@ public class ConstantsUtil {
 	
 	public static final int CATEGORY_PAGE_SIZE = 2;
 	public static final int BRAND_PAGE_SIZE = 5;
-	public static final int CUSTOMERS_PAGE_SIZE = 1;
+	public static final int CUSTOMERS_PAGE_SIZE = 3;
+	public static final int ORDER_PAGE_SIZE = 3;
 	
 	public static final int PRODUCT_PAGE_SIZE = 5;
 	public static final int PRODUCT_PAGE_SIZE_CUSTOMER = 5;
 	public static final int SEARCH_RESULTS_PER_PAGE = 5;
+	
+	public static final double SHIPPING_COST = 10_000D;
+	public static final int DELIVER_DAYS = 3;
 	
 }

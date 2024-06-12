@@ -1,0 +1,810 @@
+2024-06-11T11:34:53.575+07:00  INFO 10596 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2024-06-11T11:34:53.594+07:00  INFO 10596 --- [Thread-82] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:34:53.594+07:00  INFO 10596 --- [Thread-82] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Shutdown initiated...
+2024-06-11T11:34:53.597+07:00  INFO 10596 --- [Thread-82] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Shutdown completed.
+2024-06-11T11:34:53.678+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Starting ShopmmtBackEndApplication using Java 17.0.10 with PID 10596 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T11:34:53.678+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T11:34:53.867+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T11:34:53.891+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 10 JPA repository interfaces.
+2024-06-11T11:34:53.966+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-11T11:34:53.966+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-11T11:34:53.966+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-11T11:34:53.980+07:00  INFO 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring embedded WebApplicationContext
+2024-06-11T11:34:53.980+07:00  INFO 10596 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 301 ms
+2024-06-11T11:34:54.024+07:00  INFO 10596 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T11:34:54.027+07:00  INFO 10596 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T11:34:54.030+07:00  INFO 10596 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T11:34:54.031+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Starting...
+2024-06-11T11:34:54.042+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-22 - Added connection com.mysql.cj.jdbc.ConnectionImpl@29490217
+2024-06-11T11:34:54.042+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Start completed.
+2024-06-11T11:34:54.193+07:00  INFO 10596 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T11:34:54.266+07:00  INFO 10596 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:34:54.405+07:00  WARN 10596 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-11T11:34:54.418+07:00  INFO 10596 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-11T11:34:54.633+07:00  INFO 10596 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7fa87583, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@179d5f3e, org.springframework.security.web.context.SecurityContextHolderFilter@276e4e67, org.springframework.security.web.header.HeaderWriterFilter@4ef84e9a, org.springframework.web.filter.CorsFilter@dce7103, org.springframework.security.web.csrf.CsrfFilter@16c04bff, org.springframework.security.web.authentication.logout.LogoutFilter@2b812c78, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3f24adbb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@33e576c6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@724944ed, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@1de4a4cb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@35345e8d, org.springframework.security.web.access.ExceptionTranslationFilter@6ca5b91e, org.springframework.security.web.access.intercept.AuthorizationFilter@b1c6820]
+2024-06-11T11:34:54.678+07:00  INFO 10596 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-11T11:34:54.691+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/ShopmmtAdmin'
+2024-06-11T11:34:54.695+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Started ShopmmtBackEndApplication in 1.039 seconds (process running for 2555.852)
+2024-06-11T11:34:54.697+07:00  INFO 10596 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-11T11:35:18.927+07:00  INFO 10596 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-06-11T11:35:18.936+07:00  INFO 10596 --- [Thread-86] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:35:18.938+07:00  INFO 10596 --- [Thread-86] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Shutdown initiated...
+2024-06-11T11:35:18.940+07:00  INFO 10596 --- [Thread-86] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Shutdown completed.
+2024-06-11T11:35:19.020+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Starting ShopmmtBackEndApplication using Java 17.0.10 with PID 10596 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T11:35:19.020+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T11:35:19.182+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T11:35:19.209+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 10 JPA repository interfaces.
+2024-06-11T11:35:19.299+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-11T11:35:19.300+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-11T11:35:19.300+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-11T11:35:19.317+07:00  INFO 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring embedded WebApplicationContext
+2024-06-11T11:35:19.317+07:00  INFO 10596 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 296 ms
+2024-06-11T11:35:19.350+07:00  INFO 10596 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T11:35:19.352+07:00  INFO 10596 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T11:35:19.355+07:00  INFO 10596 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T11:35:19.356+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Starting...
+2024-06-11T11:35:19.365+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-23 - Added connection com.mysql.cj.jdbc.ConnectionImpl@595eb3de
+2024-06-11T11:35:19.365+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Start completed.
+2024-06-11T11:35:19.502+07:00  INFO 10596 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T11:35:19.587+07:00  INFO 10596 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:35:19.723+07:00  WARN 10596 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-11T11:35:19.737+07:00  INFO 10596 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-11T11:35:19.953+07:00  INFO 10596 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1c6b6a3b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@212252c, org.springframework.security.web.context.SecurityContextHolderFilter@5b858645, org.springframework.security.web.header.HeaderWriterFilter@13d4bb1, org.springframework.web.filter.CorsFilter@30b2c8d0, org.springframework.security.web.csrf.CsrfFilter@7c870089, org.springframework.security.web.authentication.logout.LogoutFilter@6e807b4d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@55ace7d1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1f4246f4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@72cbdca5, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@381ba43a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@55ed9088, org.springframework.security.web.access.ExceptionTranslationFilter@3f0a5dc4, org.springframework.security.web.access.intercept.AuthorizationFilter@4ffa33a1]
+2024-06-11T11:35:20.009+07:00  INFO 10596 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-11T11:35:20.026+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/ShopmmtAdmin'
+2024-06-11T11:35:20.031+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Started ShopmmtBackEndApplication in 1.035 seconds (process running for 2581.188)
+2024-06-11T11:35:20.032+07:00  INFO 10596 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-11T11:35:23.515+07:00  INFO 10596 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-06-11T11:35:23.529+07:00  INFO 10596 --- [Thread-90] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:35:23.530+07:00  INFO 10596 --- [Thread-90] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Shutdown initiated...
+2024-06-11T11:35:23.532+07:00  INFO 10596 --- [Thread-90] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Shutdown completed.
+2024-06-11T11:35:23.614+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Starting ShopmmtBackEndApplication using Java 17.0.10 with PID 10596 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T11:35:23.614+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T11:35:23.762+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T11:35:23.786+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 10 JPA repository interfaces.
+2024-06-11T11:35:23.861+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-11T11:35:23.862+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-11T11:35:23.862+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-11T11:35:23.877+07:00  INFO 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring embedded WebApplicationContext
+2024-06-11T11:35:23.877+07:00  INFO 10596 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 261 ms
+2024-06-11T11:35:23.912+07:00  INFO 10596 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T11:35:23.916+07:00  INFO 10596 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T11:35:23.920+07:00  INFO 10596 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T11:35:23.921+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Starting...
+2024-06-11T11:35:23.930+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-24 - Added connection com.mysql.cj.jdbc.ConnectionImpl@62e179d8
+2024-06-11T11:35:23.931+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Start completed.
+2024-06-11T11:35:24.047+07:00  INFO 10596 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T11:35:24.129+07:00  INFO 10596 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:35:24.264+07:00  WARN 10596 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-11T11:35:24.275+07:00  INFO 10596 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-11T11:35:24.483+07:00  INFO 10596 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1fbb78d1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@66e2b88c, org.springframework.security.web.context.SecurityContextHolderFilter@45eb593b, org.springframework.security.web.header.HeaderWriterFilter@7b5d2b93, org.springframework.web.filter.CorsFilter@2c008b7d, org.springframework.security.web.csrf.CsrfFilter@15bdcb7a, org.springframework.security.web.authentication.logout.LogoutFilter@444fd272, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4091572a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3e76ace7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@49e1d1ba, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@7af7c108, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@68bbf074, org.springframework.security.web.access.ExceptionTranslationFilter@7170d209, org.springframework.security.web.access.intercept.AuthorizationFilter@8fe2bc9]
+2024-06-11T11:35:24.524+07:00  INFO 10596 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-11T11:35:24.535+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/ShopmmtAdmin'
+2024-06-11T11:35:24.540+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Started ShopmmtBackEndApplication in 0.951 seconds (process running for 2585.696)
+2024-06-11T11:35:24.540+07:00  INFO 10596 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-11T11:37:19.986+07:00  INFO 10596 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-06-11T11:37:20.001+07:00  INFO 10596 --- [Thread-94] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:37:20.001+07:00  INFO 10596 --- [Thread-94] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Shutdown initiated...
+2024-06-11T11:37:20.004+07:00  INFO 10596 --- [Thread-94] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Shutdown completed.
+2024-06-11T11:37:20.082+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Starting ShopmmtBackEndApplication using Java 17.0.10 with PID 10596 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T11:37:20.082+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T11:37:20.240+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T11:37:20.267+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 10 JPA repository interfaces.
+2024-06-11T11:37:20.356+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-11T11:37:20.357+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-11T11:37:20.357+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-11T11:37:20.377+07:00  INFO 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring embedded WebApplicationContext
+2024-06-11T11:37:20.377+07:00  INFO 10596 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 293 ms
+2024-06-11T11:37:20.409+07:00  INFO 10596 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T11:37:20.413+07:00  INFO 10596 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T11:37:20.416+07:00  INFO 10596 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T11:37:20.417+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-25 - Starting...
+2024-06-11T11:37:20.431+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-25 - Added connection com.mysql.cj.jdbc.ConnectionImpl@19fc9563
+2024-06-11T11:37:20.431+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-25 - Start completed.
+2024-06-11T11:37:20.571+07:00  INFO 10596 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T11:37:20.649+07:00  INFO 10596 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:37:20.789+07:00  WARN 10596 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-11T11:37:20.816+07:00  INFO 10596 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-11T11:37:21.041+07:00  INFO 10596 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7ff63646, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7bbb1155, org.springframework.security.web.context.SecurityContextHolderFilter@515aa587, org.springframework.security.web.header.HeaderWriterFilter@76860794, org.springframework.web.filter.CorsFilter@7a1665c1, org.springframework.security.web.csrf.CsrfFilter@52df6bbf, org.springframework.security.web.authentication.logout.LogoutFilter@5f1f2da5, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2a157734, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@78f1ae80, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d11c343, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@78c33b43, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1b6e50e3, org.springframework.security.web.access.ExceptionTranslationFilter@243827aa, org.springframework.security.web.access.intercept.AuthorizationFilter@c41111c]
+2024-06-11T11:37:21.084+07:00  INFO 10596 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-11T11:37:21.098+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/ShopmmtAdmin'
+2024-06-11T11:37:21.103+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Started ShopmmtBackEndApplication in 1.042 seconds (process running for 2702.26)
+2024-06-11T11:37:21.104+07:00  INFO 10596 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-11T11:38:20.632+07:00  INFO 10596 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-06-11T11:38:20.648+07:00  INFO 10596 --- [Thread-98] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:38:20.648+07:00  INFO 10596 --- [Thread-98] com.zaxxer.hikari.HikariDataSource       : HikariPool-25 - Shutdown initiated...
+2024-06-11T11:38:20.649+07:00  INFO 10596 --- [Thread-98] com.zaxxer.hikari.HikariDataSource       : HikariPool-25 - Shutdown completed.
+2024-06-11T11:38:20.727+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Starting ShopmmtBackEndApplication using Java 17.0.10 with PID 10596 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T11:38:20.727+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T11:38:20.877+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T11:38:20.901+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 10 JPA repository interfaces.
+2024-06-11T11:38:20.980+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-11T11:38:20.981+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-11T11:38:20.981+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-11T11:38:21.001+07:00  INFO 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring embedded WebApplicationContext
+2024-06-11T11:38:21.001+07:00  INFO 10596 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 273 ms
+2024-06-11T11:38:21.036+07:00  INFO 10596 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T11:38:21.039+07:00  INFO 10596 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T11:38:21.043+07:00  INFO 10596 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T11:38:21.043+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-26 - Starting...
+2024-06-11T11:38:21.053+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-26 - Added connection com.mysql.cj.jdbc.ConnectionImpl@55e2685b
+2024-06-11T11:38:21.053+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-26 - Start completed.
+2024-06-11T11:38:21.183+07:00  INFO 10596 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T11:38:21.259+07:00  INFO 10596 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:38:21.399+07:00  WARN 10596 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-11T11:38:21.417+07:00  INFO 10596 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-11T11:38:21.612+07:00  INFO 10596 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@12c7d6a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7e063627, org.springframework.security.web.context.SecurityContextHolderFilter@1ffd4b8b, org.springframework.security.web.header.HeaderWriterFilter@6c8a2f8d, org.springframework.web.filter.CorsFilter@9f24626, org.springframework.security.web.csrf.CsrfFilter@64520230, org.springframework.security.web.authentication.logout.LogoutFilter@384ca99e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6722143d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6bca89c6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7053bd65, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@3aff411e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@494501b7, org.springframework.security.web.access.ExceptionTranslationFilter@729d33e1, org.springframework.security.web.access.intercept.AuthorizationFilter@6a22bee6]
+2024-06-11T11:38:21.659+07:00  INFO 10596 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-11T11:38:21.671+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/ShopmmtAdmin'
+2024-06-11T11:38:21.676+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Started ShopmmtBackEndApplication in 0.972 seconds (process running for 2762.833)
+2024-06-11T11:38:21.677+07:00  INFO 10596 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-11T11:51:36.997+07:00  INFO 10596 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11T11:51:36.998+07:00  INFO 10596 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-11T11:51:36.999+07:00  INFO 10596 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-11T11:54:59.321+07:00  INFO 10596 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-06-11T11:54:59.336+07:00  INFO 10596 --- [Thread-102] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:54:59.337+07:00  INFO 10596 --- [Thread-102] com.zaxxer.hikari.HikariDataSource       : HikariPool-26 - Shutdown initiated...
+2024-06-11T11:54:59.340+07:00  INFO 10596 --- [Thread-102] com.zaxxer.hikari.HikariDataSource       : HikariPool-26 - Shutdown completed.
+2024-06-11T11:54:59.422+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Starting ShopmmtBackEndApplication using Java 17.0.10 with PID 10596 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T11:54:59.422+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T11:54:59.587+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T11:54:59.615+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 10 JPA repository interfaces.
+2024-06-11T11:54:59.694+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-11T11:54:59.694+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-11T11:54:59.694+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-11T11:54:59.720+07:00  INFO 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring embedded WebApplicationContext
+2024-06-11T11:54:59.720+07:00  INFO 10596 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 297 ms
+2024-06-11T11:54:59.752+07:00  WARN 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [F2A6F7567B7D702A4D5D563A295F6734]
+2024-06-11T11:54:59.777+07:00  INFO 10596 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T11:54:59.780+07:00  INFO 10596 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T11:54:59.785+07:00  INFO 10596 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T11:54:59.787+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-27 - Starting...
+2024-06-11T11:54:59.798+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-27 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1dc58452
+2024-06-11T11:54:59.798+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-27 - Start completed.
+2024-06-11T11:54:59.952+07:00  INFO 10596 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T11:55:00.039+07:00  INFO 10596 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:55:00.181+07:00  WARN 10596 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-11T11:55:00.196+07:00  INFO 10596 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-11T11:55:00.397+07:00  INFO 10596 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@30bd4e30, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@173c5b95, org.springframework.security.web.context.SecurityContextHolderFilter@29734a7, org.springframework.security.web.header.HeaderWriterFilter@1c3acef7, org.springframework.web.filter.CorsFilter@2a9cd752, org.springframework.security.web.csrf.CsrfFilter@6314a6d2, org.springframework.security.web.authentication.logout.LogoutFilter@41c56431, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@19c48b33, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44f33011, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6d65a07f, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@2ad4817, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4299cfe6, org.springframework.security.web.access.ExceptionTranslationFilter@5458f47, org.springframework.security.web.access.intercept.AuthorizationFilter@73ca9d97]
+2024-06-11T11:55:00.451+07:00  INFO 10596 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-11T11:55:00.463+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/ShopmmtAdmin'
+2024-06-11T11:55:00.468+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Started ShopmmtBackEndApplication in 1.064 seconds (process running for 3761.625)
+2024-06-11T11:55:00.469+07:00  INFO 10596 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-11T11:55:10.394+07:00  INFO 10596 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11T11:55:10.394+07:00  INFO 10596 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-11T11:55:10.397+07:00  INFO 10596 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-11T11:56:31.500+07:00  INFO 18948 --- [main] c.s.admin.order.OrderRepositoryTests     : Starting OrderRepositoryTests using Java 17.0.10 with PID 18948 (started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T11:56:31.501+07:00  INFO 18948 --- [main] c.s.admin.order.OrderRepositoryTests     : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T11:56:31.867+07:00  INFO 18948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T11:56:31.972+07:00  INFO 18948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 96 ms. Found 10 JPA repository interfaces.
+2024-06-11T11:56:32.358+07:00  INFO 18948 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T11:56:32.416+07:00  INFO 18948 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-11T11:56:32.449+07:00  INFO 18948 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T11:56:32.697+07:00  INFO 18948 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T11:56:32.724+07:00  INFO 18948 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-11T11:56:33.045+07:00  INFO 18948 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5b322873
+2024-06-11T11:56:33.049+07:00  INFO 18948 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-11T11:56:34.345+07:00  INFO 18948 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T11:56:34.497+07:00  INFO 18948 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:56:34.890+07:00  INFO 18948 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-11T11:56:35.757+07:00  INFO 18948 --- [main] c.s.admin.order.OrderRepositoryTests     : Started OrderRepositoryTests in 4.643 seconds (process running for 5.678)
+2024-06-11T11:56:36.502+07:00  INFO 18948 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:56:36.504+07:00  INFO 18948 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-11T11:56:36.514+07:00  INFO 18948 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-11T11:58:15.658+07:00  INFO 8036 --- [main] c.s.admin.order.OrderRepositoryTests     : Starting OrderRepositoryTests using Java 17.0.10 with PID 8036 (started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T11:58:15.659+07:00  INFO 8036 --- [main] c.s.admin.order.OrderRepositoryTests     : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T11:58:16.024+07:00  INFO 8036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T11:58:16.135+07:00  INFO 8036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101 ms. Found 10 JPA repository interfaces.
+2024-06-11T11:58:16.474+07:00  INFO 8036 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T11:58:16.536+07:00  INFO 8036 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-11T11:58:16.567+07:00  INFO 8036 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T11:58:16.833+07:00  INFO 8036 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T11:58:16.866+07:00  INFO 8036 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-11T11:58:17.176+07:00  INFO 8036 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d4ecc67
+2024-06-11T11:58:17.178+07:00  INFO 8036 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-11T11:58:18.529+07:00  INFO 8036 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T11:58:18.689+07:00  INFO 8036 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:58:19.055+07:00  INFO 8036 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-11T11:58:19.841+07:00  INFO 8036 --- [main] c.s.admin.order.OrderRepositoryTests     : Started OrderRepositoryTests in 4.535 seconds (process running for 5.528)
+2024-06-11T11:58:20.560+07:00  INFO 8036 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T11:58:20.562+07:00  INFO 8036 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-11T11:58:20.571+07:00  INFO 8036 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-11T12:13:43.509+07:00  INFO 17544 --- [main] c.s.admin.order.OrderRepositoryTests     : Starting OrderRepositoryTests using Java 17.0.10 with PID 17544 (started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T12:13:43.511+07:00  INFO 17544 --- [main] c.s.admin.order.OrderRepositoryTests     : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T12:13:43.977+07:00  INFO 17544 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T12:13:44.089+07:00  INFO 17544 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 100 ms. Found 10 JPA repository interfaces.
+2024-06-11T12:13:44.475+07:00  INFO 17544 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T12:13:44.524+07:00  INFO 17544 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-11T12:13:44.553+07:00  INFO 17544 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T12:13:44.810+07:00  INFO 17544 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T12:13:44.848+07:00  INFO 17544 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-11T12:13:45.184+07:00  INFO 17544 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@72a7aa4f
+2024-06-11T12:13:45.187+07:00  INFO 17544 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-11T12:13:46.536+07:00  INFO 17544 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T12:13:46.688+07:00  INFO 17544 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:13:47.076+07:00  INFO 17544 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-11T12:13:47.977+07:00  INFO 17544 --- [main] c.s.admin.order.OrderRepositoryTests     : Started OrderRepositoryTests in 4.828 seconds (process running for 5.886)
+2024-06-11T12:13:48.699+07:00  INFO 17544 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:13:48.701+07:00  INFO 17544 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-11T12:13:48.710+07:00  INFO 17544 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-11T12:14:36.146+07:00  INFO 11500 --- [main] c.s.admin.order.OrderRepositoryTests     : Starting OrderRepositoryTests using Java 17.0.10 with PID 11500 (started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T12:14:36.147+07:00  INFO 11500 --- [main] c.s.admin.order.OrderRepositoryTests     : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T12:14:36.536+07:00  INFO 11500 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T12:14:36.637+07:00  INFO 11500 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 91 ms. Found 10 JPA repository interfaces.
+2024-06-11T12:14:37.001+07:00  INFO 11500 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T12:14:37.057+07:00  INFO 11500 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-11T12:14:37.088+07:00  INFO 11500 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T12:14:37.364+07:00  INFO 11500 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T12:14:37.404+07:00  INFO 11500 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-11T12:14:37.703+07:00  INFO 11500 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@10bf1ec9
+2024-06-11T12:14:37.705+07:00  INFO 11500 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-11T12:14:39.048+07:00  INFO 11500 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T12:14:39.202+07:00  INFO 11500 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:14:39.527+07:00  INFO 11500 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-11T12:14:40.245+07:00  INFO 11500 --- [main] c.s.admin.order.OrderRepositoryTests     : Started OrderRepositoryTests in 4.465 seconds (process running for 5.478)
+2024-06-11T12:14:41.003+07:00  INFO 11500 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:14:41.006+07:00  INFO 11500 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-11T12:14:41.016+07:00  INFO 11500 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-11T12:16:09.152+07:00  INFO 10596 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-06-11T12:16:09.164+07:00  INFO 10596 --- [Thread-106] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:16:09.165+07:00  INFO 10596 --- [Thread-106] com.zaxxer.hikari.HikariDataSource       : HikariPool-27 - Shutdown initiated...
+2024-06-11T12:16:09.168+07:00  INFO 10596 --- [Thread-106] com.zaxxer.hikari.HikariDataSource       : HikariPool-27 - Shutdown completed.
+2024-06-11T12:16:09.289+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Starting ShopmmtBackEndApplication using Java 17.0.10 with PID 10596 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T12:16:09.289+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T12:16:09.530+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T12:16:09.560+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 10 JPA repository interfaces.
+2024-06-11T12:16:09.675+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-11T12:16:09.676+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-11T12:16:09.676+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-11T12:16:09.695+07:00  INFO 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring embedded WebApplicationContext
+2024-06-11T12:16:09.695+07:00  INFO 10596 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 403 ms
+2024-06-11T12:16:09.715+07:00  WARN 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [9550A8F165E2177ED6430A1EACAE4A4E]
+2024-06-11T12:16:09.750+07:00  INFO 10596 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T12:16:09.756+07:00  INFO 10596 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T12:16:09.763+07:00  INFO 10596 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T12:16:09.765+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-28 - Starting...
+2024-06-11T12:16:09.781+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-28 - Added connection com.mysql.cj.jdbc.ConnectionImpl@308a9e53
+2024-06-11T12:16:09.782+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-28 - Start completed.
+2024-06-11T12:16:09.962+07:00  INFO 10596 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T12:16:10.052+07:00  INFO 10596 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:16:10.280+07:00  WARN 10596 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-11T12:16:10.302+07:00  INFO 10596 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-11T12:16:10.542+07:00  INFO 10596 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@61c70e96, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4e3285b3, org.springframework.security.web.context.SecurityContextHolderFilter@6b98bf82, org.springframework.security.web.header.HeaderWriterFilter@3110ceb4, org.springframework.web.filter.CorsFilter@192e86d5, org.springframework.security.web.csrf.CsrfFilter@75820cb4, org.springframework.security.web.authentication.logout.LogoutFilter@48269d5a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@55005971, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@e1af9e9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@8323d2a, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@25845d22, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1ec4a59f, org.springframework.security.web.access.ExceptionTranslationFilter@2f35336b, org.springframework.security.web.access.intercept.AuthorizationFilter@29b0cd50]
+2024-06-11T12:16:10.614+07:00  INFO 10596 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-11T12:16:10.632+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/ShopmmtAdmin'
+2024-06-11T12:16:10.638+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Started ShopmmtBackEndApplication in 1.379 seconds (process running for 5031.795)
+2024-06-11T12:16:10.640+07:00  INFO 10596 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-11T12:16:10.695+07:00  INFO 10596 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11T12:16:10.695+07:00  INFO 10596 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-11T12:16:10.695+07:00  INFO 10596 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-06-11T12:17:46.176+07:00  INFO 10596 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-06-11T12:17:46.188+07:00  INFO 10596 --- [Thread-110] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:17:46.188+07:00  INFO 10596 --- [Thread-110] com.zaxxer.hikari.HikariDataSource       : HikariPool-28 - Shutdown initiated...
+2024-06-11T12:17:46.191+07:00  INFO 10596 --- [Thread-110] com.zaxxer.hikari.HikariDataSource       : HikariPool-28 - Shutdown completed.
+2024-06-11T12:17:46.288+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Starting ShopmmtBackEndApplication using Java 17.0.10 with PID 10596 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T12:17:46.288+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T12:17:46.446+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T12:17:46.489+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 10 JPA repository interfaces.
+2024-06-11T12:17:46.574+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-11T12:17:46.575+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-11T12:17:46.575+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-11T12:17:46.590+07:00  INFO 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring embedded WebApplicationContext
+2024-06-11T12:17:46.590+07:00  INFO 10596 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 300 ms
+2024-06-11T12:17:46.607+07:00  WARN 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [5FDE37B6EF6E62BB66FD27C1123058F8]
+2024-06-11T12:17:46.633+07:00  INFO 10596 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T12:17:46.635+07:00  INFO 10596 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T12:17:46.642+07:00  INFO 10596 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T12:17:46.643+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-29 - Starting...
+2024-06-11T12:17:46.655+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-29 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3450e691
+2024-06-11T12:17:46.655+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-29 - Start completed.
+2024-06-11T12:17:46.843+07:00  INFO 10596 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T12:17:46.944+07:00  INFO 10596 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:17:47.104+07:00  WARN 10596 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-11T12:17:47.119+07:00  INFO 10596 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-11T12:17:47.351+07:00  INFO 10596 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@17e761b5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@50fd3e8, org.springframework.security.web.context.SecurityContextHolderFilter@570c058d, org.springframework.security.web.header.HeaderWriterFilter@45ae3b47, org.springframework.web.filter.CorsFilter@22b3d634, org.springframework.security.web.csrf.CsrfFilter@1c9b8656, org.springframework.security.web.authentication.logout.LogoutFilter@6b3c7e1, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@43ac86e3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3b837df0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7e402ca1, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@6710af83, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@403d0956, org.springframework.security.web.access.ExceptionTranslationFilter@60ba091a, org.springframework.security.web.access.intercept.AuthorizationFilter@7a6d12eb]
+2024-06-11T12:17:47.472+07:00  INFO 10596 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-11T12:17:47.501+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/ShopmmtAdmin'
+2024-06-11T12:17:47.512+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Started ShopmmtBackEndApplication in 1.243 seconds (process running for 5128.669)
+2024-06-11T12:17:47.514+07:00  INFO 10596 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-11T12:17:49.542+07:00  INFO 10596 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11T12:17:49.542+07:00  INFO 10596 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-11T12:17:49.543+07:00  INFO 10596 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-11T12:31:16.598+07:00  INFO 10596 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-06-11T12:31:16.610+07:00  INFO 10596 --- [Thread-114] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:31:16.610+07:00  INFO 10596 --- [Thread-114] com.zaxxer.hikari.HikariDataSource       : HikariPool-29 - Shutdown initiated...
+2024-06-11T12:31:16.621+07:00  INFO 10596 --- [Thread-114] com.zaxxer.hikari.HikariDataSource       : HikariPool-29 - Shutdown completed.
+2024-06-11T12:31:16.802+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Starting ShopmmtBackEndApplication using Java 17.0.10 with PID 10596 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T12:31:16.803+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T12:31:17.096+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T12:31:17.152+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 10 JPA repository interfaces.
+2024-06-11T12:31:17.350+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-11T12:31:17.351+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-11T12:31:17.351+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-11T12:31:17.377+07:00  INFO 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring embedded WebApplicationContext
+2024-06-11T12:31:17.377+07:00  INFO 10596 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 572 ms
+2024-06-11T12:31:17.404+07:00  WARN 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [193349791D8444755263CD11AAA7025C]
+2024-06-11T12:31:17.451+07:00  INFO 10596 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T12:31:17.456+07:00  INFO 10596 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T12:31:17.465+07:00  INFO 10596 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T12:31:17.468+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-30 - Starting...
+2024-06-11T12:31:17.485+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-30 - Added connection com.mysql.cj.jdbc.ConnectionImpl@60d9f7c
+2024-06-11T12:31:17.485+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-30 - Start completed.
+2024-06-11T12:31:17.713+07:00  INFO 10596 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T12:31:17.812+07:00  INFO 10596 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:31:18.086+07:00  WARN 10596 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-11T12:31:18.116+07:00  INFO 10596 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-11T12:31:18.360+07:00  INFO 10596 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@48c1525a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2c43303b, org.springframework.security.web.context.SecurityContextHolderFilter@644fc9d2, org.springframework.security.web.header.HeaderWriterFilter@4e509736, org.springframework.web.filter.CorsFilter@fa83af7, org.springframework.security.web.csrf.CsrfFilter@1c7d72bd, org.springframework.security.web.authentication.logout.LogoutFilter@2a0042b4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1b44f93, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1350a77c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6cc5f6de, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@69fdbccb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@b37d42d, org.springframework.security.web.access.ExceptionTranslationFilter@52e5b1f1, org.springframework.security.web.access.intercept.AuthorizationFilter@2909bde4]
+2024-06-11T12:31:18.435+07:00  INFO 10596 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-11T12:31:18.458+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/ShopmmtAdmin'
+2024-06-11T12:31:18.465+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Started ShopmmtBackEndApplication in 1.695 seconds (process running for 5939.622)
+2024-06-11T12:31:18.466+07:00  INFO 10596 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-11T12:31:23.893+07:00  INFO 10596 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11T12:31:23.893+07:00  INFO 10596 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-11T12:31:23.894+07:00  INFO 10596 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-11T12:33:27.699+07:00  INFO 10596 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2024-06-11T12:33:27.710+07:00  INFO 10596 --- [Thread-118] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:33:27.710+07:00  INFO 10596 --- [Thread-118] com.zaxxer.hikari.HikariDataSource       : HikariPool-30 - Shutdown initiated...
+2024-06-11T12:33:27.713+07:00  INFO 10596 --- [Thread-118] com.zaxxer.hikari.HikariDataSource       : HikariPool-30 - Shutdown completed.
+2024-06-11T12:33:27.808+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Starting ShopmmtBackEndApplication using Java 17.0.10 with PID 10596 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T12:33:27.808+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T12:33:27.992+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T12:33:28.024+07:00  INFO 10596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 10 JPA repository interfaces.
+2024-06-11T12:33:28.124+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-11T12:33:28.124+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-11T12:33:28.124+07:00  INFO 10596 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-11T12:33:28.146+07:00  INFO 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring embedded WebApplicationContext
+2024-06-11T12:33:28.146+07:00  INFO 10596 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 337 ms
+2024-06-11T12:33:28.165+07:00  WARN 10596 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [49A265EF6180158835E1F11018F3B04E]
+2024-06-11T12:33:28.194+07:00  INFO 10596 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T12:33:28.197+07:00  INFO 10596 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T12:33:28.201+07:00  INFO 10596 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T12:33:28.203+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-31 - Starting...
+2024-06-11T12:33:28.213+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-31 - Added connection com.mysql.cj.jdbc.ConnectionImpl@695f337e
+2024-06-11T12:33:28.213+07:00  INFO 10596 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-31 - Start completed.
+2024-06-11T12:33:28.378+07:00  INFO 10596 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T12:33:28.497+07:00  INFO 10596 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:33:28.657+07:00  WARN 10596 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-11T12:33:28.670+07:00  INFO 10596 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-11T12:33:28.861+07:00  INFO 10596 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@49a8953e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@705b174c, org.springframework.security.web.context.SecurityContextHolderFilter@4845ab78, org.springframework.security.web.header.HeaderWriterFilter@7f660e6a, org.springframework.web.filter.CorsFilter@23e286ba, org.springframework.security.web.csrf.CsrfFilter@1ad84fdf, org.springframework.security.web.authentication.logout.LogoutFilter@7ee6d55b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@66c6a598, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@10bba318, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@54c7f287, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@156a8c46, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@62ab263c, org.springframework.security.web.access.ExceptionTranslationFilter@5fa36373, org.springframework.security.web.access.intercept.AuthorizationFilter@2ec2e116]
+2024-06-11T12:33:28.939+07:00  INFO 10596 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-11T12:33:28.951+07:00  INFO 10596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/ShopmmtAdmin'
+2024-06-11T12:33:28.955+07:00  INFO 10596 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Started ShopmmtBackEndApplication in 1.169 seconds (process running for 6070.112)
+2024-06-11T12:33:28.957+07:00  INFO 10596 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-11T12:33:46.001+07:00  INFO 9488 --- [main] c.s.admin.order.OrderRepositoryTests     : Starting OrderRepositoryTests using Java 17.0.10 with PID 9488 (started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T12:33:46.003+07:00  INFO 9488 --- [main] c.s.admin.order.OrderRepositoryTests     : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T12:33:46.372+07:00  INFO 9488 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T12:33:46.476+07:00  INFO 9488 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 10 JPA repository interfaces.
+2024-06-11T12:33:46.845+07:00  INFO 9488 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T12:33:46.902+07:00  INFO 9488 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-11T12:33:46.937+07:00  INFO 9488 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T12:33:47.207+07:00  INFO 9488 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T12:33:47.249+07:00  INFO 9488 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-11T12:33:47.606+07:00  INFO 9488 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d4ecc67
+2024-06-11T12:33:47.609+07:00  INFO 9488 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-11T12:33:48.962+07:00  INFO 9488 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T12:33:49.133+07:00  INFO 9488 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:33:49.468+07:00  INFO 9488 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-11T12:33:50.206+07:00  INFO 9488 --- [main] c.s.admin.order.OrderRepositoryTests     : Started OrderRepositoryTests in 4.589 seconds (process running for 5.673)
+2024-06-11T12:33:50.952+07:00  INFO 9488 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:33:50.954+07:00  INFO 9488 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-11T12:33:50.963+07:00  INFO 9488 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-11T12:34:56.916+07:00  INFO 12036 --- [main] c.s.admin.order.OrderRepositoryTests     : Starting OrderRepositoryTests using Java 17.0.10 with PID 12036 (started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-11T12:34:56.917+07:00  INFO 12036 --- [main] c.s.admin.order.OrderRepositoryTests     : No active profile set, falling back to 1 default profile: "default"
+2024-06-11T12:34:57.282+07:00  INFO 12036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-11T12:34:57.384+07:00  INFO 12036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 94 ms. Found 10 JPA repository interfaces.
+2024-06-11T12:34:57.744+07:00  INFO 12036 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-11T12:34:57.799+07:00  INFO 12036 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-11T12:34:57.832+07:00  INFO 12036 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-11T12:34:58.099+07:00  INFO 12036 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-11T12:34:58.145+07:00  INFO 12036 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-11T12:34:58.457+07:00  INFO 12036 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@10bf1ec9
+2024-06-11T12:34:58.460+07:00  INFO 12036 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-11T12:34:59.794+07:00  INFO 12036 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-11T12:34:59.950+07:00  INFO 12036 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:35:00.275+07:00  INFO 12036 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-11T12:35:01.093+07:00  INFO 12036 --- [main] c.s.admin.order.OrderRepositoryTests     : Started OrderRepositoryTests in 4.516 seconds (process running for 5.507)
+2024-06-11T12:35:01.844+07:00  INFO 12036 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:35:01.846+07:00  INFO 12036 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-11T12:35:01.858+07:00  INFO 12036 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-11T12:35:06.622+07:00  INFO 10596 --- [http-nio-8080-exec-3] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11T12:35:06.622+07:00  INFO 10596 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-11T12:35:06.624+07:00  INFO 10596 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-11T12:37:04.777+07:00  INFO 10596 --- [RMI TCP Connection(197)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-06-11T12:37:04.791+07:00  INFO 10596 --- [RMI TCP Connection(197)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-11T12:37:04.791+07:00  INFO 10596 --- [RMI TCP Connection(197)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-31 - Shutdown initiated...
+2024-06-11T12:37:04.794+07:00  INFO 10596 --- [RMI TCP Connection(197)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-31 - Shutdown completed.
+2024-06-12T12:02:51.499+07:00  INFO 11968 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Starting ShopmmtBackEndApplication using Java 17.0.10 with PID 11968 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-12T12:02:51.508+07:00  INFO 11968 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-12T12:02:51.548+07:00  INFO 11968 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-06-12T12:02:51.549+07:00  INFO 11968 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-06-12T12:02:52.895+07:00  INFO 11968 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-12T12:02:52.995+07:00  INFO 11968 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 10 JPA repository interfaces.
+2024-06-12T12:02:53.502+07:00  INFO 11968 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-12T12:02:53.511+07:00  INFO 11968 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-12T12:02:53.512+07:00  INFO 11968 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-12T12:02:53.563+07:00  INFO 11968 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring embedded WebApplicationContext
+2024-06-12T12:02:53.564+07:00  INFO 11968 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2014 ms
+2024-06-12T12:02:53.641+07:00  WARN 11968 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [E110DFA670CF87869A0204A10E64517F]
+2024-06-12T12:02:53.742+07:00  INFO 11968 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-12T12:02:53.791+07:00  INFO 11968 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-12T12:02:53.823+07:00  INFO 11968 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-12T12:02:54.060+07:00  INFO 11968 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-12T12:02:54.087+07:00  INFO 11968 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-12T12:02:54.404+07:00  INFO 11968 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@396f9b9c
+2024-06-12T12:02:54.407+07:00  INFO 11968 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-12T12:02:56.118+07:00  INFO 11968 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-12T12:02:56.329+07:00  INFO 11968 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-12T12:02:56.647+07:00  INFO 11968 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-12T12:02:57.518+07:00  WARN 11968 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-12T12:02:57.625+07:00  INFO 11968 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-12T12:02:58.077+07:00  INFO 11968 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5cd183e3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5e301032, org.springframework.security.web.context.SecurityContextHolderFilter@5509933, org.springframework.security.web.header.HeaderWriterFilter@ca869f4, org.springframework.web.filter.CorsFilter@6ab5c853, org.springframework.security.web.csrf.CsrfFilter@13af75a2, org.springframework.security.web.authentication.logout.LogoutFilter@f71851, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5e2100ae, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@542737ae, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@620241f3, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@2a63ca45, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7eb1cbe2, org.springframework.security.web.access.ExceptionTranslationFilter@4b778566, org.springframework.security.web.access.intercept.AuthorizationFilter@416c3199]
+2024-06-12T12:02:58.315+07:00  WARN 11968 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2024-06-12T12:02:58.369+07:00  INFO 11968 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/ShopmmtAdmin'
+2024-06-12T12:02:58.378+07:00  INFO 11968 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Started ShopmmtBackEndApplication in 7.216 seconds (process running for 8.402)
+2024-06-12T12:04:10.847+07:00  INFO 11968 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-12T12:04:10.848+07:00  INFO 11968 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-12T12:04:10.851+07:00  INFO 11968 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-06-12T12:08:34.691+07:00  INFO 11968 --- [RMI TCP Connection(15)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-06-12T12:08:34.707+07:00  INFO 11968 --- [RMI TCP Connection(15)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-12T12:08:34.710+07:00  INFO 11968 --- [RMI TCP Connection(15)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-12T12:08:34.715+07:00  INFO 11968 --- [RMI TCP Connection(15)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-12T12:43:16.208+07:00  INFO 15736 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Starting ShopmmtBackEndApplication using Java 17.0.10 with PID 15736 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-12T12:43:16.209+07:00  INFO 15736 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-12T12:43:16.251+07:00  INFO 15736 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-06-12T12:43:16.251+07:00  INFO 15736 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-06-12T12:43:16.916+07:00  INFO 15736 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-12T12:43:17.008+07:00  INFO 15736 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 82 ms. Found 10 JPA repository interfaces.
+2024-06-12T12:43:17.588+07:00  INFO 15736 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-12T12:43:17.604+07:00  INFO 15736 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-12T12:43:17.604+07:00  INFO 15736 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-12T12:43:17.664+07:00  INFO 15736 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring embedded WebApplicationContext
+2024-06-12T12:43:17.664+07:00  INFO 15736 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1412 ms
+2024-06-12T12:43:17.734+07:00  WARN 15736 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [FFE7BE6244038D679E7C7B32F024C358]
+2024-06-12T12:43:17.837+07:00  INFO 15736 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-12T12:43:17.885+07:00  INFO 15736 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-12T12:43:17.932+07:00  INFO 15736 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-12T12:43:18.166+07:00  INFO 15736 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-12T12:43:18.203+07:00  INFO 15736 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-12T12:43:18.499+07:00  INFO 15736 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1aa02645
+2024-06-12T12:43:18.502+07:00  INFO 15736 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-12T12:43:19.915+07:00  INFO 15736 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-12T12:43:20.067+07:00  INFO 15736 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-12T12:43:20.312+07:00  INFO 15736 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-12T12:43:21.116+07:00  WARN 15736 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-12T12:43:21.211+07:00  INFO 15736 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-12T12:43:21.712+07:00  INFO 15736 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@f71851, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3464eba5, org.springframework.security.web.context.SecurityContextHolderFilter@72773cac, org.springframework.security.web.header.HeaderWriterFilter@13af75a2, org.springframework.web.filter.CorsFilter@62541681, org.springframework.security.web.csrf.CsrfFilter@7d7be50e, org.springframework.security.web.authentication.logout.LogoutFilter@639ad581, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5af05051, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4238521a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@eedc555, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@2fcf3535, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@57f2a8a9, org.springframework.security.web.access.ExceptionTranslationFilter@14a98e5, org.springframework.security.web.access.intercept.AuthorizationFilter@60c2f4e3]
+2024-06-12T12:43:21.984+07:00  INFO 15736 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-12T12:43:22.024+07:00  INFO 15736 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/ShopmmtAdmin'
+2024-06-12T12:43:22.033+07:00  INFO 15736 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Started ShopmmtBackEndApplication in 6.21 seconds (process running for 6.896)
+2024-06-12T12:43:46.300+07:00  INFO 15736 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-06-12T12:43:46.317+07:00  INFO 15736 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-12T12:43:46.320+07:00  INFO 15736 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-12T12:43:46.326+07:00  INFO 15736 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-12T12:43:46.402+07:00  INFO 15736 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Starting ShopmmtBackEndApplication using Java 17.0.10 with PID 15736 (D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd\target\classes started by Dell in D:\VanTan\DATN\SpringCode\ShopmmtProject\ShopmmtWebParent\ShopmmtBackEnd)
+2024-06-12T12:43:46.403+07:00  INFO 15736 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-12T12:43:46.600+07:00  INFO 15736 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-12T12:43:46.629+07:00  INFO 15736 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 10 JPA repository interfaces.
+2024-06-12T12:43:46.730+07:00  INFO 15736 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-12T12:43:46.731+07:00  INFO 15736 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-12T12:43:46.732+07:00  INFO 15736 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-12T12:43:46.759+07:00  INFO 15736 --- [restartedMain] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring embedded WebApplicationContext
+2024-06-12T12:43:46.759+07:00  INFO 15736 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 353 ms
+2024-06-12T12:43:46.798+07:00  INFO 15736 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-12T12:43:46.800+07:00  INFO 15736 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-12T12:43:46.805+07:00  INFO 15736 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-12T12:43:46.806+07:00  INFO 15736 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-06-12T12:43:46.820+07:00  INFO 15736 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3bcc4d18
+2024-06-12T12:43:46.820+07:00  INFO 15736 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-06-12T12:43:46.997+07:00  INFO 15736 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-12T12:43:47.099+07:00  INFO 15736 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-12T12:43:47.307+07:00  WARN 15736 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-12T12:43:47.323+07:00  INFO 15736 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-12T12:43:47.536+07:00  INFO 15736 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1e24abd8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@71bf3bed, org.springframework.security.web.context.SecurityContextHolderFilter@3469be02, org.springframework.security.web.header.HeaderWriterFilter@63b7e718, org.springframework.web.filter.CorsFilter@3384e5db, org.springframework.security.web.csrf.CsrfFilter@6755bcd1, org.springframework.security.web.authentication.logout.LogoutFilter@7f2dfcc9, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@41b06928, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7e903f6a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a1e68c0, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@516b1e63, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3a156dce, org.springframework.security.web.access.ExceptionTranslationFilter@51bea28a, org.springframework.security.web.access.intercept.AuthorizationFilter@2948d796]
+2024-06-12T12:43:47.604+07:00  INFO 15736 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-12T12:43:47.623+07:00  INFO 15736 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/ShopmmtAdmin'
+2024-06-12T12:43:47.632+07:00  INFO 15736 --- [restartedMain] c.s.admin.ShopmmtBackEndApplication      : Started ShopmmtBackEndApplication in 1.26 seconds (process running for 32.493)
+2024-06-12T12:43:47.636+07:00  INFO 15736 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-12T12:43:54.162+07:00  INFO 15736 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/ShopmmtAdmin]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-12T12:43:54.163+07:00  INFO 15736 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-12T12:43:54.165+07:00  INFO 15736 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-12T12:44:03.720+07:00 ERROR 15736 --- [http-nio-8080-exec-2] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-8080-exec-2] Exception processing template "orders/order_details_modal": An error happened during template parsing (template: "class path resource [templates/orders/order_details_modal.html]")
+
+org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/orders/order_details_modal.html]")
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.servlet.resource.ResourceUrlEncodingFilter.doFilter(ResourceUrlEncodingFilter.java:66) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:110) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:101) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+Caused by: org.attoparser.ParseException: Exception evaluating SpringEL expression: "detail.subTotal" (template: "orders/order_details_modal" - line 194, col 9)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:393) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	... 104 common frames omitted
+Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "detail.subTotal" (template: "orders/order_details_modal" - line 194, col 9)
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:292) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.FragmentExpression.createExecutedFragmentExpressionParameters(FragmentExpression.java:508) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.FragmentExpression.doCreateExecutedFragmentExpression(FragmentExpression.java:450) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.FragmentExpression.createExecutedFragmentExpression(FragmentExpression.java:405) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.computeFragment(AbstractStandardFragmentInsertionTagProcessor.java:416) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.doProcess(AbstractStandardFragmentInsertionTagProcessor.java:115) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.OpenElementTag.beHandled(OpenElementTag.java:205) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:282) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:290) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.processIterationModel(IteratedGatheringModelProcessable.java:368) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.process(IteratedGatheringModelProcessable.java:222) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleCloseElement(ProcessorTemplateHandler.java:1640) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleCloseElementEnd(TemplateHandlerAdapterMarkupHandler.java:388) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleCloseElementEnd(InlinedOutputExpressionMarkupHandler.java:322) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleCloseElementEnd(OutputExpressionInlinePreProcessorHandler.java:220) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleCloseElementEnd(InlinedOutputExpressionMarkupHandler.java:164) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.attoparser.HtmlElement.handleCloseElementEnd(HtmlElement.java:169) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.HtmlMarkupHandler.handleCloseElementEnd(HtmlMarkupHandler.java:412) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupEventProcessorHandler.handleCloseElementEnd(MarkupEventProcessorHandler.java:473) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.ParsingElementMarkupUtil.parseCloseElement(ParsingElementMarkupUtil.java:201) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:725) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	... 106 common frames omitted
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'subTotal' cannot be found on object of type 'com.shopmmt.common.entity.OrderDetail' - maybe not public or not valid?
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:229) ~[spring-expression-6.1.6.jar:6.1.6]
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:112) ~[spring-expression-6.1.6.jar:6.1.6]
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorValueRef.getValue(PropertyOrFieldReference.java:417) ~[spring-expression-6.1.6.jar:6.1.6]
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:97) ~[spring-expression-6.1.6.jar:6.1.6]
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:114) ~[spring-expression-6.1.6.jar:6.1.6]
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338) ~[spring-expression-6.1.6.jar:6.1.6]
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	... 135 common frames omitted
+
+2024-06-12T12:44:03.739+07:00 ERROR 15736 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[.[dispatcherServlet]      : Servlet.service() for servlet [dispatcherServlet] in context with path [/ShopmmtAdmin] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/orders/order_details_modal.html]")] with root cause
+
+org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'subTotal' cannot be found on object of type 'com.shopmmt.common.entity.OrderDetail' - maybe not public or not valid?
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:229) ~[spring-expression-6.1.6.jar:6.1.6]
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:112) ~[spring-expression-6.1.6.jar:6.1.6]
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorValueRef.getValue(PropertyOrFieldReference.java:417) ~[spring-expression-6.1.6.jar:6.1.6]
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:97) ~[spring-expression-6.1.6.jar:6.1.6]
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:114) ~[spring-expression-6.1.6.jar:6.1.6]
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338) ~[spring-expression-6.1.6.jar:6.1.6]
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.FragmentExpression.createExecutedFragmentExpressionParameters(FragmentExpression.java:508) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.FragmentExpression.doCreateExecutedFragmentExpression(FragmentExpression.java:450) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.FragmentExpression.createExecutedFragmentExpression(FragmentExpression.java:405) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.computeFragment(AbstractStandardFragmentInsertionTagProcessor.java:416) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.doProcess(AbstractStandardFragmentInsertionTagProcessor.java:115) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.OpenElementTag.beHandled(OpenElementTag.java:205) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:282) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.Model.process(Model.java:290) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.processIterationModel(IteratedGatheringModelProcessable.java:368) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.IteratedGatheringModelProcessable.process(IteratedGatheringModelProcessable.java:222) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleCloseElement(ProcessorTemplateHandler.java:1640) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleCloseElementEnd(TemplateHandlerAdapterMarkupHandler.java:388) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleCloseElementEnd(InlinedOutputExpressionMarkupHandler.java:322) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleCloseElementEnd(OutputExpressionInlinePreProcessorHandler.java:220) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleCloseElementEnd(InlinedOutputExpressionMarkupHandler.java:164) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.attoparser.HtmlElement.handleCloseElementEnd(HtmlElement.java:169) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.HtmlMarkupHandler.handleCloseElementEnd(HtmlMarkupHandler.java:412) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupEventProcessorHandler.handleCloseElementEnd(MarkupEventProcessorHandler.java:473) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.ParsingElementMarkupUtil.parseCloseElement(ParsingElementMarkupUtil.java:201) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:725) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.servlet.resource.ResourceUrlEncodingFilter.doFilter(ResourceUrlEncodingFilter.java:66) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:110) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:101) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+

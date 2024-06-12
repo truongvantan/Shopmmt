@@ -16,4 +16,6 @@ public interface ShoppingCartService {
 	double updateQuantity(Integer productId, Integer quantity, Customer customer);
 	
 	void removeProduct(Integer productId, Customer customer);
+	
+	void deleteByCustomer(Customer customer);
 }

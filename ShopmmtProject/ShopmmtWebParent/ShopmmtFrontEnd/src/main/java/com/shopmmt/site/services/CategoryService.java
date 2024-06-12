@@ -11,4 +11,6 @@ public interface CategoryService {
 	Category getCategoryByName(String name) throws CategoryNotFoundException;
 	
 	List<Category> getCategoryParents(Category child);
+
+	List<Category> listRootParentCategories();
 }

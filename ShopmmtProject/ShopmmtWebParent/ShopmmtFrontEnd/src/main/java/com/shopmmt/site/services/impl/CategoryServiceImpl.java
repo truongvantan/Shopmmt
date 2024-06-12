@@ -61,4 +61,9 @@ public class CategoryServiceImpl implements CategoryService {
 		return listParents;
 	}
 
+	@Override
+	public List<Category> listRootParentCategories() {
+		return categoryRepository.listRootParentCategories();
+	}
+
 }

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head
+	th:replace="~{fragments/page_head :: page_head('Shopmmt - Quản lí đơn hàng', 'none')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+
+		<h2 class="mt-2">Quản lý đơn hàng</h2>
+
+		<div
+			th:replace="~{fragments/search_form :: search_form('/orders', 'đơn hàng')}"
+		></div>
+
+		<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
+
+		<!-- Chỉnh lại CSS -->
+		<div class="mt-2 full-details">
+			<table
+				class="table table-responsive-xl table-bordered table-striped table-hover"
+			>
+				<thead class="table-dark">
+					<tr class="text-center">
+						<th
+							th:replace="~{fragments/column_link :: column_link('/orders', 'id', 'ID')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/orders', 'customer', 'Khách hàng')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/orders', 'orderTime', 'Thời gian đặt hàng')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/orders', 'total', 'Tổng tiền')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/orders', 'destination', 'Địa chỉ')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/orders', 'paymentMethod', 'Phương thức thanh toán')}"
+						/>
+						<th
+							th:replace="~{fragments/column_link :: column_link('/orders', 'status', 'Trạng thái')}"
+						/>
+						<th>Hành động</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="order : ${listOrders}">
+						<td class="text-center">[[${order.id}]]</td>
+						<td>
+							<a
+								class="linkCustomerDetail text-decoration-none"
+								th:href="@{'/customers/detail/' + ${order.customer.id}}"
+								title="Xem chi tiết"
+							>[[${order.customer.fullName}]]</a>
+						</td>
+						<td>
+							<div
+								th:replace="~{fragments/format_time :: format_time(${order.orderTime})}"
+							></div>
+						</td>
+						<td>
+							<div
+								th:replace="~{fragments/format_currency :: format_currency(${order.total})}"
+							></div>
+						</td>
+						<td>[[${order.destination}]]</td>
+						<td>[[${order.paymentMethod.label}]]</td>
+						<td>[[${order.status.label}]]</td>
+
+						<td class="text-center">
+							<a
+								th:href="@{'/orders/detail/' + ${order.id}}"
+								class="fa-solid fa-circle-info fa-xl icon-blue linkOrderDetail"
+								data-bs-toggle="tooltip"
+								data-bs-placement="top"
+								title="Xem thông tin chi tiết đơn hàng này"
+							> </a>
+							&nbsp;
+							<div
+								th:replace="~{fragments/edit_delete :: edit('đơn hàng', '/orders/showEdit/' + ${order.id})}"
+							></div>
+							<div
+								th:replace="~{fragments/edit_delete :: delete('đơn hàng', ${order.id}, '/orders/delete/' + ${order.id}, true)}"
+							></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Responsive  -->
+		<div class="less-details">
+			<div
+				th:each="order : ${listOrders}"
+				class="row mt-4"
+			>
+				<div class="col-2">[[${order.id}]]</div>
+				<div class="col-10">
+					<div><b>[[${order.customer.fullName}]], [[${order.city}]]</b></div>
+					<div><small>[[${order.orderTime}]]</small></div>
+					<div>
+						<div
+							th:replace="~{fragments/format_currency :: format_currency(${order.total})}"
+						></div>
+					</div>
+					<div><b>[[${order.status.label}]]</b></div>
+					<div>
+						<a
+							th:href="@{'/orders/detail/' + ${order.id}}"
+							class="fa-solid fa-circle-info fa-xl icon-blue linkOrderDetail"
+							data-bs-toggle="tooltip"
+							data-bs-placement="top"
+							title="Xem thông tin chi tiết đơn hàng này"
+						> </a>
+						&nbsp;
+						<div
+							th:replace="~{fragments/edit_delete :: edit('đơn hàng', '/orders/showEdit/' + ${order.id})}"
+						></div>
+						<div
+							th:replace="~{fragments/edit_delete :: delete('đơn hàng', ${order.id}, '/orders/delete/' + ${order.id}, true)}"
+						></div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- END Responsive -->
+
+		<div
+			th:replace="~{fragments/pagination :: pagination('/orders', 'orders')}"
+		></div>
+
+		<div th:replace="~{fragments/confirm_modal :: confirm_modal}"></div>
+
+		<!-- Modal detail  -->
+		<div
+			class="modal fade"
+			id="orderDetailModal"
+		>
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content"></div>
+			</div>
+		</div>
+
+		<div
+			class="modal fade"
+			id="customerDetailModal"
+		>
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content"></div>
+			</div>
+		</div>
+		<!-- END Modal detail  -->
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+
+
+	<script th:src="@{/js/common_list.js}"></script>
+	<script type="text/javascript">
+		const moduleURL = "[[@{/orders}]]";
+
+		$(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+
+		$(document).ready(function() {
+			$(".link-delete").on("click", function(e) {
+				e.preventDefault();
+				showDeleteConfirmModal($(this), 'đơn hàng');
+			});
+
+			handleLinkViewCustomerDetails();
+			handleLinkViewOrderDetails();
+		});
+
+		function handleLinkViewCustomerDetails() {
+			$(".linkCustomerDetail").on(
+					"click",
+					function(e) {
+						e.preventDefault();
+						linkDetailURL = $(this).attr("href");
+						$("#customerDetailModal").modal("show").find(
+								".modal-content").load(linkDetailURL);
+					});
+		}
+
+		function handleLinkViewOrderDetails() {
+			$(".linkOrderDetail").on(
+					"click",
+					function(e) {
+						e.preventDefault();
+						linkDetailURL = $(this).attr("href");
+						$("#orderDetailModal").modal("show").find(
+								".modal-content").load(linkDetailURL);
+					});
+		}
+	</script>
+
+</body>
+</html>

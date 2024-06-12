@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="~{fragments/page_head :: page_head('Đặt hàng', 'none')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+		<div th:replace="~{fragments/search_form :: search_form}"></div>
+
+		<h1 class="text-center mt-4">THÔNG TIN ĐẶT HÀNG</h1>
+
+		<div class="row m-1">
+			<div class="col-sm-8">
+				<div class="card">
+					<div class="card-header">
+						<h5>Thông tin giao hàng</h5>
+					</div>
+					<div class="card-body">
+						<p>
+							<b>Giao hàng đến:</b>
+							&nbsp; [[${shippingAddress}]]
+							<a
+								th:href="@{/address_book(redirect=checkout)}"
+								class="text-decoration-none"
+							>
+								<br>
+								[Thay đổi]
+							</a>
+						</p>
+						<p>
+							<b>Số ngày giao hàng: </b>
+							[[${checkoutInfo.deliverDays}]]
+						</p>
+						<p>
+							<b>Ngày giao hàng dự kiến: </b>
+							[[${#dates.format(checkoutInfo.deliverDate, 'E, dd MMM yyyy')}]]
+						</p>
+					</div>
+				</div>
+
+				<div class="card mt-3 mb-3">
+					<div class="card-header">
+						<h5>Phương thức thanh toán</h5>
+					</div>
+					<div class="card-body">
+						<form
+							class="form-check"
+							th:action="@{/place_order}"
+							method="post"
+						>
+							<input
+								class="form-check-input"
+								type="radio"
+								name="paymentMethod"
+								id="radioCOD"
+								value="COD"
+							/>
+							<label
+								class="form-check-label"
+								for="radioCOD"
+							> Thanh toán khi nhận hàng (COD) </label>
+							<button
+								class="btn btn-primary d-none"
+								type="submit"
+								id="buttonSubmit"
+							>Đặt hàng với phương thức COD</button>
+						</form>
+
+						<div id="paypal-button-container"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="card">
+					<div class="card-header">
+						<h5 class="text-center">Thông tin đơn hàng</h5>
+					</div>
+					<div class="card-body">
+						<div>
+							<table>
+								<th:block th:each="item : ${cartItems}">
+									<tr th:with="product = ${item.product}">
+										<td>[[${item.quantity}]] X &nbsp;&nbsp;</td>
+										<td width="70%">
+											<a
+												class="text-decoration-none fw-bold"
+												th:href="@{'/p/' + ${product.name}}"
+												target="_blank"
+											>[[${product.shortName}]]</a>
+											<br />
+											<small>
+												Phí vận chuyển:
+												<div
+													th:replace="~{fragments/format_currency :: format_currency(${item.shippingCost})}"
+												></div>
+											</small>
+										</td>
+										<td>
+											<div
+												th:replace="~{fragments/format_currency :: format_currency(${item.subtotal})}"
+											>
+										</td>
+									</tr>
+								</th:block>
+								<tr>
+									<td colspan="3">
+										<hr />
+								</tr>
+							</table>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col">Tổng tiền sản phẩm:</div>
+							<div class="col">
+								<div
+									th:replace="~{fragments/format_currency :: format_currency(${checkoutInfo.productTotal})}"
+								></div>
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col">Tổng phí giao hàng:</div>
+							<div class="col">
+								<div
+									th:replace="~{fragments/format_currency :: format_currency(${checkoutInfo.shippingCostTotal})}"
+								></div>
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col">Tổng tiền phải thanh toán:</div>
+							<div class="col">
+								<b>
+									<div
+										th:replace="~{fragments/format_currency :: format_currency(${checkoutInfo.paymentTotal})}"
+									></div>
+								</b>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+
+	</div>
+
+
+	<script
+		th:src="@{https://www.paypal.com/sdk/js(client-id=${paypalClientId},currency=${currencyCode})}"
+	></script>
+	<script type="text/javascript">
+		contextPath = "[[@{/}]]";
+		const csrfHeaderName = "[[${_csrf.headerName}]]";
+		const csrfValue = "[[${_csrf.token}]]";
+
+		$(document).ready(function() {
+			$("#radioCOD").on("click", function() {
+				$("#buttonSubmit").removeClass("d-none");
+			});
+		});
+		
+		paypal.Buttons({
+			enableStandardCardFields: true,
+			createOrder: function(data, actions) {
+				// Tạo transaction
+				return actions.order.create({
+					
+					intent: 'CAPTURE',
+					payer: {
+						name: {
+						given_name: "[[${customer.firstName}]]",
+						surname: "[[${customer.lastName}]]"
+						},
+					
+						address: {
+							address_line_1: "[[${customer.addressLine1}]]",
+							address_line_2: "[[${customer.addressLine2}]]",
+							admin_area_1: "[[${customer.state}]]",
+							admin_area_2: "[[${customer.city}]]",
+							postal_code: "[[${customer.postalCode}]]",
+							country_code: "VN"
+						},
+						
+						email_address: "[[${customer.email}]]",
+						
+						phone: {
+							phone_type: "MOBILE",
+							phone_number: {
+								national_number: "[[${customer.phoneNumber}]]"
+							}
+						}
+					},
+					
+					purchase_units: [{
+						amount: {
+							value: "[[${checkoutInfo.paymentTotal4PayPal}]]",
+							currency_code: "[[${currencyCode}]]"
+						}
+					}],
+					
+					application_context: {
+						shipping_preference: "NO_SHIPPING"
+					}
+				});
+			},
+			
+			onApprove: function(data, actions) {
+				// Chấp nhận thanh toán paypal
+				return actions.order.capture().then(function(details) {
+					console.log(details);
+					orderId = details.id;
+					totalAmount = details.purchase_units[0].amount.value;
+					
+					alert("Hoàn thành giao dịch.  Mã đơn hàng: " + orderId + ". Tổng tiền thanh toán: " + totalAmount);
+				});
+			},
+			
+			onCancel: function(data) {
+				// Hủy thanh toán
+				alert('Người mua đã hủy thanh toán');
+			},
+			
+			onError: function(err) {
+				alert('Đã xảy ra lỗi không xác định: ');
+			}
+		}).render("#paypal-button-container");
+	</script>
+</body>
+</html>

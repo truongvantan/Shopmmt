@@ -12,6 +12,30 @@
 
 		<h2 class="mt-2">Quản lý người dùng</h2>
 
+		<a
+			th:href="@{/users/new}"
+			class="fa-solid fa-plus fa-2x"
+			title="Thêm mới người dùng"
+		></a>
+		&nbsp; &nbsp;
+		<a
+			th:href="@{/users/export/csv}"
+			class="fa-solid fa-file-csv fa-2x icon-silver"
+			title="Xuất file CSV"
+		> </a>
+		&nbsp; &nbsp;
+		<a
+			th:href="@{/users/export/excel}"
+			class="fa-solid fa-file-excel fa-2x icon-green"
+			title="Xuất file Excel"
+		> </a>
+		&nbsp; &nbsp;
+		<a
+			th:href="@{/users/export/pdf}"
+			class="fa-solid fa-file-pdf fa-2x d-inline-block icon-yellow"
+			title="Xuất file PDF"
+		> </a>
+
 		<div
 			th:replace="~{fragments/search_form :: search_form('/users', 'người dùng')}"
 		></div>
@@ -63,12 +87,18 @@
 						<td>[[${user.firstName}]]</td>
 						<td>[[${user.roles}]]</td>
 						<td class="text-center">
-							<div th:replace="~{fragments/enabled_status :: enabled_status(${user.enabled}, 'người dùng', '/users/' + ${user.id})}"></div>
+							<div
+								th:replace="~{fragments/enabled_status :: enabled_status(${user.enabled}, 'người dùng', '/users/' + ${user.id})}"
+							></div>
 						</td>
 						<td class="text-center">
-							<div th:replace="~{fragments/edit_delete :: edit('người dùng', '/users/showEdit/' + ${user.id})}"></div>
+							<div
+								th:replace="~{fragments/edit_delete :: edit('người dùng', '/users/showEdit/' + ${user.id})}"
+							></div>
 							<!-- <div th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/delete/' + ${user.id}, true)}"></div> -->
-							<div th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/' + ${user.id} + '/enabled/false', true)}"></div>
+							<div
+								th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/' + ${user.id} + '/enabled/false', true)}"
+							></div>
 						</td>
 					</tr>
 				</tbody>
@@ -95,12 +125,18 @@
 					<div>[[${user.fullName}]]</div>
 					<div>[[${user.roles}]]</div>
 					<div class="mt-1">
-						<div th:replace="~{fragments/enabled_status :: enabled_status(${user.enabled}, 'người dùng', '/users/' + ${user.id})}"></div>
+						<div
+							th:replace="~{fragments/enabled_status :: enabled_status(${user.enabled}, 'người dùng', '/users/' + ${user.id})}"
+						></div>
 						&nbsp;
-						<div th:replace="~{fragments/edit_delete :: edit('người dùng', '/users/showEdit/' + ${user.id})}"></div>
+						<div
+							th:replace="~{fragments/edit_delete :: edit('người dùng', '/users/showEdit/' + ${user.id})}"
+						></div>
 						&nbsp;
 						<!-- <div th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/delete/' + ${user.id}, true)}"></div> -->
-						<div th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/' + ${user.id} + '/enabled/false', true)}"></div>
+						<div
+							th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/' + ${user.id} + '/enabled/false', true)}"
+						></div>
 					</div>
 				</div>
 			</div>

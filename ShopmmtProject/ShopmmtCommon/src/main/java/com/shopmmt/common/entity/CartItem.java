@@ -25,6 +25,9 @@ public class CartItem {
 	private Product product;
 	
 	private int quantity;
+	
+	@Transient
+	private double shippingCost;
 
 	public CartItem() {
 		super();
@@ -71,6 +74,15 @@ public class CartItem {
 	@Transient
 	public double getSubtotal() {
 		return product.getDiscountPrice() * quantity;
+	}
+	
+	@Transient
+	public double getShippingCost() {
+		return shippingCost;
+	}
+
+	public void setShippingCost(double shippingCost) {
+		this.shippingCost = shippingCost;
 	}
 	
 }

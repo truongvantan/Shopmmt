@@ -60,23 +60,23 @@ public class WebSecurityConfig {
 						"/webfonts/**")
 				.permitAll()
 
-				.requestMatchers("/account_details", "/update_account_details", "/cart", "/address_book/**").authenticated()
+				.requestMatchers("/account_details", "/update_account_details", "/cart", "/address_book/**",
+						"/checkout", "/place_order").authenticated()
 
 				.anyRequest().permitAll())
-		
+
 				.formLogin(login -> login.loginPage("/login").usernameParameter("email")
-				.successHandler(databaseLoginHandler()).permitAll())
+						.successHandler(databaseLoginHandler()).permitAll())
 
 				.oauth2Login(oauth2 -> oauth2.loginPage("/login")
 						.userInfoEndpoint(userInfo -> userInfo.userService(customerOAuth2UserService))
 						.successHandler(oAuth2LoginSuccessHandler()))
-				
+
 				.logout(logout -> logout.permitAll())
 				.rememberMe(rem -> rem.key("AbcDefgHijKlmnOpqrs_1234567890").tokenValiditySeconds(7 * 24 * 60 * 60));
-		
-		http.sessionManagement((session) -> session
-	            .sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
-		
+
+		http.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
+
 		return http.build();
 	}
 
