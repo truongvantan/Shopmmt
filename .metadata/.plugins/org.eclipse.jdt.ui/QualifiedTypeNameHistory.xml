@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
-    <fullyQualifiedTypeName name="org.springframework.data.domain.Page"/>
-    <fullyQualifiedTypeName name="org.springframework.data.domain.Pageable"/>
-    <fullyQualifiedTypeName name="com.shopmmt.admin.repositories.OrderRepository"/>
     <fullyQualifiedTypeName name="org.springframework.web.method.support.ModelAndViewContainer"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Transient"/>
     <fullyQualifiedTypeName name="com.shopmmt.admin.services.OrderService"/>
@@ -25,9 +21,6 @@
     <fullyQualifiedTypeName name="com.shopmmt.site.common.Utility"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
-    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="jakarta.transaction.Transactional"/>
     <fullyQualifiedTypeName name="com.shopmmt.site.repositories.OrderRepository"/>
@@ -44,11 +37,6 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="com.shopmmt.common.enums.PaymentMethod"/>
     <fullyQualifiedTypeName name="com.shopmmt.site.services.OrderService"/>
-    <fullyQualifiedTypeName name="com.shopmmt.common.entity.SettingBag"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="com.shopmmt.common.entity.Setting"/>
-    <fullyQualifiedTypeName name="java.text.DecimalFormatSymbols"/>
-    <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
     <fullyQualifiedTypeName name="com.shopmmt.site.services.SettingService"/>
     <fullyQualifiedTypeName name="com.shopmmt.common.entity.Order"/>
     <fullyQualifiedTypeName name="java.io.UnsupportedEncodingException"/>
@@ -60,4 +48,16 @@
     <fullyQualifiedTypeName name="java.text.DateFormat"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="com.shopmmt.site.common.CurrencySettingBag"/>
+    <fullyQualifiedTypeName name="com.shopmmt.common.entity.SettingBag"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.shopmmt.common.entity.Setting"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="com.shopmmt.common.entity.Currency"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="com.shopmmt.site.repositories.CurrencyRepository"/>
+    <fullyQualifiedTypeName name="com.shopmmt.site.common.PaymentSettingBag"/>
+    <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
+    <fullyQualifiedTypeName name="java.text.DecimalFormatSymbols"/>
+    <fullyQualifiedTypeName name="java.util.Locale"/>
 </qualifiedTypeNameHistroy>

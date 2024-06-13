@@ -16,7 +16,9 @@ public class ConstantsUtil {
 	public static final int PRODUCT_PAGE_SIZE_CUSTOMER = 5;
 	public static final int SEARCH_RESULTS_PER_PAGE = 5;
 	
-	public static final double SHIPPING_COST = 10_000D;
+	public static final double SHIPPING_COST = 5.0D;
 	public static final int DELIVER_DAYS = 3;
+	
+	public static final String GET_ORDER_API = "/v2/checkout/orders/";
 	
 }

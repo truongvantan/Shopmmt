@@ -4,13 +4,13 @@
 	th:replace="~{fragments/page_head :: page_head('Địa chỉ giao hàng', 'none')}"
 ></head>
 <body>
-	<div class="container-fluid mt-4">
+	<div class="container-fluid mt-4" th:with="redirectedFromCheckoutPage = ${param.redirect != null && param.redirect[0] == 'checkout'}">
 		<div th:replace="~{fragments/header :: header}"></div>
 		<div th:replace="~{fragments/search_form :: search_form}"></div>
 
 		<div class="text-center">
 			<h2
-				th:text="${param.redirect != null && param.redirect[0] == 'checkout'} ? 'CHỌN ĐỊA CHỈ GIAO HÀNG' : 'ĐỊA CHỈ GIAO HÀNG'"
+				th:text="${redirectedFromCheckoutPage} ? 'CHỌN ĐỊA CHỈ GIAO HÀNG' : 'ĐỊA CHỈ GIAO HÀNG'"
 			></h2>
 		</div>
 
@@ -37,7 +37,7 @@
 		</th:block>
 
 		<th:block
-			th:if="${param.redirect != null && param.redirect[0] == 'checkout'}"
+			th:if="${redirectedFromCheckoutPage}"
 		>
 			<div class="row">
 				<div class="col">
@@ -72,7 +72,7 @@
 								<th:block th:if="${usePrimaryAddressAsDefault}">
 									<span
 										class="text-danger fw-bold"
-										th:text="${param.redirect != null && param.redirect[0] == 'checkout' ? '[Đã chọn]' : '[Mặc định]'}"
+										th:text="${redirectedFromCheckoutPage ? '[Đã chọn]' : '[Mặc định]'}"
 									></span>
 								</th:block>
 
@@ -88,7 +88,7 @@
 										class="text-decoration-none"
 									>[Đặt làm mặc định]</a>
 									<a
-										th:if="${param.redirect != null && param.redirect[0] == 'checkout'}"
+										th:if="${redirectedFromCheckoutPage}"
 										th:href="@{'/address_book/default/0?redirect=checkout'}"
 										class="text-decoration-none"
 									>[Chọn]</a>
@@ -103,7 +103,7 @@
 										th:href="@{/account_details(redirect=address_book)}"
 									></a>
 									<a
-										th:if="${param.redirect != null && param.redirect[0] == 'checkout'}"
+										th:if="${redirectedFromCheckoutPage}"
 										class="fas fa-edit icon-dark"
 										title="Cập nhật địa chỉ mặc định"
 										th:href="@{/account_details(redirect=checkout)}"
@@ -130,7 +130,7 @@
 									<th:block th:if="${address.defaultForShipping}">
 										<span
 											class="text-danger fw-bold"
-											th:text="${param.redirect != null && param.redirect[0] == 'checkout' ? '[Đã chọn]' : '[Mặc định]'}"
+											th:text="${redirectedFromCheckoutPage ? '[Đã chọn]' : '[Mặc định]'}"
 										></span>
 									</th:block>
 
@@ -146,7 +146,7 @@
 											class="text-decoration-none"
 										>[Đặt làm mặc định]</a>
 										<a
-											th:if="${param.redirect != null && param.redirect[0] == 'checkout'}"
+											th:if="${redirectedFromCheckoutPage}"
 											th:href="@{'/address_book/default/' + ${address.id} + '?redirect=checkout'}"
 											class="text-decoration-none"
 										>[Chọn]</a>
@@ -161,7 +161,7 @@
 											th:href="@{'/address_book/edit/' + ${address.id}}"
 										></a>
 										<a
-											th:if="${param.redirect != null && param.redirect[0] == 'checkout'}"
+											th:if="${redirectedFromCheckoutPage}"
 											class="fas fa-edit icon-dark"
 											title="Cập nhật địa chỉ này"
 											th:href="@{'/address_book/edit/' + ${address.id} + '?redirect=checkout'}"

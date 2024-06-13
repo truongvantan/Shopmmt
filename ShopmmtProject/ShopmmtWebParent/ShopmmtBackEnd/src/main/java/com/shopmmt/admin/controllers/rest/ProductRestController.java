@@ -1,11 +1,16 @@
 package com.shopmmt.admin.controllers.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shopmmt.admin.dto.ProductInfoOrderDTO;
 import com.shopmmt.admin.services.ProductService;
+import com.shopmmt.common.entity.Product;
+import com.shopmmt.common.exception.ProductNotFoundException;
 
 @RestController
 public class ProductRestController {
@@ -25,5 +30,13 @@ public class ProductRestController {
 			@RequestParam(name = "productDetailValues", required = false) String jsonDetailValues) {
 		
 		return productService.isProductDetailsUnique(productId, jsonDetailNames, jsonDetailValues) ? "OK" : "Duplicated";
+	}
+	
+	@GetMapping("/products/get/{id}")
+	public ProductInfoOrderDTO getProductInfo(@PathVariable(name = "id", required = false) Integer id) 
+			throws ProductNotFoundException {
+		Product product = productService.findById(id);
+		return new ProductInfoOrderDTO(product.getName(), product.getMainImagePath(), 
+				product.getDiscountPrice(), product.getCost());
 	}
 }

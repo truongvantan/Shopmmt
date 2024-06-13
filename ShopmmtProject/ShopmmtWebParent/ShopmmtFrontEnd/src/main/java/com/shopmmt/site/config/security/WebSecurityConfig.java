@@ -61,7 +61,7 @@ public class WebSecurityConfig {
 				.permitAll()
 
 				.requestMatchers("/account_details", "/update_account_details", "/cart", "/address_book/**",
-						"/checkout", "/place_order").authenticated()
+						"/checkout", "/place_order", "/process_paypal_order").authenticated()
 
 				.anyRequest().permitAll())
 

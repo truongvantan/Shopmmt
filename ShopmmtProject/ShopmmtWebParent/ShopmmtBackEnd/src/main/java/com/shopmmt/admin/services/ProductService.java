@@ -30,5 +30,7 @@ public interface ProductService {
 	Product findById(Integer id) throws ProductNotFoundException;
 	
 	Page<Product> listByPage(int pageNum, String sortField, String sortDir, String keyword, Integer categoryId);
+	
+	Page<Product> searchProducts(int pageNum, String sortField, String sortDir, String keyword);
 
 }

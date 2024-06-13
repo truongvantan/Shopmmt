@@ -12,4 +12,6 @@ public interface OrderService {
 	 Order get(Integer id) throws OrderNotFoundException;
 
 	void delete(Integer id) throws OrderNotFoundException;
+
+	void save(Order orderInForm);
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div
+		th:fragment="content"
+		class="modal fade text-center"
+		id="addProductModal"
+	>
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4
+						class="modal-title"
+						id="modalTitle"
+					>Thêm sản phẩm</h4>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="modal"
+						aria-label="Close"
+					></button>
+				</div>
+
+				<div class="ratio ratio-16x9">
+					<iframe class="embed-responsive-item" ></iframe>
+				</div>
+
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-danger"
+						data-bs-dismiss="modal"
+					>Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

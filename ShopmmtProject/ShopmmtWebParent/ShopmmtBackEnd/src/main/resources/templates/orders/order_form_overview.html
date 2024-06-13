@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div
+		th:fragment="content"
+		th:remove="tag"
+	>
+		<div class="form-group row mb-3">
+			<label class="col-sm-2 col-form-label">ID:</label>
+			<div class="col-sm-10">
+				<input
+					type="text"
+					class="form-control"
+					th:value="${order.id}"
+					readonly
+				>
+			</div>
+		</div>
+
+		<div class="form-group row mb-3">
+			<label class="col-sm-2 col-form-label">Khách hàng:</label>
+			<div class="col-sm-10">
+				<input
+					type="text"
+					class="form-control"
+					th:value="${order.customer.fullName}"
+					readonly
+				>
+			</div>
+		</div>
+
+		<div class="form-group row mb-3">
+			<label class="col-sm-2 col-form-label">
+				Tổng giá nhập:
+				<span class="text-danger">(*)</span>
+			</label>
+			<div class="col-sm-10">
+				<input
+					type="text"
+					th:field="*{productCost}"
+					class="form-control"
+					readonly="readonly"
+				/>
+			</div>
+		</div>
+
+		<div class="form-group row mb-3">
+			<label class="col-sm-2 col-form-label">
+				Tổng tiền:
+				<span class="text-danger">(*)</span>
+			</label>
+			<div class="col-sm-10">
+				<input
+					type="text"
+					th:field="*{subtotal}"
+					class="form-control"
+					readonly="readonly"
+				/>
+			</div>
+		</div>
+
+		<div class="form-group row mb-3">
+			<label class="col-sm-2 col-form-label">
+				Phí vận chuyển:
+				<span class="text-danger">(*)</span>
+			</label>
+			<div class="col-sm-10">
+				<input
+					type="text"
+					th:field="*{shippingCost}"
+					class="form-control"
+					readonly="readonly"
+				/>
+			</div>
+		</div>
+
+		<div class="form-group row mb-3 d-none">
+			<label class="col-sm-2 col-form-label">VAT:</label>
+			<div class="col-sm-10">
+				<input
+					type="text"
+					th:field="*{tax}"
+					class="form-control"
+				/>
+			</div>
+		</div>
+
+		<div class="form-group row mb-3">
+			<label class="col-sm-2 col-form-label">
+				Tổng cộng:
+				<span class="text-danger">(*)</span>
+			</label>
+			<div class="col-sm-10">
+				<input
+					type="text"
+					th:field="*{total}"
+					class="form-control"
+					readonly="readonly"
+				/>
+			</div>
+		</div>
+
+		<div class="form-group row mb-3">
+			<label class="col-sm-2 col-form-label">
+				Phương thức thanh toán:
+				<span class="text-danger">(*)</span>
+			</label>
+			<div class="col-sm-10">
+				<select
+					th:field="*{paymentMethod}"
+					class="form-select"
+					style="max-width: 300px"
+					required
+				>
+					<option
+						th:each="pm : ${T(com.shopmmt.common.enums.PaymentMethod).values()}"
+						th:value="${pm}"
+						th:text="${pm.label}"
+					/>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group row mb-3">
+			<label class="col-sm-2 col-form-label">
+				Trạng thái:
+				<span class="text-danger">(*)</span>
+			</label>
+			<div class="col-sm-10">
+				<select
+					th:field="*{status}"
+					class="form-select"
+					style="max-width: 300px"
+					required
+				>
+					<option
+						th:each="os : ${T(com.shopmmt.common.enums.OrderStatus).values()}"
+						th:value="${os}"
+						th:text="${os.label}"
+					/>
+				</select>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

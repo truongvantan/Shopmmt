@@ -2,7 +2,8 @@ package com.shopmmt.common.enums;
 
 public enum PaymentMethod {
 	COD("THANH TOÁN KHI NHẬN HÀNG"), 
-	CREDIT_CARD("THẺ TÍN DỤNG");
+	CREDIT_CARD("THẺ TÍN DỤNG"),
+	PAYPAL("PAYPAL");
 	
 	public final String label;
 

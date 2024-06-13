@@ -8,7 +8,9 @@
 		<div th:replace="~{fragments/header :: header}"></div>
 
 		<div class="text-center mt-2">
-			<h2 class="text-danger">Đặt lại mật khẩu</h2>
+			<div th:if="${title != null}">
+				<h2>[[${title}]]</h2>
+			</div>
 			<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
 		</div>
 

@@ -229,4 +229,20 @@ public class ProductServiceImpl implements ProductService {
 		
 		productRepository.save(productInDB);
 	}
+
+	@Override
+	public Page<Product> searchProducts(int pageNum, String sortField, String sortDir, String keyword) {
+		Sort sort = Sort.by(sortField);
+		sort = "asc".equals(sortDir) ? sort.ascending() : sort.descending();
+
+		Pageable pageable = PageRequest.of(pageNum - 1, ConstantsUtil.PRODUCT_PAGE_SIZE, sort);
+		
+		if (keyword != null && !keyword.isEmpty()) {
+			return productRepository.searchProductsByName(keyword, pageable);
+			
+		}
+		
+		return productRepository.findAll(keyword, pageable);
+		
+	}
 }

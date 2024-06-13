@@ -1,7 +1,8 @@
 package com.shopmmt.common.enums;
 
 public enum OrderStatus {
-	NEW("MỚI"), CANCELLED("HỦY"),
+	NEW("MỚI"),
+	CANCELLED("HỦY"),
 	PROCESSING("ĐANG XỬ LÝ"),
 	PACKAGED("ĐÃ ĐÓNG GÓI"),
 	PICKED("ĐÃ CHỌN"),

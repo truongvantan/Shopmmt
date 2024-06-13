@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shopmmt.admin.services.CustomerService;
-import com.shopmmt.common.dto.CustomerRegisterFormDTO;
+import com.shopmmt.common.dto.CustomerAccountDetailDTO;
 import com.shopmmt.common.entity.Customer;
 import com.shopmmt.common.exception.CustomerNotFoundException;
 
@@ -76,9 +76,9 @@ public class CustomerController {
 		try {
 			Customer customer = customerService.get(id);
 
-			CustomerRegisterFormDTO customerRegisterFormDTO = new CustomerRegisterFormDTO(customer);
+			CustomerAccountDetailDTO customerAccountDetailDTO = new CustomerAccountDetailDTO(customer);
 
-			model.addAttribute("customer", customerRegisterFormDTO);
+			model.addAttribute("customer", customerAccountDetailDTO);
 
 			return "customers/customer_edit_form";
 
@@ -93,7 +93,7 @@ public class CustomerController {
 	@PostMapping("/customers/edit")
 	public String editCustomer(Model model, @RequestParam(name = "id", required = false) Integer id,
 			@RequestParam(name = "newPassword", required = false) String newPassword,
-			@Valid @ModelAttribute("customer") CustomerRegisterFormDTO customerRegisterFormDTO,
+			@Valid @ModelAttribute("customer") CustomerAccountDetailDTO customerAccountDetailDTO,
 			BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		
 		if (bindingResult.hasErrors()) {
@@ -110,12 +110,12 @@ public class CustomerController {
 				
 				return "customers/customer_edit_form";
 			} else {
-				customerRegisterFormDTO.setPassword(newPassword);
-				Customer customer = new Customer(customerRegisterFormDTO);
+				customerAccountDetailDTO.setPassword(newPassword);
+				Customer customer = new Customer(customerAccountDetailDTO);
 				
 				customerService.save(customer);
 				
-				redirectAttributes.addFlashAttribute("message", "Cập nhật khách hàng ID " + customerRegisterFormDTO.getId() + " thành công.");
+				redirectAttributes.addFlashAttribute("message", "Cập nhật khách hàng ID " + customerAccountDetailDTO.getId() + " thành công.");
 				return "redirect:/customers";
 			}
 		}

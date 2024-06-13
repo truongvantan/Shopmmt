@@ -34,7 +34,13 @@ public class OrderServiceImpl implements OrderService {
 
 		Order newOrder = new Order();
 		newOrder.setOrderTime(new Date());
-		newOrder.setStatus(OrderStatus.NEW);
+		
+		if (PaymentMethod.PAYPAL.equals(paymentMethod)) {
+			newOrder.setStatus(OrderStatus.PAID);
+		} else {
+			newOrder.setStatus(OrderStatus.NEW);
+		}
+		
 		newOrder.setCustomer(customer);
 		newOrder.setProductCost(checkoutInfo.getProductCost());
 		newOrder.setSubtotal(checkoutInfo.getProductTotal());

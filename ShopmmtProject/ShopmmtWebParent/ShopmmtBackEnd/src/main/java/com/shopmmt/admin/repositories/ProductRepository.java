@@ -41,5 +41,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 			+ "OR p.category.name LIKE %?3%)")			
 	Page<Product> searchByCategory(Integer categoryId, String categoryIdMatch, 
 			String keyword, Pageable pageable);
+	
+	@Query("SELECT p FROM Product p WHERE p.name LIKE %?1% OR p.category.name LIKE %?1%")
+	public Page<Product> searchProductsByName(String keyword, Pageable pageable);
 
 }

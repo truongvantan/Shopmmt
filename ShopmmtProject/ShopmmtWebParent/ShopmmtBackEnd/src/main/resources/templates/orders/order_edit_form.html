@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="~{fragments/page_head :: page_head('Shopmmt - Cập nhật đơn hàng', 'none')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+
+		<div>
+			<h2>Quản lý đơn hàng | Cập nhật đơn hàng ID ([[${id}]])</h2>
+		</div>
+
+		<form
+			th:action="@{/order/edit}"
+			th:object="${order}"
+			method="post"
+		>
+			<input
+				type="hidden"
+				th:field="*{id}"
+			/>
+			<div>
+				<ul
+					class="nav nav-tabs"
+					id="myTab"
+					role="tablist"
+				>
+					<li class="nav-item">
+						<a
+							class="nav-link active"
+							data-bs-toggle="tab"
+							href="#overview"
+							role="tab"
+						>Thông tin tổng quan</a>
+					</li>
+					<li class="nav-item">
+						<a
+							class="nav-link"
+							data-bs-toggle="tab"
+							href="#products"
+							role="tab"
+						>Danh sách sản phẩm</a>
+					</li>
+					<li class="nav-item">
+						<a
+							class="nav-link"
+							data-bs-toggle="tab"
+							href="#shipping"
+							role="tab"
+						>Vận chuyển</a>
+					</li>
+					<li class="nav-item">
+						<a
+							class="nav-link"
+							data-bs-toggle="tab"
+							href="#track"
+							role="tab"
+						>Tracking</a>
+					</li>
+				</ul>
+
+				<div class="tab-content">
+					<!-- Tab pane Overview  -->
+					<div
+						class="tab-pane active p-3"
+						id="overview"
+						role="tabpanel"
+					>
+						<div th:replace="~{orders/order_form_overview :: content}"></div>
+					</div>
+					<!-- END Tab pane Overview  -->
+
+					<!-- Tab pane Products  -->
+					<div
+						class="tab-pane p-3"
+						id="products"
+						role="tabpanel"
+					>
+						<div th:replace="~{orders/order_form_products :: content}"></div>
+
+					</div>
+					<!-- END Tab pane Products  -->
+
+					<!-- Tab pane Shipping  -->
+					<div
+						class="tab-pane p-3"
+						id="shipping"
+						role="tabpanel"
+					>
+						<div th:replace="~{orders/order_form_shipping :: content}"></div>
+					</div>
+					<!-- END Tab pane Shipping  -->
+
+
+					<!-- Tab pane Tracking  -->
+					<div
+						class="tab-pane p-3"
+						id="track"
+						role="tabpanel"
+					>
+						<div th:replace="~{orders/order_form_tracks:: content}"></div>
+					</div>
+
+					<!-- END tab pane Tracking  -->
+
+				</div>
+			</div>
+
+			<div>
+				<p class="text-center">
+					<input
+						type="submit"
+						value="Lưu"
+						class="btn btn-primary m-3"
+					/>
+					<input
+						type="button"
+						value="Hủy"
+						class="btn btn-secondary"
+						id="buttonCancel"
+					/>
+				</p>
+			</div>
+		</form>
+
+		<div th:replace="~{fragments/modal_dialog :: modal_dialog}"></div>
+		
+		<div th:replace="~{orders/add_product_modal :: content}"></div>
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+
+	<script type="text/javascript">
+		const moduleURL = "[[@{/orders}]]";
+		const contextPath = "[[@{/}]]";
+		const csrfHeaderName = "[[${_csrf.headerName}]]";
+		const csrfValue = "[[${_csrf.token}]]";
+
+		$(document).ready(function() {
+			$('#buttonCancel').click(function() {
+				window.location = "[[@{/orders}]]";
+			});
+
+		});
+	</script>
+	<script th:src="@{/js/common_form.js}"></script>
+	<script th:src="@{/js/jquery.number.min.js}"></script>
+	<script th:src="@{/js/order_form_overview_products.js}"></script>
+	<script th:src="@{/js/order_form_add_product.js}"></script>
+	<script th:src="@{/js/order_form_remove_product.js}"></script>
+	<script th:src="@{/js/order_form_tracks.js}"></script>
+</body>
+</html>
