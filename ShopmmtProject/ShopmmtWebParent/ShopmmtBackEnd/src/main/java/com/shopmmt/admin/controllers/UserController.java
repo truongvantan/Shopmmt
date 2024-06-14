@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.shopmmt.admin.common.AmazonS3Util;
 import com.shopmmt.admin.exception.UserNotFoundException;
 import com.shopmmt.admin.exporter.UserCsvExporter;
 import com.shopmmt.admin.exporter.UserExcelExporter;
@@ -93,17 +94,23 @@ public class UserController {
 				model.addAttribute("error", "Vui lòng chọn tệp có kích thước không vượt quá 1MB");
 				List<Role> listRoles = roleService.listRoles();
 				model.addAttribute("listRoles", listRoles);
-				
+
 				return "users/user_form";
 			} else {
 				if (!multipartFile.isEmpty()) {
 					String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 					userDTO.setPhotos(fileName);
 					User savedUser = userService.save(userDTO);
+
+//					String uploadDir = "user-photos/" + savedUser.getId();
+//
+//					FileUploadUtil.cleanDir(uploadDir);
+//					FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
 					String uploadDir = "user-photos/" + savedUser.getId();
 
-					FileUploadUtil.cleanDir(uploadDir);
-					FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+					AmazonS3Util.removeFolder(uploadDir);
+					AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
 				} else {
 					if ("".equals(userDTO.getPhotos()) || userDTO.getPhotos() == null) {
 						userDTO.setPhotos(null);
@@ -160,17 +167,23 @@ public class UserController {
 				List<Role> listRoles = roleService.listRoles();
 				model.addAttribute("listRoles", listRoles);
 				model.addAttribute("id", userDTO.getId());
-				
+
 				return "users/user_edit_form";
 			} else {
 				if (!multipartFile.isEmpty()) {
 					String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 					userDTO.setPhotos(fileName);
 					User savedUser = userService.save(userDTO);
+					
+//					String uploadDir = "user-photos/" + savedUser.getId();
+//
+//					FileUploadUtil.cleanDir(uploadDir);
+//					FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
 					String uploadDir = "user-photos/" + savedUser.getId();
 
-					FileUploadUtil.cleanDir(uploadDir);
-					FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+					AmazonS3Util.removeFolder(uploadDir);
+					AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
 				} else {
 					if ("".equals(userDTO.getPhotos()) || userDTO.getPhotos() == null) {
 						userDTO.setPhotos(null);
@@ -191,14 +204,18 @@ public class UserController {
 			RedirectAttributes redirectAttributes) {
 		try {
 			userService.delete(id);
-			redirectAttributes.addFlashAttribute("message", "Xóa người dùng ID " + id + " thành công");
 			
+			String userPhotosDir = "user-photos/" + id;
+			AmazonS3Util.removeFolder(userPhotosDir);
+			
+			redirectAttributes.addFlashAttribute("message", "Xóa người dùng ID " + id + " thành công");
+
 			return "redirect:/users";
 		} catch (UserNotFoundException e) {
 			if (e.getMessage().contains("Could not find any user with ID")) {
 				redirectAttributes.addFlashAttribute("error", "Không tìm thấy người dùng có ID " + id);
 			}
-			
+
 			return "redirect:/users";
 		}
 	}

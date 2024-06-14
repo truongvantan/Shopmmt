@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.shopmmt.admin.common.AmazonS3Util;
 import com.shopmmt.admin.config.ShopmmtUserDetails;
 import com.shopmmt.admin.services.UserService;
 import com.shopmmt.admin.utils.FileUploadUtil;
@@ -67,10 +68,16 @@ public class AccountController {
 						String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 						userDTO.setPhotos(fileName);
 						User savedUser = userService.save(userDTO);
+						
+//						String uploadDir = "user-photos/" + savedUser.getId();
+//
+//						FileUploadUtil.cleanDir(uploadDir);
+//						FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+						
 						String uploadDir = "user-photos/" + savedUser.getId();
 
-						FileUploadUtil.cleanDir(uploadDir);
-						FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+						AmazonS3Util.removeFolder(uploadDir);
+						AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
 					} else {
 						if ("".equals(userDTO.getPhotos()) || userDTO.getPhotos() == null) {
 							userDTO.setPhotos(null);

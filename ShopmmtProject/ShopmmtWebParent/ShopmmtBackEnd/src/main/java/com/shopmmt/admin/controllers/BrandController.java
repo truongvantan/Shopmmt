@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.shopmmt.admin.common.AmazonS3Util;
 import com.shopmmt.admin.exception.BrandNotFoundException;
 import com.shopmmt.admin.services.BrandService;
 import com.shopmmt.admin.services.CategoryService;
@@ -101,10 +102,16 @@ public class BrandController {
 					brandDTO.setLogo(fileName);
 
 					Brand savedBrand = brandService.save(brandDTO);
-					String uploadDir = "../brand-logos/" + savedBrand.getId();
 
-					FileUploadUtil.cleanDir(uploadDir);
-					FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+//					String uploadDir = "../brand-logos/" + savedBrand.getId();
+//
+//					FileUploadUtil.cleanDir(uploadDir);
+//					FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
+					String uploadDir = "brand-logos/" + savedBrand.getId();
+
+					AmazonS3Util.removeFolder(uploadDir);
+					AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
 				} else {
 					if (brandDTO.getLogo() == null || "".equals(brandDTO.getLogo())) {
 						brandDTO.setLogo(null);
@@ -167,10 +174,16 @@ public class BrandController {
 					brandDTO.setLogo(fileName);
 
 					Brand savedBrand = brandService.save(brandDTO);
-					String uploadDir = "../brand-logos/" + savedBrand.getId();
+					
+//					String uploadDir = "../brand-logos/" + savedBrand.getId();
+//
+//					FileUploadUtil.cleanDir(uploadDir);
+//					FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
-					FileUploadUtil.cleanDir(uploadDir);
-					FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+					String uploadDir = "brand-logos/" + savedBrand.getId();
+
+					AmazonS3Util.removeFolder(uploadDir);
+					AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
 				} else {
 					if (brandDTO.getLogo() == null || "".equals(brandDTO.getLogo())) {
 						brandDTO.setLogo(null);
@@ -190,8 +203,12 @@ public class BrandController {
 			RedirectAttributes redirectAttributes) {
 		try {
 			brandService.delete(id);
-			String brandDir = "../brand-logos/" + id;
-			FileUploadUtil.removeDir(brandDir);
+			
+//			String brandDir = "../brand-logos/" + id;
+//			FileUploadUtil.removeDir(brandDir);
+			
+			String brandDir = "brand-logos/" + id;
+			AmazonS3Util.removeFolder(brandDir);
 
 			redirectAttributes.addFlashAttribute("message", "Xóa thương hiệu ID " + id + " thành công");
 
@@ -204,9 +221,10 @@ public class BrandController {
 			return "redirect:/brands";
 		} catch (DataIntegrityViolationException ex) {
 			if (ex.getMessage().contains("a foreign key constraint fails")) {
-				redirectAttributes.addFlashAttribute("error", "Không thể xóa thương hiệu ID " + id + " vì thương hiệu này có liên kết dữ liệu đến danh mục hoặc sản phẩm khác!");
+				redirectAttributes.addFlashAttribute("error", "Không thể xóa thương hiệu ID " + id
+						+ " vì thương hiệu này có liên kết dữ liệu đến danh mục hoặc sản phẩm khác!");
 			}
-			
+
 			return "redirect:/brands";
 		}
 	}

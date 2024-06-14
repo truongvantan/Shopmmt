@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.shopmmt.common.Constants;
 import com.shopmmt.common.dto.UserDTO;
 
 import jakarta.persistence.Column;
@@ -155,7 +156,7 @@ public class User {
 		if (this.id == null || this.photos == null) {
 			return "/images/default-user.png";
 		}
-		return "/user-photos/" + this.id + "/" + this.photos;
+		return Constants.S3_BASE_URI + "/user-photos/" + this.id + "/" + this.photos;
 	}
 	
 	@Transient

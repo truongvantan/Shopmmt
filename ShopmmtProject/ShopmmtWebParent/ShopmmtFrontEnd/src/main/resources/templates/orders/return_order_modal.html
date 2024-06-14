@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div
+		th:fragment="content"
+		class="modal fade"
+		id="returnOrderModal"
+	>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4
+						class="modal-title"
+						id="returnOrderModalTitle"
+					>HOÀN TRẢ ĐƠN HÀNG</h4>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="modal"
+						aria-label="Close"
+					></button>
+				</div>
+				<form onsubmit="return submitReturnOrderForm();">
+					<div class="modal-body">
+						<div id="divReason">
+							<div>Lý do:</div>
+
+							<div>
+								<input
+									type="radio"
+									name="returnReason"
+									value="Giao hàng không đúng sản phẩm"
+									required
+								/>
+								Giao hàng không đúng sản phẩm
+							</div>
+
+							<div>
+								<input
+									type="radio"
+									name="returnReason"
+									value="Sản phẩm bị hư hỏng"
+								/>
+								Sản phẩm bị hư hỏng
+							</div>
+
+							<div>
+								<input
+									type="radio"
+									name="returnReason"
+									value="Giao hàng quá chậm"
+								/>
+								Giao hàng quá chậm
+							</div>
+
+							<div class="m-1">
+								<textarea
+									class="form-control"
+									id="returnNote"
+									rows="3"
+									maxlength="120"
+									placeholder="Thông tin thêm"
+								></textarea>
+							</div>
+
+						</div>
+
+						<div
+							id="divMessage"
+							class="text-center"
+						></div>
+					</div>
+
+
+					<div class="modal-footer">
+						<button
+							type="submit"
+							class="btn btn-success"
+							id="firstButton"
+						>Gửi yêu cầu</button>
+						<button
+							type="button"
+							class="btn btn-danger"
+							data-bs-dismiss="modal"
+						>Hủy</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

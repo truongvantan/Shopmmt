@@ -1,8 +1,10 @@
 package com.shopmmt.common.entity;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -79,10 +81,10 @@ public class Order {
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<OrderDetail> orderDetails = new HashSet<OrderDetail>();
 
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
 	@OrderBy("updatedTime ASC")
 	private List<OrderTrack> orderTracks = new ArrayList<OrderTrack>();
 
@@ -346,7 +348,115 @@ public class Order {
 	@Transient
 	public String getDeliverDateOnForm() {
 		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		
+		if (this.deliverDate == null) {
+			Calendar cal = Calendar.getInstance();
+			cal.add(Calendar.DAY_OF_MONTH, deliverDays);
+			
+			this.deliverDate = cal.getTime();
+		}
+		
 		return dateFormatter.format(this.deliverDate);
+	}
+	
+	public void setDeliverDateOnForm(String dateString) {
+		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+ 		
+		try {
+			this.deliverDate = dateFormatter.parse(dateString);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} 		
+	}
+	
+	@Transient
+	public String getRecipientName() {
+		String name = lastName != null ? lastName : "";
+		if (firstName != null && !firstName.isEmpty()) name += " " + firstName;
+		return name;
+	}
+	
+	@Transient
+	public String getRecipientAddress() {
+		String address = addressLine1 != null ? addressLine1 : "";
+		
+		if (addressLine2 != null && !addressLine2.isEmpty()) {
+			address += ", " + addressLine2;
+		}
+		
+		if (state != null && !state.isEmpty()) {
+			address += ", " + state;
+		}
+		
+		if (city != null && !city.isEmpty()) {
+			address += ", " + city;
+		}
+		
+		if (postalCode != null && !postalCode.isEmpty()) {
+			address += ". " + postalCode;
+		}
+		
+		return address;
+	}
+	
+	@Transient
+	public boolean isCOD() {
+		return paymentMethod.equals(PaymentMethod.COD);
+	}
+	
+	@Transient
+	public boolean isPicked() {
+		return hasStatus(OrderStatus.PICKED);
+	}
+	
+	@Transient
+	public boolean isShipping() {
+		return hasStatus(OrderStatus.SHIPPING);
+	}
+	
+	@Transient
+	public boolean isDelivered() {
+		return hasStatus(OrderStatus.DELIVERED);
+	}
+	
+	@Transient
+	public boolean isReturned() {
+		return hasStatus(OrderStatus.RETURNED);
+	}
+	
+	@Transient
+	public boolean isReturnRequested() {
+		return hasStatus(OrderStatus.RETURN_REQUESTED);
+	}
+	
+	@Transient
+	public boolean isProcessing() {
+		return hasStatus(OrderStatus.PROCESSING);
+	}
+	
+	public boolean hasStatus(OrderStatus status) {
+		for (OrderTrack aTrack : orderTracks) {
+			if (aTrack.getStatus().equals(status)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	@Transient
+	public String getProductNames() {
+		String productNames = "";
+		
+		productNames = "<ol>";
+		
+		for (OrderDetail detail : orderDetails) {
+			productNames += "<li>" + detail.getProduct().getShortName() + "</li>";			
+		}
+		
+		productNames += "</ol>";
+		
+		return productNames;
 	}
 
 }

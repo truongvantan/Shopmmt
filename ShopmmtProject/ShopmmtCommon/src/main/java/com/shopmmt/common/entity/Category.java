@@ -3,6 +3,7 @@ package com.shopmmt.common.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.shopmmt.common.Constants;
 import com.shopmmt.common.dto.CategoryDTO;
 
 import jakarta.persistence.Column;
@@ -182,7 +183,7 @@ public class Category {
 		if (this.id == null || this.photos == null) {
 			return "/images/image-thumbnail.png";
 		}
-		return "/category-images/" + this.id + "/" + this.photos;
+		return Constants.S3_BASE_URI + "/category-images/" + this.id + "/" + this.photos;
 	}
 
 	@Transient

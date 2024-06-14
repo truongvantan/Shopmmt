@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.shopmmt.common.Constants;
 import com.shopmmt.common.constants.ConstantsUtil;
 import com.shopmmt.common.entity.Role;
 import com.shopmmt.common.entity.User;
@@ -153,7 +154,7 @@ public class UserDTO {
 		if (this.id == null || this.photos == null) {
 			return "/images/default-user.png";
 		}
-		return "/user-photos/" + this.id + "/" + this.photos;
+		return Constants.S3_BASE_URI + "/user-photos/" + this.id + "/" + this.photos;
 	}
 	
 	public boolean hasRole(String roleName) {

@@ -48,12 +48,16 @@ public class WebSecurityConfig {
 						"/products/check_product_name", "/products/check_product_details")
 				.hasAnyAuthority("Admin", "Nhân viên kho hàng", "Nhân viên bán hàng")
 
-				.requestMatchers("/products", "/products/", "/products/detail/**", "/products/page/**")
+				.requestMatchers("/products", "/products/", "/products/detail/**", "/products/page/**", "/products/get/**")
 				.hasAnyAuthority("Admin", "Nhân viên kho hàng", "Nhân viên bán hàng", "Nhân viên giao hàng")
 
 				.requestMatchers("/products/**").hasAnyAuthority("Admin", "Nhân viên kho hàng")
+				
+				.requestMatchers("/orders", "/orders/", "/orders/page/**", "/orders/detail/**").hasAnyAuthority("Admin", "Nhân viên bán hàng", "Nhân viên giao hàng")
 
-				.requestMatchers("/customers/**", "/orders/**").hasAnyAuthority("Admin", "Nhân viên bán hàng")
+				.requestMatchers("/customers/**", "/orders/**", "/get_shipping_cost", "/order/**").hasAnyAuthority("Admin", "Nhân viên bán hàng")
+				
+				.requestMatchers("/orders_shipper/update/**").hasAnyAuthority("Admin", "Nhân viên giao hàng")
 
 				.requestMatchers("/images/**", "/js/**", "/webjars/**", "/css/**", "/fontawesome/**", "/fonts/**",
 						"/webfonts/**")

@@ -15,6 +15,7 @@
 			th:action="@{/order/edit}"
 			th:object="${order}"
 			method="post"
+			onsubmit="return processFormBeforeSubmit();"
 		>
 			<input
 				type="hidden"

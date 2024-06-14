@@ -14,4 +14,6 @@ public interface OrderService {
 	void delete(Integer id) throws OrderNotFoundException;
 
 	void save(Order orderInForm);
+	
+	void updateStatus(Integer orderId, String status);
 }

@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import com.shopmmt.common.Constants;
 import com.shopmmt.common.dto.ProductDTO;
 
 import jakarta.persistence.CascadeType;
@@ -266,7 +267,7 @@ public class Product {
 			return "/images/image-thumbnail.png";
 		}
 
-		return "/product-images/" + this.id + "/" + this.mainImage;
+		return Constants.S3_BASE_URI + "/product-images/" + this.id + "/" + this.mainImage;
 	}
 
 	public void addDetail(String name, String value) {

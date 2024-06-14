@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Status"/>
+		<item key="selection" value="FileUploadUtil.clean"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="FileUploadUtil.clean"/>
+			<item value="FileUploadUtil.save"/>
+			<item value="FileUpload"/>
+			<item value="FileUploadUtils"/>
+			<item value="shippingCost"/>
+			<item value="getShippingCost"/>
+			<item value="&quot;.&quot;"/>
+			<item value="replace("/>
+			<item value="redirectedFromCheckoutPage"/>
+			<item value="label"/>
 			<item value="status"/>
 			<item value="customer"/>
 			<item value="@Param"/>
 			<item value="@RequestParam"/>
 			<item value="checkValidSettingValue"/>
-			<item value="pid"/>
-			<item value="ád"/>
-			<item value="System."/>
-			<item value="customerService"/>
-			<item value="{#authorization.expression(&apos;hasAuthority(&apos;&apos;Nhân viên bán hàng&apos;&apos;)&apos;)}"/>
-			<item value="data-slide-to"/>
-			<item value="active"/>
-			<item value="data-target"/>
-			<item value="data-ride"/>
-			<item value="data-toggle"/>
 		</list>
 		<list key="replacehistory">
 			<item value="data-bs-slide-to"/>
@@ -35,8 +35,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="42"/>
-		<item key="DIALOG_Y_ORIGIN" value="108"/>
+		<item key="DIALOG_X_ORIGIN" value="70"/>
+		<item key="DIALOG_Y_ORIGIN" value="109"/>
 		<item key="DIALOG_WIDTH" value="507"/>
 		<item key="DIALOG_HEIGHT" value="478"/>
 		<item key="DIALOG_FONT_NAME" value="1|JetBrains Mono|10.2|0|WINDOWS|1|-17|0|0|0|400|0|0|0|0|3|2|1|49|JetBrains Mono"/>

@@ -1,5 +1,7 @@
 package com.shopmmt.admin.services.impl;
 
+import java.util.Date;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import com.shopmmt.admin.repositories.OrderRepository;
 import com.shopmmt.admin.services.OrderService;
 import com.shopmmt.common.constants.ConstantsUtil;
 import com.shopmmt.common.entity.Order;
+import com.shopmmt.common.entity.OrderTrack;
+import com.shopmmt.common.enums.OrderStatus;
 import com.shopmmt.common.exception.OrderNotFoundException;
 
 import jakarta.transaction.Transactional;
@@ -72,6 +76,28 @@ public class OrderServiceImpl implements OrderService {
 		orderInForm.setCustomer(orderInDB.getCustomer());
 		
 		orderRepository.save(orderInForm);
+	}
+
+	@Override
+	public void updateStatus(Integer orderId, String status) {
+		Order orderInDB = orderRepository.findById(orderId).get();
+		OrderStatus statusToUpdate = OrderStatus.valueOf(status);
+		
+		if (!orderInDB.hasStatus(statusToUpdate)) {
+			List<OrderTrack> orderTracks = orderInDB.getOrderTracks();
+			
+			OrderTrack track = new OrderTrack();
+			track.setOrder(orderInDB);
+			track.setStatus(statusToUpdate);
+			track.setUpdatedTime(new Date());
+			track.setNotes(statusToUpdate.label);
+			
+			orderTracks.add(track);
+			
+			orderInDB.setStatus(statusToUpdate);
+			
+			orderRepository.save(orderInDB);
+		}
 	}
 	
 	

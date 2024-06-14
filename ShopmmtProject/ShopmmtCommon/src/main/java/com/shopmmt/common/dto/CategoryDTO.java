@@ -3,6 +3,7 @@ package com.shopmmt.common.dto;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.shopmmt.common.Constants;
 import com.shopmmt.common.entity.Category;
 
 import jakarta.validation.constraints.NotBlank;
@@ -122,7 +123,7 @@ public class CategoryDTO {
 		if (this.id == null || this.photos == null) {
 			return "/images/image-thumbnail.png";
 		}
-		return "/category-images/" + this.id + "/" + this.photos;
+		return Constants.S3_BASE_URI + "/category-images/" + this.id + "/" + this.photos;
 	}
 
 	private boolean hasChildren;

@@ -3,6 +3,7 @@ package com.shopmmt.common.dto;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.shopmmt.common.Constants;
 import com.shopmmt.common.entity.Brand;
 import com.shopmmt.common.entity.Category;
 
@@ -81,7 +82,7 @@ public class BrandDTO {
 	public String getLogoPath() {
 		if (this.id == null) return "/images/image-thumbnail.png";
 		
-		return "/brand-logos/" + this.id + "/" + this.logo;		
+		return Constants.S3_BASE_URI +  "/brand-logos/" + this.id + "/" + this.logo;		
 	}
 
 }

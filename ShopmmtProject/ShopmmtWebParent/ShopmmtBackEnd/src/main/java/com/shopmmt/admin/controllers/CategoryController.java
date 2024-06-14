@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.shopmmt.admin.common.AmazonS3Util;
 import com.shopmmt.admin.services.CategoryService;
 import com.shopmmt.admin.utils.FileUploadUtil;
 import com.shopmmt.common.dto.CategoryDTO;
@@ -96,10 +97,16 @@ public class CategoryController {
 					categoryDTO.setPhotos(fileName);
 
 					Category savedCategory = categoryService.save(categoryDTO);
-					String uploadDir = "../category-images/" + savedCategory.getId();
-
-					FileUploadUtil.cleanDir(uploadDir);
-					FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+					
+//					String uploadDir = "../category-images/" + savedCategory.getId();
+//
+//					FileUploadUtil.cleanDir(uploadDir);
+//					FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+					
+					String uploadDir = "category-images/" + savedCategory.getId();
+					
+					AmazonS3Util.removeFolder(uploadDir);
+					AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
 				} else {
 					if ("".equals(categoryDTO.getPhotos()) || categoryDTO.getPhotos() == null) {
 						categoryDTO.setPhotos(null);
@@ -161,10 +168,16 @@ public class CategoryController {
 				categoryDTO.setPhotos(fileName);
 
 				Category savedCategory = categoryService.save(categoryDTO);
-				String uploadDir = "../category-images/" + savedCategory.getId();
-
-				FileUploadUtil.cleanDir(uploadDir);
-				FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+				
+//				String uploadDir = "../category-images/" + savedCategory.getId();
+//
+//				FileUploadUtil.cleanDir(uploadDir);
+//				FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+				
+				String uploadDir = "category-images/" + savedCategory.getId();
+				
+				AmazonS3Util.removeFolder(uploadDir);
+				AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());
 			} else {
 				if ("".equals(categoryDTO.getPhotos()) || categoryDTO.getPhotos() == null) {
 					categoryDTO.setPhotos(null);
@@ -201,8 +214,12 @@ public class CategoryController {
 			RedirectAttributes redirectAttributes) {
 		try {
 			categoryService.delete(id);
-			String categoryDir = "../category-images/" + id;
-			FileUploadUtil.removeDir(categoryDir);
+			
+//			String categoryDir = "../category-images/" + id;
+//			FileUploadUtil.removeDir(categoryDir);
+			
+			String categoryDir = "category-images/" + id;
+			AmazonS3Util.removeFolder(categoryDir);
 
 			redirectAttributes.addFlashAttribute("message", "Xóa danh mục ID " + id + " thành công");
 

@@ -1,5 +1,6 @@
 package com.shopmmt.common.entity;
 
+import com.shopmmt.common.Constants;
 import com.shopmmt.common.dto.ProductDTO;
 import com.shopmmt.common.dto.ProductImageDTO;
 
@@ -79,7 +80,7 @@ public class ProductImage {
 	
 	@Transient
 	public String getImagePath() {
-		return "/product-images/" + product.getId() + "/extras/" + this.name;
+		return Constants.S3_BASE_URI + "/product-images/" + product.getId() + "/extras/" + this.name;
 	}
 	
 }

@@ -95,10 +95,11 @@
 							<div
 								th:replace="~{fragments/edit_delete :: edit('người dùng', '/users/showEdit/' + ${user.id})}"
 							></div>
-							<!-- <div th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/delete/' + ${user.id}, true)}"></div> -->
+
 							<div
-								th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/' + ${user.id} + '/enabled/false', true)}"
+								th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/delete/' + ${user.id}, true)}"
 							></div>
+
 						</td>
 					</tr>
 				</tbody>
@@ -133,9 +134,9 @@
 							th:replace="~{fragments/edit_delete :: edit('người dùng', '/users/showEdit/' + ${user.id})}"
 						></div>
 						&nbsp;
-						<!-- <div th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/delete/' + ${user.id}, true)}"></div> -->
+
 						<div
-							th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/' + ${user.id} + '/enabled/false', true)}"
+							th:replace="~{fragments/edit_delete :: delete('người dùng', ${user.id}, '/users/delete/' + ${user.id}, true)}"
 						></div>
 					</div>
 				</div>
