@@ -124,6 +124,10 @@ public class Product {
 		this.details = productDTO.getDetails();
 	}
 
+	public Product(String productName) {
+		this.name = productName;
+	}
+
 	public List<ProductDetail> getDetails() {
 		return details;
 	}

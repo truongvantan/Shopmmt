@@ -88,12 +88,6 @@
 								th:href="@{/customers}"
 							>Khách hàng</a>
 						</li>
-						<li class="nav-item">
-							<a
-								class="nav-link"
-								th:href="@{/shipping}"
-							>Vận chuyển</a>
-						</li>
 					</th:block>
 
 					<th:block
@@ -113,7 +107,7 @@
 						<li class="nav-item">
 							<a
 								class="nav-link"
-								th:href="@{/report}"
+								th:href="@{/reports}"
 							>Thống kê</a>
 						</li>
 					</th:block>
@@ -121,35 +115,17 @@
 					<th:block
 						sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng')"
 					>
-						<li class="nav-item">
-							<a
-								class="nav-link"
-								th:href="@{/articles}"
-							>Bài viết</a>
-						</li>
 					</th:block>
 
 					<th:block
 						sec:authorize="hasAnyAuthority('Admin', 'Cộng tác viên')"
 					>
-						<li class="nav-item">
-							<a
-								class="nav-link"
-								th:href="@{/comments}"
-							>Bình luận</a>
-						</li>
 
 					</th:block>
 
 					<th:block
 						sec:authorize="hasAnyAuthority('Admin', 'Nhân viên kho hàng')"
 					>
-						<li class="nav-item">
-							<a
-								class="nav-link"
-								th:href="@{/menus}"
-							>Tùy chọn</a>
-						</li>
 					</th:block>
 
 					<li

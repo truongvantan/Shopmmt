@@ -55,7 +55,7 @@ public class WebSecurityConfig {
 				
 				.requestMatchers("/orders", "/orders/", "/orders/page/**", "/orders/detail/**").hasAnyAuthority("Admin", "Nhân viên bán hàng", "Nhân viên giao hàng")
 
-				.requestMatchers("/customers/**", "/orders/**", "/get_shipping_cost", "/order/**").hasAnyAuthority("Admin", "Nhân viên bán hàng")
+				.requestMatchers("/customers/**", "/orders/**", "/get_shipping_cost", "/order/**", "/reports/**").hasAnyAuthority("Admin", "Nhân viên bán hàng")
 				
 				.requestMatchers("/orders_shipper/update/**").hasAnyAuthority("Admin", "Nhân viên giao hàng")
 

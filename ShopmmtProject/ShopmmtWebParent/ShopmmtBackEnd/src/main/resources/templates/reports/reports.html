@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="~{fragments/page_head :: page_head('ShopmmtAdmin - Thống kê', 'none')}"
+></head>
+<body>
+	<div class="container-fluid mt-4">
+		<div th:replace="~{fragments/header :: header}"></div>
+		<div th:replace="~{fragments/alert_message_box :: alert_message_box}"></div>
+
+		<h1 class="text-center">THỐNG KÊ DOANH THU</h1>
+
+		<div>
+			<ul
+				class="nav nav-tabs"
+				id="reportTab"
+				role="tablist"
+			>
+				<li class="nav-item">
+					<a
+						class="nav-link active"
+						data-bs-toggle="tab"
+						href="#date"
+						role="tab"
+					>Thống kê theo ngày</a>
+				</li>
+				<li class="nav-item">
+					<a
+						class="nav-link"
+						data-bs-toggle="tab"
+						href="#category"
+						role="tab"
+					>Thống kê theo danh mục</a>
+				</li>
+				<li class="nav-item">
+					<a
+						class="nav-link"
+						data-bs-toggle="tab"
+						href="#product"
+						role="tab"
+					>Thống kê theo sản phẩm</a>
+				</li>
+			</ul>
+
+			<div class="tab-content">
+				<!-- Tab pane Report Date  -->
+				<div
+					class="tab-pane active p-3"
+					id="date"
+					role="tabpanel"
+				>
+					<div
+						th:replace="~{reports/sales_report_fragment::content('_date')}"
+					></div>
+				</div>
+				<!-- END Tab pane Report Date  -->
+
+				<!-- Tab pane Report Category  -->
+				<div
+					class="tab-pane p-3"
+					id="category"
+					role="tabpanel"
+				>
+					<div
+						th:replace="~{reports/sales_report_fragment::content('_category')}"
+					></div>
+				</div>
+				<!-- END Tab pane Report Category  -->
+
+				<!-- Tab pane Report Product  -->
+				<div
+					class="tab-pane p-3"
+					id="product"
+					role="tabpanel"
+				>
+					<div
+						th:replace="~{reports/sales_report_fragment::content('_product')}"
+					></div>
+				</div>
+				<!-- END Tab pane Report Product  -->
+
+			</div>
+		</div>
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+
+	<script
+		type="text/javascript"
+		src="https://www.gstatic.com/charts/loader.js"
+	></script>
+	<script type="text/javascript">
+		contextPath = "[[@{/}]]";
+		currencySymbol = "[[${CURRENCY_SYMBOL}]]";
+		thousandsPointType = "[[${THOUSANDS_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
+		decimalPointType = "[[${DECIMAL_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
+		currencySymbolPosition = "[[${CURRENCY_SYMBOL_POSITION}]]";
+		decimalDigits = "[[${DECIMAL_DIGITS}]]";
+
+		prefixCurrencySymbol = currencySymbolPosition == 'Before price' ? currencySymbol
+				: '';
+		suffixCurrencySymbol = currencySymbolPosition == 'After price' ? currencySymbol
+				: '';
+
+		$(document).ready(function() {
+			google.charts.load('current', {'packages': ['corechart', 'table']});
+			google.charts.setOnLoadCallback(loadSalesReportByDate);
+		});
+	</script>
+	<script
+		type="text/javascript"
+		th:src="@{/js/jquery.number.min.js}"
+	></script>
+	<script
+		type="text/javascript"
+		th:src="@{/js/sales_report_common.js}"
+	></script>
+	<script
+		type="text/javascript"
+		th:src="@{/js/sales_report_by_date.js}"
+	></script>
+	<script
+		type="text/javascript"
+		th:src="@{/js/sales_report_by_category.js}"
+	></script>
+	<script
+		type="text/javascript"
+		th:src="@{/js/sales_report_by_product.js}"
+	></script>
+</body>
+</html>
