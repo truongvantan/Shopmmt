@@ -144,6 +144,9 @@ public class CheckoutController {
 		content = content.replace("[[shippingAddress]]", order.getShippingAddress());
 		content = content.replace("[[total]]", totalAmount);
 		content = content.replace("[[paymentMethod]]", order.getPaymentMethod().label.toString());
+		
+		String urlListOrders = Utility.getSiteURL(request) + "/orders";
+		content = content.replace("[[URL_ORDER]]", urlListOrders);
 
 		helper.setText(content, true);
 

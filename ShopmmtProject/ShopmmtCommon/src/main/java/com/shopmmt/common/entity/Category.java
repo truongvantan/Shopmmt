@@ -51,7 +51,6 @@ public class Category {
 		this.setId(category.getId());
 		this.setName(category.getName());
 		this.setPhotos(category.getPhotos());
-		;
 		this.setEnabled(category.isEnabled());
 		this.setHasChildren(category.getChildren().size() > 0);
 	}
@@ -60,7 +59,6 @@ public class Category {
 		this.setName(name);
 		this.setId(category.getId());
 		this.setPhotos(category.getPhotos());
-		;
 		this.setEnabled(category.isEnabled());
 		this.setHasChildren(category.getChildren().size() > 0);
 	}
@@ -172,7 +170,6 @@ public class Category {
 	public void convertFromDTO(CategoryDTO categoryDTO) {
 		this.setName(categoryDTO.getName());
 		this.setPhotos(categoryDTO.getPhotos());
-		;
 		this.setEnabled(categoryDTO.isEnabled());
 		this.setParent(categoryDTO.getParent());
 		this.setChildren(categoryDTO.getChildren());

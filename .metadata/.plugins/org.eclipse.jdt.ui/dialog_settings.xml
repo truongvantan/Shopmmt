@@ -208,7 +208,7 @@
 		<item key="DIALOG_FONT_NAME" value="1|JetBrains Mono|10.2|0|WINDOWS|1|-17|0|0|0|400|0|0|0|0|3|2|1|49|JetBrains Mono"/>
 	</section>
 	<section name="BuildPathsPropertyPage">
-		<item key="pageIndex" value="2"/>
+		<item key="pageIndex" value="3"/>
 	</section>
 	<section name="ClasspathContainerSelectionPage">
 		<item key="index" value="1"/>

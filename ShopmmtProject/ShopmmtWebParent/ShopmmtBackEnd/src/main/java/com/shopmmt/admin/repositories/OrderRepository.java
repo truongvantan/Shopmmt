@@ -30,6 +30,6 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 	
 	@Query("SELECT NEW com.shopmmt.common.entity.Order(o.id, o.orderTime, o.productCost,"
 			+ " o.subtotal, o.total) FROM Order o WHERE"
-			+ " o.orderTime BETWEEN ?1 AND ?2 ORDER BY o.orderTime ASC")
+			+ " (o.status = PAID OR o.status = DELIVERED) AND o.orderTime BETWEEN ?1 AND ?2 ORDER BY o.orderTime ASC")
 	public List<Order> findByOrderTimeBetween(Date startTime, Date endTime);
 }
