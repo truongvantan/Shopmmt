@@ -62,18 +62,20 @@ public class Utility {
 		String thousandPointType = settings.getThousandPointType();
 		int decimalDigits = settings.getDecimalDigits();
 		
-		String pattern = symbolPosition.equals("Before price") ? symbol : "";
+		String pattern = "Before price".equalsIgnoreCase(symbolPosition) ? symbol : "";
 		pattern += "###,###";
 		
 		if (decimalDigits > 0) {
 			pattern += ".";
-			for (int count = 1; count <= decimalDigits; count++) pattern += "#";
+			for (int count = 1; count <= decimalDigits; count++) {
+				pattern += "#";
+			}
 		}
 		
-		pattern += symbolPosition.equals("After price") ? symbol : "";
+		pattern += "After price".equalsIgnoreCase(symbolPosition) ? symbol : "";
 		
-		char thousandSeparator = thousandPointType.equals("POINT") ? '.' : ',';
-		char decimalSeparator = decimalPointType.equals("POINT") ? '.' : ',';
+		char thousandSeparator = "POINT".equalsIgnoreCase(thousandPointType) ? '.' : ',';
+		char decimalSeparator = "POINT".equalsIgnoreCase(decimalPointType) ? '.' : ',';
 		
 		DecimalFormatSymbols decimalFormatSymbols = DecimalFormatSymbols.getInstance();
 		decimalFormatSymbols.setDecimalSeparator(decimalSeparator);

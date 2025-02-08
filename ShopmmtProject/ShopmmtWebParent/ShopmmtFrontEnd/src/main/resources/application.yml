@@ -19,12 +19,13 @@ spring:
     username: root
     hikari:
       minimum-idle: 1
-      maximum-pool-size: 2
+      maximum-pool-size: 15
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
         connection:
           CharSet: utf8
           characterEncoding: utf8

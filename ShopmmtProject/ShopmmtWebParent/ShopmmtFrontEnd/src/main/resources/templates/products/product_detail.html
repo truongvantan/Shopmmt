@@ -16,8 +16,9 @@
 						id="bigImage"
 						th:src="@{${product.mainImagePath}}"
 						alt="productImage"
-						width="300px"
-						height="300px"
+						width="400px"
+						height="400px"
+						class="image-border-shadow"
 					/>
 					<th:block th:if="${product.discountPercent > 0}">
 						<div class="sale-div position-absolute badge bg-success">Giảm
